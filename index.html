@@ -320,34 +320,37 @@
         }
 
         
-        /* Scroll Animation Section */
-        .scroll-animation-section {
-            min-height: 300vh;
+        /* Family Story Section with Animation */
+        .story-section-with-animation {
+            min-height: 200vh;
             position: relative;
-            background: linear-gradient(135deg, #E8E4DB 0%, #F5F1E8 100%);
+            background: white;
+            padding: 0;
         }
 
-        .scroll-sticky {
+        .story-animation-container {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            align-items: start;
+        }
+
+        .jacket-animation-sticky {
             position: sticky;
-            top: 0;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .scroll-container-center {
-            width: 100%;
+            top: 100px;
+            height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .jacket-canvas-large {
+        .jacket-canvas-side {
             position: relative;
-            width: 90%;
-            max-width: 700px;
+            width: 100%;
+            max-width: 400px;
             aspect-ratio: 3/4;
         }
 
@@ -358,31 +361,68 @@
             width: 100%;
             height: 100%;
             object-fit: contain;
-            transition: opacity 0.3s ease;
+            opacity: 0;
+            transition: opacity 0.2s ease;
         }
 
-        .sketch-frame {
-            z-index: 1;
+        .jacket-frame.frame-base {
             opacity: 1;
         }
 
-        .color-frame-1 { z-index: 2; opacity: 0; }
-        .color-frame-2 { z-index: 3; opacity: 0; }
-        .color-frame-3 { z-index: 4; opacity: 0; }
-        .color-frame-4 { z-index: 5; opacity: 0; }
+        .jacket-frame.active {
+            opacity: 1;
+        }
 
-        @media (max-width: 768px) {
-            .jacket-canvas-large {
-                width: 95%;
-                max-width: 500px;
+        .story-content-scroll {
+            padding: 2rem 0;
+        }
+
+        .story-content-scroll h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .story-content-scroll .story-text {
+            font-size: 1.15rem;
+            color: var(--color-slate);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .story-content-scroll .story-highlight {
+            background: var(--color-fog);
+            padding: 2rem;
+            border-radius: 12px;
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-top: 3rem;
+            color: var(--color-charcoal);
+        }
+
+        @media (max-width: 1024px) {
+            .story-animation-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .jacket-animation-sticky {
+                position: relative;
+                height: 60vh;
+                top: 0;
+            }
+
+            .jacket-canvas-side {
+                max-width: 300px;
             }
         }
 
-        /* Family Story Section */
-        .story-section {
-            padding: 8rem 4rem;
-            background: white;
-        }
+        /* Old Story Section (remove if exists) */
 
         .story-container {
             max-width: 1000px;
@@ -1709,45 +1749,50 @@
     </section>
 
     
-    <!-- Scroll Animation Section -->
-    <section class="scroll-animation-section" id="entstehung">
-        <div class="scroll-sticky">
-            <div class="scroll-container-center">
-                <div class="jacket-canvas-large" id="jacketCanvas">
-                    <!-- Frame 1: Skizze (Start) -->
-                    <img src="images/gurri-frame-01.png" alt="" class="jacket-frame sketch-frame">
-                    
-                    <!-- Frame 2: 25% Farbe -->
-                    <img src="images/gurri-frame-02.png" alt="" class="jacket-frame color-frame-1" id="colorFrame1">
-                    
-                    <!-- Frame 3: 50% Farbe -->
-                    <img src="images/gurri-frame-03.png" alt="" class="jacket-frame color-frame-2" id="colorFrame2">
-                    
-                    <!-- Frame 4: 75% Farbe -->
-                    <img src="images/gurri-frame-04.png" alt="" class="jacket-frame color-frame-3" id="colorFrame3">
-                    
-                    <!-- Frame 5: 100% fertig -->
-                    <img src="images/gurri-frame-05.png" alt="" class="jacket-frame color-frame-4" id="colorFrame4">
+    <!-- Family Story Section with Scroll Animation -->
+    <section class="story-section-with-animation" id="story">
+        <div class="story-animation-container">
+            <!-- LEFT: Animated Jacket -->
+            <div class="jacket-animation-sticky">
+                <div class="jacket-canvas-side" id="jacketCanvas">
+                    <img src="images/gurri-frame-001.png" alt="" class="jacket-frame frame-base">
+                    <img src="images/gurri-frame-002.png" alt="" class="jacket-frame frame-2" data-frame="2">
+                    <img src="images/gurri-frame-003.png" alt="" class="jacket-frame frame-3" data-frame="3">
+                    <img src="images/gurri-frame-004.png" alt="" class="jacket-frame frame-4" data-frame="4">
+                    <img src="images/gurri-frame-005.png" alt="" class="jacket-frame frame-5" data-frame="5">
+                    <img src="images/gurri-frame-006.png" alt="" class="jacket-frame frame-6" data-frame="6">
+                    <img src="images/gurri-frame-007.png" alt="" class="jacket-frame frame-7" data-frame="7">
+                    <img src="images/gurri-frame-008.png" alt="" class="jacket-frame frame-8" data-frame="8">
+                    <img src="images/gurri-frame-009.png" alt="" class="jacket-frame frame-9" data-frame="9">
+                    <img src="images/gurri-frame-010.png" alt="" class="jacket-frame frame-10" data-frame="10">
+                    <img src="images/gurri-frame-011.png" alt="" class="jacket-frame frame-11" data-frame="11">
+                    <img src="images/gurri-frame-012.png" alt="" class="jacket-frame frame-12" data-frame="12">
+                    <img src="images/gurri-frame-013.png" alt="" class="jacket-frame frame-13" data-frame="13">
+                    <img src="images/gurri-frame-014.png" alt="" class="jacket-frame frame-14" data-frame="14">
+                    <img src="images/gurri-frame-015.png" alt="" class="jacket-frame frame-15" data-frame="15">
+                    <img src="images/gurri-frame-016.png" alt="" class="jacket-frame frame-16" data-frame="16">
+                    <img src="images/gurri-frame-017.png" alt="" class="jacket-frame frame-17" data-frame="17">
+                    <img src="images/gurri-frame-018.png" alt="" class="jacket-frame frame-18" data-frame="18">
+                    <img src="images/gurri-frame-019.png" alt="" class="jacket-frame frame-19" data-frame="19">
+                    <img src="images/gurri-frame-020.png" alt="" class="jacket-frame frame-20" data-frame="20">
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Family Story Section -->
-    <section class="story-section" id="story">
-        <div class="story-container">
-            <h2>Eine Familiengeschichte</h2>
-            <p class="story-text">
-                AmundsensFjell begann mit Familie, Liebe und einer Idee. Mein Vater träumte davon, seine Familie wetterfest zu halten, mit Kleidung, die jeder tragen kann, die erschwinglich ist und trotzdem nicht auf Qualität verzichtet. Oder auf die kleinen Details, die eine Jacke zu etwas Besonderem machen.
-            </p>
-            <p class="story-text">
-                Nach Jahren in der Textilbranche, in denen er auch für andere Regentextilhersteller arbeitete, entwarf er unsere Hedda, die erste Regenjacke von AmundsensFjell. Inspiriert vom norddeutschen Friesennerz. Kurz darauf folgte die Softshell-Version: unsere Gurri. Beide mit den wolkenförmigen Kordelzügen, die ihm so wichtig waren. Jede Jacke ein Stück Familie, jedes Detail durchdacht.
-            </p>
-            <p class="story-text">
-                Was bleibt, wenn Trends kommen und gehen? Gute Jacken. Ehrliche Materialien. Designs, die nicht altern. Das ist unser Versprechen.
-            </p>
-            <div class="story-highlight">
-                "Die besten Jacken entstehen aus Erfahrung, Liebe zum Detail und dem Wunsch, die Menschen zu schützen, die einem wichtig sind."
+            <!-- RIGHT: Story Text -->
+            <div class="story-content-scroll">
+                <h2>Eine Familiengeschichte</h2>
+                <p class="story-text">
+                    AmundsensFjell begann mit Familie, Liebe und einer Idee. Mein Vater träumte davon, seine Familie wetterfest zu halten, mit Kleidung, die jeder tragen kann, die erschwinglich ist und trotzdem nicht auf Qualität verzichtet. Oder auf die kleinen Details, die eine Jacke zu etwas Besonderem machen.
+                </p>
+                <p class="story-text">
+                    Nach Jahren in der Textilbranche, in denen er auch für andere Regentextilhersteller arbeitete, entwarf er unsere Hedda, die erste Regenjacke von AmundsensFjell. Inspiriert vom norddeutschen Friesennerz. Kurz darauf folgte die Softshell-Version: unsere Gurri. Beide mit den wolkenförmigen Kordelzügen, die ihm so wichtig waren. Jede Jacke ein Stück Familie, jedes Detail durchdacht.
+                </p>
+                <p class="story-text">
+                    Was bleibt, wenn Trends kommen und gehen? Gute Jacken. Ehrliche Materialien. Designs, die nicht altern. Das ist unser Versprechen.
+                </p>
+                <div class="story-highlight">
+                    "Die besten Jacken entstehen aus Erfahrung, Liebe zum Detail und dem Wunsch, die Menschen zu schützen, die einem wichtig sind."
+                </div>
             </div>
         </div>
     </section>
@@ -2735,38 +2780,32 @@
         }
 
         
-        // Scroll Animation
-        const scrollSection = document.querySelector('.scroll-animation-section');
-        if (scrollSection) {
-            const colorFrames = [
-                document.getElementById('colorFrame1'),
-                document.getElementById('colorFrame2'),
-                document.getElementById('colorFrame3'),
-                document.getElementById('colorFrame4')
-            ];
+        // Scroll Animation with Story
+        const storySection = document.querySelector('.story-section-with-animation');
+        if (storySection) {
+            const jacketFrames = document.querySelectorAll('.jacket-frame[data-frame]');
+            const totalFrames = jacketFrames.length;
 
             window.addEventListener('scroll', () => {
-                const sectionTop = scrollSection.offsetTop;
-                const sectionHeight = scrollSection.offsetHeight;
+                const sectionTop = storySection.offsetTop;
+                const sectionHeight = storySection.offsetHeight;
                 const scrollPos = window.scrollY;
                 const viewportHeight = window.innerHeight;
 
+                // Calculate progress (0 to 1)
                 const scrollStart = sectionTop - viewportHeight / 2;
                 const scrollEnd = sectionTop + sectionHeight - viewportHeight;
                 const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
 
-                const totalSteps = 5;
-                colorFrames.forEach((frame, index) => {
-                    const layerStart = (index + 1) / totalSteps;
-                    const layerEnd = (index + 2) / totalSteps;
-                    
-                    if (progress >= layerStart && progress < layerEnd) {
-                        const layerProgress = (progress - layerStart) / (layerEnd - layerStart);
-                        frame.style.opacity = layerProgress;
-                    } else if (progress >= layerEnd) {
-                        frame.style.opacity = 1;
+                // Calculate current frame (1 to totalFrames)
+                const currentFrame = Math.floor(progress * totalFrames);
+
+                // Show the appropriate frame
+                jacketFrames.forEach((frame, index) => {
+                    if (index < currentFrame) {
+                        frame.classList.add('active');
                     } else {
-                        frame.style.opacity = 0;
+                        frame.classList.remove('active');
                     }
                 });
             });

@@ -1,0 +1,2023 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AmundsensFjell – Bleib trocken. Bleib stilvoll.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-cream: #F5F1E8;
+            --color-charcoal: #2A2A2A;
+            --color-slate: #4A5859;
+            --color-rain: #7B9AA2;
+            --color-sunshine: #FFD147;
+            --color-fog: #E8E4DB;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Instrument Sans', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-charcoal);
+            background: var(--color-cream);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(245, 241, 232, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(42, 42, 42, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 4rem;
+            background: rgba(245, 241, 232, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--color-charcoal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-slate);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-charcoal);
+        }
+
+        .cart-button {
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .cart-button:hover {
+            background: var(--color-slate);
+            transform: translateY(-2px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--color-sunshine);
+            color: var(--color-charcoal);
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 300;
+            font-style: italic;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero h1 strong {
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--color-slate);
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background: var(--color-slate);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .rain-drops {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .drop {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(180deg, transparent, var(--color-rain));
+            opacity: 0.3;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+
+        /* Sketch Gallery Section */
+        .sketch-gallery {
+            padding: 8rem 4rem;
+            background: var(--color-cream);
+        }
+
+        .gallery-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .gallery-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .gallery-header p {
+            font-size: 1.15rem;
+            color: var(--color-slate);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .sketch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sketch-item {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .sketch-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+        }
+
+        .sketch-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        .sketch-info h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .sketch-subtitle {
+            color: var(--color-slate);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .sketch-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .sketch-features li {
+            padding: 0.5rem 0;
+            color: var(--color-slate);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .sketch-features li::before {
+            content: '✓';
+            color: var(--color-sunshine);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .sketch-cta {
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            padding: 0.9rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .sketch-cta:hover {
+            background: var(--color-slate);
+            transform: translateY(-2px);
+        }
+
+        /* Dot Animation Section */
+        .dot-animation-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 4rem;
+            background: var(--color-fog);
+            position: relative;
+        }
+
+        .animation-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            max-width: 1400px;
+            align-items: center;
+        }
+
+        .jacket-animation {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 3/4;
+        }
+
+        .jacket-outline {
+            position: absolute;
+            inset: 0;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .jacket-shape {
+            width: 70%;
+            height: 85%;
+            background: var(--color-cream);
+            border-radius: 100px 100px 20px 20px;
+            position: relative;
+            border: 3px solid var(--color-charcoal);
+        }
+
+        .jacket-collar {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 20%;
+            background: var(--color-cream);
+            border: 3px solid var(--color-charcoal);
+            border-bottom: none;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .dots-container {
+            position: absolute;
+            inset: 0;
+        }
+
+        .dot {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: var(--color-sunshine);
+            border-radius: 50%;
+            opacity: 0;
+            transform: translateY(-100px) scale(0);
+            animation: dotFall 0.6s ease-out forwards;
+        }
+
+        @keyframes dotFall {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .animation-text {
+            padding: 2rem 0;
+        }
+
+        .animation-text h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .animation-text h2 strong {
+            font-weight: 700;
+            color: var(--color-sunshine);
+        }
+
+        .animation-text p {
+            font-size: 1.15rem;
+            color: var(--color-slate);
+            margin-bottom: 1rem;
+            max-width: 500px;
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 8rem 4rem;
+            background: var(--color-cream);
+        }
+
+        .section-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.15rem;
+            color: var(--color-slate);
+        }
+
+        /* Filters */
+        .filters-container {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-button {
+            background: var(--color-fog);
+            color: var(--color-slate);
+            border: 2px solid var(--color-fog);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-button:hover {
+            border-color: var(--color-charcoal);
+            color: var(--color-charcoal);
+        }
+
+        .filter-button.active {
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            border-color: var(--color-charcoal);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: var(--color-fog);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--color-sunshine);
+            color: var(--color-charcoal);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 1;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            font-size: 0.85rem;
+            color: var(--color-rain);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .product-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--color-charcoal);
+        }
+
+        .product-description {
+            font-size: 0.95rem;
+            color: var(--color-slate);
+            margin-bottom: 1rem;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+        }
+
+        .add-to-cart {
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: var(--color-slate);
+            transform: scale(1.05);
+        }
+
+        /* Product Detail Modal */
+        .product-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 30px;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            animation: modalSlideUp 0.4s ease-out;
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--color-slate);
+            transform: rotate(90deg);
+        }
+
+        .modal-image-section {
+            background: var(--color-fog);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .modal-image-section img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .modal-info-section {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-category {
+            font-size: 0.9rem;
+            color: var(--color-rain);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            color: var(--color-slate);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .size-selector {
+            margin-bottom: 2rem;
+        }
+
+        .size-selector label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal);
+        }
+
+        .size-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            background: var(--color-fog);
+            border: 2px solid var(--color-fog);
+            color: var(--color-slate);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .size-option:hover {
+            border-color: var(--color-charcoal);
+            color: var(--color-charcoal);
+        }
+
+        .size-option.selected {
+            background: var(--color-charcoal);
+            border-color: var(--color-charcoal);
+            color: var(--color-cream);
+        }
+
+        .product-features {
+            margin-bottom: 2rem;
+        }
+
+        .product-features h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal);
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: var(--color-slate);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--color-sunshine);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .modal-add-to-cart {
+            background: var(--color-sunshine);
+            color: var(--color-charcoal);
+            border: none;
+            padding: 1.25rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .modal-add-to-cart:hover {
+            background: #FFE066;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 209, 71, 0.3);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            padding: 8rem 4rem;
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-content h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .newsletter-content p {
+            font-size: 1.15rem;
+            color: var(--color-fog);
+            margin-bottom: 2.5rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--color-slate);
+            border-radius: 50px;
+            background: transparent;
+            color: var(--color-cream);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-input::placeholder {
+            color: var(--color-slate);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--color-sunshine);
+        }
+
+        .newsletter-button {
+            background: var(--color-sunshine);
+            color: var(--color-charcoal);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-button:hover {
+            background: #FFE066;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-fog);
+            padding: 6rem 4rem 3rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: var(--color-slate);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--color-slate);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h4 {
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--color-charcoal);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--color-slate);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-charcoal);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid var(--color-rain);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-slate);
+            font-size: 0.9rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .payment-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            right: -450px;
+            top: 0;
+            width: 450px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 2rem;
+            border-bottom: 2px solid var(--color-fog);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--color-slate);
+            transition: color 0.3s ease;
+        }
+
+        .close-cart:hover {
+            color: var(--color-charcoal);
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-fog);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: var(--color-fog);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cart-item-details {
+            color: var(--color-slate);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--color-slate);
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: var(--color-rain);
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 0.85rem;
+            padding: 0;
+        }
+
+        .cart-item-remove:hover {
+            color: var(--color-charcoal);
+        }
+
+        .cart-footer {
+            padding: 2rem;
+            border-top: 2px solid var(--color-fog);
+            background: var(--color-fog);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .checkout-button {
+            width: 100%;
+            background: var(--color-sunshine);
+            color: var(--color-charcoal);
+            border: none;
+            padding: 1.25rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-button:hover {
+            background: #FFE066;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 209, 71, 0.3);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--color-slate);
+        }
+
+        .empty-cart-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Cart Overlay */
+        .cart-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(42, 42, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .cart-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 3rem 2rem;
+            background: var(--color-cream);
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-slate);
+            font-size: 0.95rem;
+        }
+
+        .trust-badge-icon {
+            font-size: 1.5rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .sketch-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .animation-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .jacket-animation {
+                margin: 0 auto;
+            }
+
+            .animation-text p {
+                margin: 0 auto 1rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+            }
+
+            .modal-content {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-image-section {
+                padding: 3rem;
+            }
+
+            .modal-info-section {
+                padding: 3rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 0 1.5rem;
+            }
+
+            .sketch-gallery,
+            .dot-animation-section,
+            .products-section {
+                padding: 4rem 1.5rem;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .cart-sidebar.open {
+                right: 0;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .size-options {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo" onclick="scrollToTop(); return false;">AmundsensFjell</a>
+        <ul class="nav-links">
+            <li><a href="#designs">Designs</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#newsletter">Newsletter</a></li>
+            <li>
+                <button class="cart-button" onclick="toggleCart()">
+                    Warenkorb
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="rain-drops" id="rainDrops"></div>
+        <div class="hero-content">
+            <h1><em>Bleib trocken.</em><br><strong>Bleib stilvoll.</strong></h1>
+            <p>Nordische Regenkleidung für das moderne Leben</p>
+            <a href="#designs" class="cta-button">Kollektion entdecken</a>
+        </div>
+    </section>
+
+    <!-- Sketch Gallery Section -->
+    <section class="sketch-gallery" id="designs">
+        <div class="gallery-header">
+            <h2>Handgezeichnete Designs</h2>
+            <p>Jede unserer Jacken beginnt als Skizze. Funktionalität trifft auf skandinavisches Design.</p>
+        </div>
+        <div class="sketch-grid">
+            <!-- Gurri Jacket -->
+            <div class="sketch-item" onclick="scrollToProduct(2)">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='20' font-family='Arial'%3EGurri Design%3C/text%3E%3C/svg%3E" alt="Gurri Jacket Sketch" class="sketch-image">
+                <div class="sketch-info">
+                    <h3>Gurri</h3>
+                    <p class="sketch-subtitle">Klassischer Regenmantel mit kariertem Futter</p>
+                    <ul class="sketch-features">
+                        <li>Taillierte Passform mit verstellbarer Zugschnur</li>
+                        <li>Wasserdicht und winddicht</li>
+                        <li>Charakteristisches Karomuster-Futter</li>
+                        <li>Zwei-Wege-Reißverschluss</li>
+                    </ul>
+                    <button class="sketch-cta">Gurri ansehen</button>
+                </div>
+            </div>
+
+            <!-- Hedda Jacket -->
+            <div class="sketch-item" onclick="scrollToProduct(1)">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='20' font-family='Arial'%3EHedda Design%3C/text%3E%3C/svg%3E" alt="Hedda Jacket Sketch" class="sketch-image">
+                <div class="sketch-info">
+                    <h3>Hedda</h3>
+                    <p class="sketch-subtitle">Gepunktete Regenjacke – unser Bestseller</p>
+                    <ul class="sketch-features">
+                        <li>Ikonisches Punktemuster</li>
+                        <li>Leicht und atmungsaktiv</li>
+                        <li>Verstellbare Kapuze mit Kordelzug</li>
+                        <li>Reflektierende Details</li>
+                    </ul>
+                    <button class="sketch-cta">Hedda ansehen</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dot Animation Section -->
+    <section class="dot-animation-section" id="dotSection">
+        <div class="animation-container">
+            <div class="jacket-animation">
+                <div class="jacket-outline">
+                    <div class="jacket-shape">
+                        <div class="jacket-collar"></div>
+                    </div>
+                    <div class="dots-container" id="dotsContainer"></div>
+                </div>
+            </div>
+            <div class="animation-text">
+                <h2>Jedes Detail <strong>zählt</strong></h2>
+                <p>Unsere gepunktete Hedda-Jacke vereint skandinavisches Design mit funktionaler Eleganz. Jeder Punkt ein Statement.</p>
+                <p>Wasserdicht. Atmungsaktiv. Zeitlos.</p>
+                <a href="#shop" class="cta-button">Hedda entdecken</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <div class="trust-badges">
+        <div class="trust-badge">
+            <span class="trust-badge-icon">🔒</span>
+            <span>Sichere Zahlung</span>
+        </div>
+        <div class="trust-badge">
+            <span class="trust-badge-icon">📦</span>
+            <span>Kostenloser Versand ab 50€</span>
+        </div>
+        <div class="trust-badge">
+            <span class="trust-badge-icon">↩️</span>
+            <span>30 Tage Rückgaberecht</span>
+        </div>
+        <div class="trust-badge">
+            <span class="trust-badge-icon">⭐</span>
+            <span>4.8/5 Kundenbewertung</span>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section" id="shop">
+        <div class="section-header">
+            <h2>Unsere Kollektion</h2>
+            <p>Entdecke die perfekte Regenbekleidung für jedes Wetter</p>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters-container">
+            <button class="filter-button active" onclick="filterProducts('alle')">Alle</button>
+            <button class="filter-button" onclick="filterProducts('jacken')">Jacken</button>
+            <button class="filter-button" onclick="filterProducts('stiefel')">Stiefel</button>
+            <button class="filter-button" onclick="filterProducts('accessoires')">Accessoires</button>
+        </div>
+
+        <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section" id="newsletter">
+        <div class="newsletter-content">
+            <h2>Bleib auf dem Laufenden</h2>
+            <p>Erhalte exklusive Angebote, Style-Tipps und die neuesten Kollektionen direkt in dein Postfach.</p>
+            <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                <input type="email" class="newsletter-input" placeholder="Deine E-Mail-Adresse" required>
+                <button type="submit" class="newsletter-button">Anmelden</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">AmundsensFjell</div>
+                <p class="footer-description">
+                    Nordische Regenkleidung, die Funktion und Stil vereint. Seit 2020 begleiten wir dich durch jedes Wetter.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link">📷</a>
+                    <a href="#" class="social-link">🐦</a>
+                    <a href="#" class="social-link">📘</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul class="footer-links">
+                    <li><a href="#shop">Alle Produkte</a></li>
+                    <li><a href="#shop">Jacken</a></li>
+                    <li><a href="#shop">Stiefel</a></li>
+                    <li><a href="#shop">Accessoires</a></li>
+                    <li><a href="#">Geschenkgutscheine</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Kundenservice</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="#">Versand & Lieferung</a></li>
+                    <li><a href="#">Rückgabe & Umtausch</a></li>
+                    <li><a href="#">Größentabelle</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Über uns</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Unsere Story</a></li>
+                    <li><a href="#">Nachhaltigkeit</a></li>
+                    <li><a href="#">Materialien</a></li>
+                    <li><a href="#">Impressum</a></li>
+                    <li><a href="#">Datenschutz</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AmundsensFjell. Alle Rechte vorbehalten.</p>
+            <div class="payment-methods">
+                <span>Zahlung mit:</span>
+                <span class="payment-icon">💳</span>
+                <span class="payment-icon">🅿️</span>
+                <span class="payment-icon">🔷</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProductModal()">×</button>
+            <div class="modal-image-section" id="modalImageSection"></div>
+            <div class="modal-info-section">
+                <div class="modal-category" id="modalCategory"></div>
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <div class="modal-price" id="modalPrice"></div>
+                <p class="modal-description" id="modalDescription"></p>
+                
+                <div class="size-selector">
+                    <label>Größe wählen:</label>
+                    <div class="size-options" id="sizeOptions"></div>
+                </div>
+
+                <div class="product-features">
+                    <h4>Produktmerkmale:</h4>
+                    <ul class="feature-list" id="featureList"></ul>
+                </div>
+
+                <button class="modal-add-to-cart" onclick="addToCartFromModal()">In den Warenkorb</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Warenkorb</h3>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="empty-cart">
+                <div class="empty-cart-icon">🛍️</div>
+                <p>Dein Warenkorb ist leer</p>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Gesamt:</span>
+                <span id="cartTotal">0,00 €</span>
+            </div>
+            <button class="checkout-button" onclick="checkout()">Zur Kasse</button>
+        </div>
+    </aside>
+
+    <script>
+        // Products Data (with sketch images)
+        const products = [
+            {
+                id: 1,
+                name: 'Hedda Gelb',
+                category: 'Jacken',
+                description: 'Gepunktete Regenjacke, wasserdicht',
+                fullDescription: 'Die Hedda Jacke in leuchtendem Gelb mit charakteristischen Punkten ist perfekt für regnerische Tage in der Stadt. Wasserdicht, atmungsaktiv und mit verschweißten Nähten für maximalen Schutz.',
+                price: 99.90,
+                emoji: '🟡',
+                color: '#FFD147',
+                badge: 'Bestseller',
+                hasSketch: true,
+                sketchPlaceholder: 'Hedda Design',
+                sizes: ['XS', 'S', 'M', 'L', 'XL'],
+                features: [
+                    'Wasserdicht bis 10.000 mm Wassersäule',
+                    'Atmungsaktiv und winddicht',
+                    'Verschweißte Nähte',
+                    'Verstellbare Kapuze',
+                    'Zwei Fronttaschen mit Reißverschluss',
+                    'Reflektierende Details',
+                    'Ikonisches Punktemuster'
+                ]
+            },
+            {
+                id: 2,
+                name: 'Gurri Rot',
+                category: 'Jacken',
+                description: 'Softshell-Mantel, winddicht',
+                fullDescription: 'Der elegante Gurri Mantel in kräftigem Rot kombiniert skandinavisches Design mit hoher Funktionalität. Mit charakteristischem Karomuster-Futter. Perfekt für den Übergang zwischen den Jahreszeiten.',
+                price: 99.90,
+                emoji: '🔴',
+                color: '#E85D5D',
+                badge: null,
+                hasSketch: true,
+                sketchPlaceholder: 'Gurri Design',
+                sizes: ['XS', 'S', 'M', 'L', 'XL'],
+                features: [
+                    'Softshell-Material mit Stretch',
+                    'Winddicht und wasserabweisend',
+                    'Gefütterte Innentaschen',
+                    'Verlängerter Schnitt',
+                    'Zwei-Wege-Reißverschluss',
+                    'Karomuster-Futter',
+                    'Taillierte Passform'
+                ]
+            },
+            {
+                id: 3,
+                name: 'Birka Blau',
+                category: 'Jacken',
+                description: 'Leichte Regenjacke, atmungsaktiv',
+                fullDescription: 'Die Birka Jacke ist dein idealer Begleiter für aktive Tage. Leicht, packbar und trotzdem vollständig wasserdicht – perfekt für Wanderungen und Radtouren.',
+                price: 99.90,
+                emoji: '🔵',
+                color: '#5D9BE8',
+                badge: null,
+                hasSketch: false,
+                sizes: ['XS', 'S', 'M', 'L', 'XL'],
+                features: [
+                    'Ultraleicht (nur 380g)',
+                    'Packbar in eigener Tasche',
+                    'Reflektierende Details',
+                    'Mesh-Futter für Belüftung',
+                    'Elastische Bündchen'
+                ]
+            },
+            {
+                id: 4,
+                name: 'Hedda Schwarz',
+                category: 'Jacken',
+                description: 'Klassische Regenjacke, zeitlos',
+                fullDescription: 'Die Hedda in klassischem Schwarz ist ein zeitloser Begleiter für jeden Anlass. Minimalistisches Design trifft auf maximale Funktionalität.',
+                price: 99.90,
+                emoji: '⚫',
+                color: '#2A2A2A',
+                badge: null,
+                hasSketch: false,
+                sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+                features: [
+                    'Zeitloses Design',
+                    'Wasserdicht und atmungsaktiv',
+                    'Versteckte Reißverschlüsse',
+                    'Regulierbare Taille',
+                    'Premium-Membran'
+                ]
+            },
+            {
+                id: 5,
+                name: 'Chelsea Stiefel Navy',
+                category: 'Stiefel',
+                description: 'Wasserdichte Gummistiefel',
+                fullDescription: 'Die Chelsea Stiefel vereinen urbanen Stil mit praktischem Regenschutz. Handgefertigtes Naturkautschuk sorgt für Langlebigkeit und Komfort.',
+                price: 79.90,
+                emoji: '🥾',
+                color: '#3A4F5C',
+                badge: 'Neu',
+                hasSketch: false,
+                sizes: ['36', '37', '38', '39', '40', '41', '42'],
+                features: [
+                    'Handgefertigtes Naturkautschuk',
+                    '100% wasserdicht',
+                    'Herausnehmbare Einlegesohle',
+                    'Griffige Profilsohle',
+                    'Elastischer Einstieg'
+                ]
+            },
+            {
+                id: 6,
+                name: 'Fjord Rucksack',
+                category: 'Accessoires',
+                description: 'Wasserdichter Rucksack, 20L',
+                fullDescription: 'Der Fjord Rucksack schützt deine Wertsachen auch bei stärkstem Regen. Mit Roll-Top-Verschluss und gepolstertem Laptopfach.',
+                price: 89.90,
+                emoji: '🎒',
+                color: '#4A5859',
+                badge: null,
+                hasSketch: false,
+                sizes: ['One Size'],
+                features: [
+                    'Roll-Top-Verschluss',
+                    'Gepolstertes Laptopfach (15")',
+                    'Wasserdichtes TPU-Material',
+                    'Gepolsterte Träger',
+                    '20 Liter Volumen'
+                ]
+            }
+        ];
+
+        // State
+        let cart = [];
+        let currentFilter = 'alle';
+        let selectedProduct = null;
+        let selectedSize = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            createRainDrops();
+            initScrollAnimations();
+            initNavbarScroll();
+        });
+
+        // Render Products with Filter
+        function renderProducts() {
+            const grid = document.getElementById('productsGrid');
+            const filteredProducts = currentFilter === 'alle' 
+                ? products 
+                : products.filter(p => p.category.toLowerCase() === currentFilter);
+
+            grid.innerHTML = filteredProducts.map((product, index) => {
+                const imageSrc = product.hasSketch 
+                    ? `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='18' font-family='Arial'%3E${product.sketchPlaceholder}%3C/text%3E%3C/svg%3E`
+                    : '';
+                
+                return `
+                    <div class="product-card" 
+                         style="animation: fadeInUp 0.6s ease-out ${index * 0.1}s backwards;"
+                         onclick="openProductModal(${product.id})">
+                        <div class="product-image" style="background: ${product.hasSketch ? 'white' : `linear-gradient(135deg, ${product.color}22 0%, ${product.color}44 100%)`};">
+                            ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                            ${product.hasSketch 
+                                ? `<img src="${imageSrc}" alt="${product.name}" style="width: 70%; height: 90%; object-fit: contain;">`
+                                : `<span style="font-size: 6rem;">${product.emoji}</span>`
+                            }
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <div class="product-footer">
+                                <span class="product-price">${product.price.toFixed(2)} €</span>
+                                <button class="add-to-cart" onclick="event.stopPropagation(); quickAddToCart(${product.id})">
+                                    Schnellkauf
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Filter Products
+        function filterProducts(category) {
+            currentFilter = category;
+            
+            // Update active button
+            document.querySelectorAll('.filter-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            renderProducts();
+        }
+
+        // Scroll to Product
+        function scrollToProduct(productId) {
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                openProductModal(productId);
+            }, 800);
+        }
+
+        // Open Product Modal
+        function openProductModal(productId) {
+            selectedProduct = products.find(p => p.id === productId);
+            selectedSize = null;
+            
+            const modal = document.getElementById('productModal');
+            const modalImageSection = document.getElementById('modalImageSection');
+            const modalCategory = document.getElementById('modalCategory');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalPrice = document.getElementById('modalPrice');
+            const modalDescription = document.getElementById('modalDescription');
+            const sizeOptions = document.getElementById('sizeOptions');
+            const featureList = document.getElementById('featureList');
+
+            // Set image
+            if (selectedProduct.hasSketch) {
+                const imageSrc = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='20' font-family='Arial'%3E${selectedProduct.sketchPlaceholder}%3C/text%3E%3C/svg%3E`;
+                modalImageSection.innerHTML = `<img src="${imageSrc}" alt="${selectedProduct.name}">`;
+            } else {
+                modalImageSection.innerHTML = `
+                    <div class="product-image" style="background: linear-gradient(135deg, ${selectedProduct.color}22 0%, ${selectedProduct.color}44 100%); font-size: 8rem; border-radius: 20px;">
+                        ${selectedProduct.emoji}
+                    </div>
+                `;
+            }
+
+            modalCategory.textContent = selectedProduct.category;
+            modalTitle.textContent = selectedProduct.name;
+            modalPrice.textContent = `${selectedProduct.price.toFixed(2)} €`;
+            modalDescription.textContent = selectedProduct.fullDescription;
+
+            // Render sizes
+            sizeOptions.innerHTML = selectedProduct.sizes.map(size => 
+                `<div class="size-option" onclick="selectSize('${size}')">${size}</div>`
+            ).join('');
+
+            // Render features
+            featureList.innerHTML = selectedProduct.features.map(feature =>
+                `<li>${feature}</li>`
+            ).join('');
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close Product Modal
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            selectedProduct = null;
+            selectedSize = null;
+        }
+
+        // Select Size
+        function selectSize(size) {
+            selectedSize = size;
+            document.querySelectorAll('.size-option').forEach(option => {
+                option.classList.remove('selected');
+                if (option.textContent === size) {
+                    option.classList.add('selected');
+                }
+            });
+        }
+
+        // Add to Cart from Modal
+        function addToCartFromModal() {
+            if (!selectedSize) {
+                alert('Bitte wähle eine Größe aus!');
+                return;
+            }
+
+            const existingItem = cart.find(item => 
+                item.id === selectedProduct.id && item.size === selectedSize
+            );
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ 
+                    ...selectedProduct, 
+                    size: selectedSize,
+                    quantity: 1 
+                });
+            }
+
+            updateCart();
+            closeProductModal();
+            toggleCart(true);
+        }
+
+        // Quick Add to Cart (default size)
+        function quickAddToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const defaultSize = product.sizes[2] || product.sizes[0];
+
+            const existingItem = cart.find(item => 
+                item.id === productId && item.size === defaultSize
+            );
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ 
+                    ...product, 
+                    size: defaultSize,
+                    quantity: 1 
+                });
+            }
+
+            updateCart();
+            toggleCart(true);
+        }
+
+        // Remove from Cart
+        function removeFromCart(productId, size) {
+            cart = cart.filter(item => !(item.id === productId && item.size === size));
+            updateCart();
+        }
+
+        // Update Cart UI
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = `${totalPrice.toFixed(2)} €`;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="empty-cart-icon">🛍️</div>
+                        <p>Dein Warenkorb ist leer</p>
+                    </div>
+                `;
+            } else {
+                cartItems.innerHTML = cart.map(item => {
+                    const itemImage = item.hasSketch 
+                        ? `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150'%3E%3Crect fill='%23f5f5f5' width='100' height='150'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='8' font-family='Arial'%3E${item.sketchPlaceholder}%3C/text%3E%3C/svg%3E`
+                        : '';
+                    
+                    return `
+                        <div class="cart-item">
+                            <div class="cart-item-image" style="background: ${item.hasSketch ? 'white' : `linear-gradient(135deg, ${item.color}22 0%, ${item.color}44 100%)`};">
+                                ${item.hasSketch 
+                                    ? `<img src="${itemImage}" alt="${item.name}">`
+                                    : item.emoji
+                                }
+                            </div>
+                            <div class="cart-item-info">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div class="cart-item-details">Größe: ${item.size} • Anzahl: ${item.quantity}</div>
+                                <div class="cart-item-price">${item.price.toFixed(2)} € × ${item.quantity} = ${(item.price * item.quantity).toFixed(2)} €</div>
+                                <button class="cart-item-remove" onclick="removeFromCart(${item.id}, '${item.size}')">
+                                    Entfernen
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Toggle Cart
+        function toggleCart(forceOpen = false) {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            
+            if (forceOpen) {
+                sidebar.classList.add('open');
+                overlay.classList.add('visible');
+            } else {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('visible');
+            }
+        }
+
+        // Checkout
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Dein Warenkorb ist leer!');
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`Checkout mit ${cart.length} Produkt(en) für ${total.toFixed(2)} €\n\nIn einer echten Integration würde hier der Shopify Checkout starten.`);
+        }
+
+        // Newsletter Subscribe
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input').value;
+            alert(`Vielen Dank! ${email} wurde erfolgreich angemeldet.\n\nIn einer echten Integration würde hier die Newsletter-API aufgerufen.`);
+            event.target.reset();
+        }
+
+        // Rain Drops Animation
+        function createRainDrops() {
+            const container = document.getElementById('rainDrops');
+            for (let i = 0; i < 30; i++) {
+                const drop = document.createElement('div');
+                drop.className = 'drop';
+                drop.style.left = `${Math.random() * 100}%`;
+                drop.style.animationDuration = `${Math.random() * 1 + 0.5}s`;
+                drop.style.animationDelay = `${Math.random() * 2}s`;
+                container.appendChild(drop);
+            }
+        }
+
+        // Scroll Animations for Dots
+        function initScrollAnimations() {
+            const dotsContainer = document.getElementById('dotsContainer');
+            const dotPositions = [
+                { x: '25%', y: '20%' },
+                { x: '45%', y: '18%' },
+                { x: '65%', y: '22%' },
+                { x: '30%', y: '35%' },
+                { x: '50%', y: '38%' },
+                { x: '70%', y: '33%' },
+                { x: '35%', y: '52%' },
+                { x: '55%', y: '50%' },
+                { x: '75%', y: '55%' },
+                { x: '40%', y: '68%' },
+                { x: '60%', y: '65%' }
+            ];
+
+            let dotsCreated = false;
+
+            window.addEventListener('scroll', () => {
+                const section = document.getElementById('dotSection');
+                const rect = section.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                if (rect.top < windowHeight * 0.7 && rect.bottom > 0 && !dotsCreated) {
+                    dotPositions.forEach((pos, index) => {
+                        setTimeout(() => {
+                            const dot = document.createElement('div');
+                            dot.className = 'dot';
+                            dot.style.left = pos.x;
+                            dot.style.top = pos.y;
+                            dot.style.animationDelay = `${index * 0.05}s`;
+                            dotsContainer.appendChild(dot);
+                        }, index * 50);
+                    });
+                    dotsCreated = true;
+                }
+            });
+        }
+
+        // Navbar Scroll Effect
+        function initNavbarScroll() {
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProductModal();
+            }
+        });
+    </script>
+</body>
+</html>

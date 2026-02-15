@@ -322,7 +322,7 @@
         
         /* Family Story Section with Animation */
         .story-section-with-animation {
-            min-height: 200vh;
+            min-height: 350vh;
             position: relative;
             background: white;
             padding: 0;
@@ -340,11 +340,12 @@
 
         .jacket-animation-sticky {
             position: sticky;
-            top: 100px;
-            height: 80vh;
+            top: 20vh;
+            height: 65vh;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
+            padding-top: 0;
         }
 
         .jacket-canvas-side {
@@ -374,7 +375,8 @@
         }
 
         .story-content-scroll {
-            padding: 2rem 0;
+            padding-top: 20vh;
+            padding-bottom: 4rem;
         }
 
         .story-content-scroll h2 {
@@ -411,11 +413,15 @@
                 gap: 2rem;
             }
 
-            .jacket-animation-sticky {
-                position: relative;
-                height: 60vh;
-                top: 0;
-            }
+            \.jacket-animation-sticky {
+            position: sticky;
+            top: 15vh;
+            height: 70vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 2rem;
+        }
 
             .jacket-canvas-side {
                 max-width: 300px;

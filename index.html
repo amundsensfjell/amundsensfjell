@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AmundsensFjell – Bleib trocken. Bleib stilvoll.</title>
+    <title>AmundsensFjell - Bleib trocken. Bleib du selbst.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,6 +21,7 @@
             --color-rain: #7B9AA2;
             --color-sunshine: #FFD147;
             --color-fog: #E8E4DB;
+            --color-heart: #E85D5D;
             --font-display: 'Fraunces', serif;
             --font-body: 'Instrument Sans', sans-serif;
         }
@@ -82,6 +83,43 @@
 
         .nav-links a:hover {
             color: var(--color-charcoal);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .icon-button {
+            background: none;
+            border: none;
+            color: var(--color-slate);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .icon-button:hover {
+            color: var(--color-charcoal);
+            transform: scale(1.1);
+        }
+
+        .icon-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--color-sunshine);
+            color: var(--color-charcoal);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
         }
 
         .cart-button {
@@ -203,6 +241,120 @@
             to { transform: translateY(100vh); }
         }
 
+        /* Floating Japanese Clouds */
+        .floating-clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-cloud {
+            position: absolute;
+            opacity: 0.12;
+            will-change: transform;
+        }
+        .floating-cloud img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+
+        .floating-cloud svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-cloud-1 {
+            top: 8%;
+            width: 280px;
+            height: 140px;
+            animation: floatCloud 70s linear infinite;
+            animation-delay: 0s;
+        }
+
+        .floating-cloud-2 {
+            top: 25%;
+            width: 220px;
+            height: 110px;
+            animation: floatCloud 90s linear infinite;
+            animation-delay: -25s;
+        }
+
+        .floating-cloud-3 {
+            top: 45%;
+            width: 300px;
+            height: 150px;
+            animation: floatCloud 80s linear infinite;
+            animation-delay: -50s;
+        }
+
+        .floating-cloud-4 {
+            top: 65%;
+            width: 240px;
+            height: 120px;
+            animation: floatCloud 100s linear infinite;
+            animation-delay: -75s;
+        }
+
+        .floating-cloud-5 {
+            top: 82%;
+            width: 200px;
+            height: 100px;
+            animation: floatCloud 85s linear infinite;
+            animation-delay: -40s;
+        }
+
+        @keyframes floatCloud {
+            from {
+                transform: translateX(calc(100vw + 50px));
+            }
+            to {
+                transform: translateX(-350px);
+            }
+        }
+
+        /* Family Story Section */
+        .story-section {
+            padding: 8rem 4rem;
+            background: white;
+        }
+
+        .story-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-container h2 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .story-text {
+            font-size: 1.15rem;
+            color: var(--color-slate);
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-highlight {
+            background: var(--color-fog);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            font-style: italic;
+            color: var(--color-charcoal);
+        }
+
         /* Sketch Gallery Section */
         .sketch-gallery {
             padding: 8rem 4rem;
@@ -312,118 +464,10 @@
             transform: translateY(-2px);
         }
 
-        /* Dot Animation Section */
-        .dot-animation-section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 4rem;
-            background: var(--color-fog);
-            position: relative;
-        }
-
-        .animation-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            max-width: 1400px;
-            align-items: center;
-        }
-
-        .jacket-animation {
-            position: relative;
-            width: 100%;
-            max-width: 500px;
-            aspect-ratio: 3/4;
-        }
-
-        .jacket-outline {
-            position: absolute;
-            inset: 0;
-            background: white;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-        }
-
-        .jacket-shape {
-            width: 70%;
-            height: 85%;
-            background: var(--color-cream);
-            border-radius: 100px 100px 20px 20px;
-            position: relative;
-            border: 3px solid var(--color-charcoal);
-        }
-
-        .jacket-collar {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40%;
-            height: 20%;
-            background: var(--color-cream);
-            border: 3px solid var(--color-charcoal);
-            border-bottom: none;
-            border-radius: 50px 50px 0 0;
-        }
-
-        .dots-container {
-            position: absolute;
-            inset: 0;
-        }
-
-        .dot {
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            background: var(--color-sunshine);
-            border-radius: 50%;
-            opacity: 0;
-            transform: translateY(-100px) scale(0);
-            animation: dotFall 0.6s ease-out forwards;
-        }
-
-        @keyframes dotFall {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .animation-text {
-            padding: 2rem 0;
-        }
-
-        .animation-text h2 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 300;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .animation-text h2 strong {
-            font-weight: 700;
-            color: var(--color-sunshine);
-        }
-
-        .animation-text p {
-            font-size: 1.15rem;
-            color: var(--color-slate);
-            margin-bottom: 1rem;
-            max-width: 500px;
-        }
-
         /* Products Section */
         .products-section {
             padding: 8rem 4rem;
-            background: var(--color-cream);
+            background: var(--color-fog);
         }
 
         .section-header {
@@ -445,6 +489,38 @@
             color: var(--color-slate);
         }
 
+        /* Search Bar */
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border: 2px solid var(--color-fog);
+            border-radius: 50px;
+            background: white;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--color-charcoal);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-slate);
+            font-size: 1.2rem;
+        }
+
         /* Filters */
         .filters-container {
             max-width: 1400px;
@@ -456,9 +532,9 @@
         }
 
         .filter-button {
-            background: var(--color-fog);
+            background: white;
             color: var(--color-slate);
-            border: 2px solid var(--color-fog);
+            border: 2px solid white;
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
             font-family: var(--font-body);
@@ -533,6 +609,43 @@
             z-index: 1;
         }
 
+        .product-actions {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            gap: 0.5rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .product-action-btn {
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .product-action-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .product-action-btn.active {
+            color: var(--color-heart);
+        }
+
         .product-info {
             padding: 1.5rem;
         }
@@ -557,6 +670,23 @@
             font-size: 0.95rem;
             color: var(--color-slate);
             margin-bottom: 1rem;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: var(--color-sunshine);
+            font-size: 0.9rem;
+        }
+
+        .rating-count {
+            color: var(--color-slate);
+            font-size: 0.85rem;
         }
 
         .product-footer {
@@ -589,211 +719,71 @@
             transform: scale(1.05);
         }
 
-        /* Product Detail Modal */
-        .product-modal {
-            position: fixed;
-            inset: 0;
-            background: rgba(42, 42, 42, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 3000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .product-modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-content {
+        /* Reviews Section */
+        .reviews-section {
+            padding: 8rem 4rem;
             background: white;
-            border-radius: 30px;
-            max-width: 1200px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            position: relative;
-            animation: modalSlideUp 0.4s ease-out;
         }
 
-        @keyframes modalSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .reviews-header {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            text-align: center;
         }
 
-        .modal-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: var(--color-charcoal);
-            color: var(--color-cream);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
-
-        .modal-close:hover {
-            background: var(--color-slate);
-            transform: rotate(90deg);
-        }
-
-        .modal-image-section {
-            background: var(--color-fog);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem;
-            position: relative;
-        }
-
-        .modal-image-section img {
-            width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .modal-info-section {
-            padding: 4rem;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-category {
-            font-size: 0.9rem;
-            color: var(--color-rain);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .modal-title {
+        .reviews-header h2 {
             font-family: var(--font-display);
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             margin-bottom: 1rem;
-            line-height: 1.1;
         }
 
-        .modal-price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-charcoal);
-            margin-bottom: 2rem;
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
-        .modal-description {
-            font-size: 1.1rem;
-            color: var(--color-slate);
-            line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .size-selector {
-            margin-bottom: 2rem;
-        }
-
-        .size-selector label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--color-charcoal);
-        }
-
-        .size-options {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .size-option {
+        .review-card {
             background: var(--color-fog);
-            border: 2px solid var(--color-fog);
-            color: var(--color-slate);
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            padding: 2rem;
+            border-radius: 20px;
+            animation: fadeInUp 0.6s ease-out backwards;
         }
 
-        .size-option:hover {
-            border-color: var(--color-charcoal);
-            color: var(--color-charcoal);
-        }
-
-        .size-option.selected {
-            background: var(--color-charcoal);
-            border-color: var(--color-charcoal);
-            color: var(--color-cream);
-        }
-
-        .product-features {
-            margin-bottom: 2rem;
-        }
-
-        .product-features h4 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--color-charcoal);
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            padding: 0.5rem 0;
-            color: var(--color-slate);
+        .review-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .feature-list li::before {
-            content: '✓';
+        .review-author {
+            font-weight: 600;
+        }
+
+        .review-date {
+            color: var(--color-slate);
+            font-size: 0.85rem;
+        }
+
+        .review-stars {
             color: var(--color-sunshine);
-            font-weight: 700;
-            font-size: 1.2rem;
+            margin-bottom: 1rem;
         }
 
-        .modal-add-to-cart {
-            background: var(--color-sunshine);
-            color: var(--color-charcoal);
-            border: none;
-            padding: 1.25rem;
-            border-radius: 50px;
-            font-family: var(--font-body);
-            font-weight: 700;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: auto;
+        .review-text {
+            color: var(--color-slate);
+            line-height: 1.7;
+            margin-bottom: 1rem;
         }
 
-        .modal-add-to-cart:hover {
-            background: #FFE066;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 209, 71, 0.3);
+        .review-product {
+            font-size: 0.85rem;
+            color: var(--color-rain);
+            font-weight: 600;
         }
 
         /* Newsletter Section */
@@ -973,8 +963,316 @@
             font-size: 1.5rem;
         }
 
-        /* Cart Sidebar */
-        .cart-sidebar {
+        /* Modals */
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(42, 42, 42, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 30px;
+            max-width: 1200px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalSlideUp 0.4s ease-out;
+        }
+
+        @keyframes modalSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--color-slate);
+            transform: rotate(90deg);
+        }
+
+        /* Product Modal */
+        .product-modal-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .modal-image-section {
+            background: var(--color-fog);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+            position: relative;
+        }
+
+        .modal-image-section img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .modal-info-section {
+            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-category {
+            font-size: 0.9rem;
+            color: var(--color-rain);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .modal-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .modal-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-charcoal);
+            margin-bottom: 2rem;
+        }
+
+        .modal-description {
+            font-size: 1.1rem;
+            color: var(--color-slate);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .size-selector {
+            margin-bottom: 2rem;
+        }
+
+        .size-selector label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal);
+        }
+
+        .size-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .size-option {
+            background: var(--color-fog);
+            border: 2px solid var(--color-fog);
+            color: var(--color-slate);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .size-option:hover {
+            border-color: var(--color-charcoal);
+            color: var(--color-charcoal);
+        }
+
+        .size-option.selected {
+            background: var(--color-charcoal);
+            border-color: var(--color-charcoal);
+            color: var(--color-cream);
+        }
+
+        .product-features {
+            margin-bottom: 2rem;
+        }
+
+        .product-features h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-charcoal);
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: var(--color-slate);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            color: var(--color-sunshine);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .modal-add-to-cart {
+            background: var(--color-sunshine);
+            color: var(--color-charcoal);
+            border: none;
+            padding: 1.25rem;
+            border-radius: 50px;
+            font-family: var(--font-body);
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .modal-add-to-cart:hover {
+            background: #FFE066;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 209, 71, 0.3);
+        }
+
+        /* Size Guide Modal */
+        .size-guide-content {
+            padding: 4rem;
+        }
+
+        .size-guide-content h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .size-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+        }
+
+        .size-table th,
+        .size-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--color-fog);
+        }
+
+        .size-table th {
+            background: var(--color-fog);
+            font-weight: 600;
+        }
+
+        /* Search Modal */
+        .search-modal-content {
+            padding: 2rem;
+            max-width: 600px;
+        }
+
+        .search-modal-input {
+            width: 100%;
+            padding: 1.5rem;
+            border: 2px solid var(--color-fog);
+            border-radius: 20px;
+            font-size: 1.2rem;
+            font-family: var(--font-body);
+            margin-bottom: 2rem;
+        }
+
+        .search-modal-input:focus {
+            outline: none;
+            border-color: var(--color-charcoal);
+        }
+
+        .search-results {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .search-result-item:hover {
+            background: var(--color-fog);
+        }
+
+        .search-result-image {
+            width: 60px;
+            height: 60px;
+            background: var(--color-fog);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .search-result-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .search-result-price {
+            color: var(--color-slate);
+            font-size: 0.9rem;
+        }
+
+        /* Wishlist Sidebar */
+        .sidebar {
             position: fixed;
             right: -450px;
             top: 0;
@@ -988,11 +1286,11 @@
             flex-direction: column;
         }
 
-        .cart-sidebar.open {
+        .sidebar.open {
             right: 0;
         }
 
-        .cart-header {
+        .sidebar-header {
             padding: 2rem;
             border-bottom: 2px solid var(--color-fog);
             display: flex;
@@ -1000,13 +1298,13 @@
             align-items: center;
         }
 
-        .cart-header h3 {
+        .sidebar-header h3 {
             font-family: var(--font-display);
             font-size: 1.75rem;
             font-weight: 700;
         }
 
-        .close-cart {
+        .close-sidebar {
             background: none;
             border: none;
             font-size: 2rem;
@@ -1015,17 +1313,17 @@
             transition: color 0.3s ease;
         }
 
-        .close-cart:hover {
+        .close-sidebar:hover {
             color: var(--color-charcoal);
         }
 
-        .cart-items {
+        .sidebar-items {
             flex: 1;
             overflow-y: auto;
             padding: 2rem;
         }
 
-        .cart-item {
+        .sidebar-item {
             display: flex;
             gap: 1rem;
             margin-bottom: 1.5rem;
@@ -1033,7 +1331,7 @@
             border-bottom: 1px solid var(--color-fog);
         }
 
-        .cart-item-image {
+        .sidebar-item-image {
             width: 80px;
             height: 80px;
             background: var(--color-fog);
@@ -1046,34 +1344,34 @@
             overflow: hidden;
         }
 
-        .cart-item-image img {
+        .sidebar-item-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .cart-item-info {
+        .sidebar-item-info {
             flex: 1;
         }
 
-        .cart-item-name {
+        .sidebar-item-name {
             font-weight: 600;
             margin-bottom: 0.25rem;
         }
 
-        .cart-item-details {
+        .sidebar-item-details {
             color: var(--color-slate);
             font-size: 0.85rem;
             margin-bottom: 0.5rem;
         }
 
-        .cart-item-price {
+        .sidebar-item-price {
             color: var(--color-slate);
             font-size: 0.95rem;
             margin-bottom: 0.5rem;
         }
 
-        .cart-item-remove {
+        .sidebar-item-remove {
             background: none;
             border: none;
             color: var(--color-rain);
@@ -1083,11 +1381,11 @@
             padding: 0;
         }
 
-        .cart-item-remove:hover {
+        .sidebar-item-remove:hover {
             color: var(--color-charcoal);
         }
 
-        .cart-footer {
+        .sidebar-footer {
             padding: 2rem;
             border-top: 2px solid var(--color-fog);
             background: var(--color-fog);
@@ -1121,20 +1419,20 @@
             box-shadow: 0 10px 30px rgba(255, 209, 71, 0.3);
         }
 
-        .empty-cart {
+        .empty-state {
             text-align: center;
             padding: 4rem 2rem;
             color: var(--color-slate);
         }
 
-        .empty-cart-icon {
+        .empty-state-icon {
             font-size: 4rem;
             margin-bottom: 1rem;
             opacity: 0.5;
         }
 
-        /* Cart Overlay */
-        .cart-overlay {
+        /* Overlay */
+        .overlay {
             position: fixed;
             inset: 0;
             background: rgba(42, 42, 42, 0.6);
@@ -1145,9 +1443,32 @@
             transition: opacity 0.3s ease;
         }
 
-        .cart-overlay.visible {
+        .overlay.visible {
             opacity: 1;
             pointer-events: auto;
+        }
+
+        /* Live Chat Button */
+        .chat-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--color-charcoal);
+            color: var(--color-cream);
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .chat-button:hover {
+            background: var(--color-slate);
+            transform: scale(1.1);
         }
 
         /* Trust Badges */
@@ -1195,20 +1516,6 @@
                 gap: 3rem;
             }
 
-            .animation-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-                text-align: center;
-            }
-
-            .jacket-animation {
-                margin: 0 auto;
-            }
-
-            .animation-text p {
-                margin: 0 auto 1rem;
-            }
-
             .products-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
                 gap: 2rem;
@@ -1219,7 +1526,7 @@
                 gap: 3rem;
             }
 
-            .modal-content {
+            .product-modal-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1234,6 +1541,10 @@
             .newsletter-form {
                 flex-direction: column;
             }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1242,29 +1553,26 @@
             }
 
             .nav-links {
-                gap: 1.5rem;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
+                display: none;
             }
 
             .hero {
                 padding: 0 1.5rem;
             }
 
+            .story-section,
             .sketch-gallery,
-            .dot-animation-section,
-            .products-section {
+            .products-section,
+            .reviews-section {
                 padding: 4rem 1.5rem;
             }
 
-            .cart-sidebar {
+            .sidebar {
                 width: 100%;
                 right: -100%;
             }
 
-            .cart-sidebar.open {
+            .sidebar.open {
                 right: 0;
             }
 
@@ -1290,46 +1598,94 @@
     <nav id="navbar">
         <a href="#" class="logo" onclick="scrollToTop(); return false;">AmundsensFjell</a>
         <ul class="nav-links">
+            <li><a href="#story">Unsere Story</a></li>
             <li><a href="#designs">Designs</a></li>
             <li><a href="#shop">Shop</a></li>
-            <li><a href="#newsletter">Newsletter</a></li>
-            <li>
-                <button class="cart-button" onclick="toggleCart()">
-                    Warenkorb
-                    <span class="cart-count" id="cartCount">0</span>
-                </button>
-            </li>
+            <li><a href="#reviews">Bewertungen</a></li>
         </ul>
+        <div class="nav-icons">
+            <button class="icon-button" onclick="toggleSearch()" title="Suche">
+                🔍
+            </button>
+            <button class="icon-button" onclick="toggleWishlist()" title="Favoriten">
+                ❤️
+                <span class="icon-badge" id="wishlistCount" style="display: none;">0</span>
+            </button>
+            <button class="cart-button" onclick="toggleCart()">
+                Warenkorb
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+        </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Floating Japanese Clouds -->
+        <div class="floating-clouds">
+            <div class="floating-cloud floating-cloud-1">
+                <img src="images/cloud1.png" alt="">
+            </div>
+            <div class="floating-cloud floating-cloud-2">
+                <img src="images/cloud2.png" alt="">
+            </div>
+            <div class="floating-cloud floating-cloud-3">
+                <img src="images/cloud3.png" alt="">
+            </div>
+            <div class="floating-cloud floating-cloud-4">
+                <img src="images/cloud1.png" alt="">
+            </div>
+            <div class="floating-cloud floating-cloud-5">
+                <img src="images/cloud2.png" alt="">
+            </div>
+        </div>
+        
+        <!-- Rain Animation -->
         <div class="rain-drops" id="rainDrops"></div>
+        
         <div class="hero-content">
-            <h1><em>Bleib trocken.</em><br><strong>Bleib stilvoll.</strong></h1>
-            <p>Nordische Regenkleidung für das moderne Leben</p>
-            <a href="#designs" class="cta-button">Kollektion entdecken</a>
+            <h1><em>Bleib trocken.</em><br><strong>Bleib du selbst.</strong></h1>
+            <p>Regenkleidung von unserer Familie für deine</p>
+            <a href="#story" class="cta-button">Unsere Geschichte</a>
+        </div>
+    </section>
+
+    <!-- Family Story Section -->
+    <section class="story-section" id="story">
+        <div class="story-container">
+            <h2>Eine Familiengeschichte</h2>
+            <p class="story-text">
+                AmundsensFjell begann mit Familie, Liebe und einer Idee. Mein Vater träumte davon, seine Familie wetterfest zu halten, mit Kleidung, die jeder tragen kann, die erschwinglich ist und trotzdem nicht auf Qualität verzichtet. Oder auf die kleinen Details, die eine Jacke zu etwas Besonderem machen.
+            </p>
+            <p class="story-text">
+                Nach Jahren in der Textilbranche, in denen er auch für andere Regentextilhersteller arbeitete, entwarf er unsere Hedda, die erste Regenjacke von AmundsensFjell. Inspiriert vom norddeutschen Friesennerz. Kurz darauf folgte die Softshell-Version: unsere Gurri. Beide mit den wolkenförmigen Kordelzügen, die ihm so wichtig waren. Jede Jacke ein Stück Familie, jedes Detail durchdacht.
+            </p>
+            <p class="story-text">
+                Was bleibt, wenn Trends kommen und gehen? Gute Jacken. Ehrliche Materialien. Designs, die nicht altern. Das ist unser Versprechen.
+            </p>
+            <div class="story-highlight">
+                "Die besten Jacken entstehen aus Erfahrung, Liebe zum Detail und dem Wunsch, die Menschen zu schützen, die einem wichtig sind."
+            </div>
         </div>
     </section>
 
     <!-- Sketch Gallery Section -->
     <section class="sketch-gallery" id="designs">
         <div class="gallery-header">
-            <h2>Handgezeichnete Designs</h2>
-            <p>Jede unserer Jacken beginnt als Skizze. Funktionalität trifft auf skandinavisches Design.</p>
+            <h2>Von der Idee zum Entwurf</h2>
+            <p>Jede Jacke beginnt als Zeichnung. Hier siehst du, wie unsere Designs entstehen.</p>
         </div>
         <div class="sketch-grid">
             <!-- Gurri Jacket -->
             <div class="sketch-item" onclick="scrollToProduct(2)">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='20' font-family='Arial'%3EGurri Design%3C/text%3E%3C/svg%3E" alt="Gurri Jacket Sketch" class="sketch-image">
+                <img src="images/gurri-sketch.png" alt="Gurri Jacket Sketch" class="sketch-image">
                 <div class="sketch-info">
                     <h3>Gurri</h3>
-                    <p class="sketch-subtitle">Klassischer Regenmantel mit kariertem Futter</p>
+                    <p class="sketch-subtitle">Unser Signature Model mit wolkenförmigen Kordelstoppern</p>
                     <ul class="sketch-features">
-                        <li>Taillierte Passform mit verstellbarer Zugschnur</li>
-                        <li>Wasserdicht und winddicht</li>
-                        <li>Charakteristisches Karomuster-Futter</li>
-                        <li>Zwei-Wege-Reißverschluss</li>
+                        <li>Unser meistverkauftes Design</li>
+                        <li>Softshell mit Punktemuster</li>
+                        <li>Verstellbar an Saum, Taille, Ärmel und Kapuze</li>
+                        <li>Wolkenförmige Kordelstopper, unser Markenzeichen</li>
                     </ul>
                     <button class="sketch-cta">Gurri ansehen</button>
                 </div>
@@ -1337,38 +1693,18 @@
 
             <!-- Hedda Jacket -->
             <div class="sketch-item" onclick="scrollToProduct(1)">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='20' font-family='Arial'%3EHedda Design%3C/text%3E%3C/svg%3E" alt="Hedda Jacket Sketch" class="sketch-image">
+                <img src="images/hedda-sketch.png" alt="Hedda Jacket Sketch" class="sketch-image">
                 <div class="sketch-info">
                     <h3>Hedda</h3>
-                    <p class="sketch-subtitle">Gepunktete Regenjacke – unser Bestseller</p>
+                    <p class="sketch-subtitle">Die klassische Regenjacke, inspiriert vom Friesennerz</p>
                     <ul class="sketch-features">
-                        <li>Ikonisches Punktemuster</li>
-                        <li>Leicht und atmungsaktiv</li>
-                        <li>Verstellbare Kapuze mit Kordelzug</li>
-                        <li>Reflektierende Details</li>
+                        <li>Unsere erste Jacke, wo alles begann</li>
+                        <li>Inspiriert vom norddeutschen Friesennerz</li>
+                        
+                        <li>Zeitloser Klassiker</li>
                     </ul>
                     <button class="sketch-cta">Hedda ansehen</button>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dot Animation Section -->
-    <section class="dot-animation-section" id="dotSection">
-        <div class="animation-container">
-            <div class="jacket-animation">
-                <div class="jacket-outline">
-                    <div class="jacket-shape">
-                        <div class="jacket-collar"></div>
-                    </div>
-                    <div class="dots-container" id="dotsContainer"></div>
-                </div>
-            </div>
-            <div class="animation-text">
-                <h2>Jedes Detail <strong>zählt</strong></h2>
-                <p>Unsere gepunktete Hedda-Jacke vereint skandinavisches Design mit funktionaler Eleganz. Jeder Punkt ein Statement.</p>
-                <p>Wasserdicht. Atmungsaktiv. Zeitlos.</p>
-                <a href="#shop" class="cta-button">Hedda entdecken</a>
             </div>
         </div>
     </section>
@@ -1381,15 +1717,15 @@
         </div>
         <div class="trust-badge">
             <span class="trust-badge-icon">📦</span>
-            <span>Kostenloser Versand ab 50€</span>
+            <span>Versandkostenfrei ab 50€</span>
         </div>
         <div class="trust-badge">
             <span class="trust-badge-icon">↩️</span>
-            <span>30 Tage Rückgaberecht</span>
+            <span>30 Tage Rückgabe</span>
         </div>
         <div class="trust-badge">
             <span class="trust-badge-icon">⭐</span>
-            <span>4.8/5 Kundenbewertung</span>
+            <span>Von echten Menschen getragen</span>
         </div>
     </div>
 
@@ -1397,9 +1733,15 @@
     <section class="products-section" id="shop">
         <div class="section-header">
             <h2>Unsere Kollektion</h2>
-            <p>Entdecke die perfekte Regenbekleidung für jedes Wetter</p>
+            <p>Finde das Richtige für dich</p>
         </div>
         
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Suche nach Produkten..." id="quickSearch" oninput="quickSearchProducts()">
+            <span class="search-icon">🔍</span>
+        </div>
+
         <!-- Filters -->
         <div class="filters-container">
             <button class="filter-button active" onclick="filterProducts('alle')">Alle</button>
@@ -1411,14 +1753,57 @@
         <div class="products-grid" id="productsGrid"></div>
     </section>
 
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="reviews-header">
+            <h2>Was andere sagen</h2>
+            <p>Echte Bewertungen von echten Menschen</p>
+        </div>
+        <div class="reviews-grid">
+            <div class="review-card" style="animation-delay: 0s;">
+                <div class="review-header">
+                    <span class="review-author">Sarah M.</span>
+                    <span class="review-date">Vor 2 Wochen</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">
+                    Die Hedda in Gelb ist mein absoluter Favorit! Endlich eine Regenjacke, die nicht aussieht wie... eine Regenjacke. Bekomme ständig Komplimente.
+                </p>
+                <div class="review-product">Hedda Gelb</div>
+            </div>
+            <div class="review-card" style="animation-delay: 0.1s;">
+                <div class="review-header">
+                    <span class="review-author">Michael K.</span>
+                    <span class="review-date">Vor 1 Monat</span>
+                </div>
+                <div class="review-stars">★★★★★</div>
+                <p class="review-text">
+                    Qualität spürt man sofort. Die Gurri sitzt perfekt und hält wirklich dicht. Bin froh, dass ich diese Marke gefunden habe.
+                </p>
+                <div class="review-product">Gurri Rot</div>
+            </div>
+            <div class="review-card" style="animation-delay: 0.2s;">
+                <div class="review-header">
+                    <span class="review-author">Lisa W.</span>
+                    <span class="review-date">Vor 3 Wochen</span>
+                </div>
+                <div class="review-stars">★★★★☆</div>
+                <p class="review-text">
+                    Super Jacke, trägt sich angenehm. Einziger kleiner Punkt: Ich hätte mir eine Innentasche gewünscht. Ansonsten top!
+                </p>
+                <div class="review-product">Birka Blau</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Newsletter Section -->
     <section class="newsletter-section" id="newsletter">
         <div class="newsletter-content">
-            <h2>Bleib auf dem Laufenden</h2>
-            <p>Erhalte exklusive Angebote, Style-Tipps und die neuesten Kollektionen direkt in dein Postfach.</p>
+            <h2>Teil der Familie werden?</h2>
+            <p>Erfahre als Erste*r von neuen Designs und exklusiven Angeboten. Keine Spam, versprochen.</p>
             <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
-                <input type="email" class="newsletter-input" placeholder="Deine E-Mail-Adresse" required>
-                <button type="submit" class="newsletter-button">Anmelden</button>
+                <input type="email" class="newsletter-input" placeholder="Deine E-Mail" required>
+                <button type="submit" class="newsletter-button">Dabei sein</button>
             </form>
         </div>
     </section>
@@ -1429,12 +1814,12 @@
             <div class="footer-brand">
                 <div class="footer-logo">AmundsensFjell</div>
                 <p class="footer-description">
-                    Nordische Regenkleidung, die Funktion und Stil vereint. Seit 2020 begleiten wir dich durch jedes Wetter.
+                    Ein Familienprojekt mit Herz. Handgezeichnete Designs, ehrliche Qualität, für alle gemacht.
                 </p>
                 <div class="social-links">
-                    <a href="#" class="social-link">📷</a>
-                    <a href="#" class="social-link">🐦</a>
-                    <a href="#" class="social-link">📘</a>
+                    <a href="#" class="social-link" title="Instagram">📷</a>
+                    <a href="#" class="social-link" title="Facebook">📘</a>
+                    <a href="#" class="social-link" title="Pinterest">📌</a>
                 </div>
             </div>
             <div class="footer-column">
@@ -1444,34 +1829,34 @@
                     <li><a href="#shop">Jacken</a></li>
                     <li><a href="#shop">Stiefel</a></li>
                     <li><a href="#shop">Accessoires</a></li>
-                    <li><a href="#">Geschenkgutscheine</a></li>
+                    <li><a href="#" onclick="showSizeGuide(); return false;">Größentabelle</a></li>
                 </ul>
             </div>
             <div class="footer-column">
-                <h4>Kundenservice</h4>
+                <h4>Hilfe</h4>
                 <ul class="footer-links">
                     <li><a href="#">Kontakt</a></li>
-                    <li><a href="#">Versand & Lieferung</a></li>
-                    <li><a href="#">Rückgabe & Umtausch</a></li>
-                    <li><a href="#">Größentabelle</a></li>
+                    <li><a href="#">Versand</a></li>
+                    <li><a href="#">Rückgabe</a></li>
                     <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Pflege-Tipps</a></li>
                 </ul>
             </div>
             <div class="footer-column">
                 <h4>Über uns</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Unsere Story</a></li>
-                    <li><a href="#">Nachhaltigkeit</a></li>
+                    <li><a href="#story">Unsere Story</a></li>
                     <li><a href="#">Materialien</a></li>
+                    <li><a href="#">Nachhaltigkeit</a></li>
                     <li><a href="#">Impressum</a></li>
                     <li><a href="#">Datenschutz</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 AmundsensFjell. Alle Rechte vorbehalten.</p>
+            <p>&copy; 2026 AmundsensFjell. Mit ❤️ gemacht.</p>
             <div class="payment-methods">
-                <span>Zahlung mit:</span>
+                <span>Wir akzeptieren:</span>
                 <span class="payment-icon">💳</span>
                 <span class="payment-icon">🅿️</span>
                 <span class="payment-icon">🔷</span>
@@ -1480,45 +1865,120 @@
     </footer>
 
     <!-- Product Detail Modal -->
-    <div class="product-modal" id="productModal">
+    <div class="modal" id="productModal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeProductModal()">×</button>
-            <div class="modal-image-section" id="modalImageSection"></div>
-            <div class="modal-info-section">
-                <div class="modal-category" id="modalCategory"></div>
-                <h2 class="modal-title" id="modalTitle"></h2>
-                <div class="modal-price" id="modalPrice"></div>
-                <p class="modal-description" id="modalDescription"></p>
-                
-                <div class="size-selector">
-                    <label>Größe wählen:</label>
-                    <div class="size-options" id="sizeOptions"></div>
-                </div>
+            <button class="modal-close" onclick="closeModal('productModal')">×</button>
+            <div class="product-modal-grid">
+                <div class="modal-image-section" id="modalImageSection"></div>
+                <div class="modal-info-section">
+                    <div class="modal-category" id="modalCategory"></div>
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <div class="modal-rating">
+                        <span class="stars" id="modalStars"></span>
+                        <span class="rating-count" id="modalRatingCount"></span>
+                    </div>
+                    <div class="modal-price" id="modalPrice"></div>
+                    <p class="modal-description" id="modalDescription"></p>
+                    
+                    <div class="size-selector">
+                        <label>Größe wählen:</label>
+                        <div class="size-options" id="sizeOptions"></div>
+                    </div>
 
-                <div class="product-features">
-                    <h4>Produktmerkmale:</h4>
-                    <ul class="feature-list" id="featureList"></ul>
-                </div>
+                    <div class="product-features">
+                        <h4>Das Wichtigste:</h4>
+                        <ul class="feature-list" id="featureList"></ul>
+                    </div>
 
-                <button class="modal-add-to-cart" onclick="addToCartFromModal()">In den Warenkorb</button>
+                    <button class="modal-add-to-cart" onclick="addToCartFromModal()">In den Warenkorb</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Size Guide Modal -->
+    <div class="modal" id="sizeGuideModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('sizeGuideModal')">×</button>
+            <div class="size-guide-content">
+                <h2>Größentabelle</h2>
+                <p style="color: var(--color-slate); margin-bottom: 2rem;">
+                    Unsere Jacken fallen normal aus. Bei Unsicherheit: Lieber eine Nummer größer für Lagen darunter.
+                </p>
+                <table class="size-table">
+                    <thead>
+                        <tr>
+                            <th>Größe</th>
+                            <th>Brust (cm)</th>
+                            <th>Taille (cm)</th>
+                            <th>Länge (cm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>XS</td>
+                            <td>84-88</td>
+                            <td>66-70</td>
+                            <td>62</td>
+                        </tr>
+                        <tr>
+                            <td>S</td>
+                            <td>88-92</td>
+                            <td>70-74</td>
+                            <td>64</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>92-96</td>
+                            <td>74-78</td>
+                            <td>66</td>
+                        </tr>
+                        <tr>
+                            <td>L</td>
+                            <td>96-100</td>
+                            <td>78-82</td>
+                            <td>68</td>
+                        </tr>
+                        <tr>
+                            <td>XL</td>
+                            <td>100-104</td>
+                            <td>82-86</td>
+                            <td>70</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="color: var(--color-slate); margin-top: 2rem; font-style: italic;">
+                    Tipp: Zwischen zwei Größen? Nimm die größere für mehr Bewegungsfreiheit.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="modal" id="searchModal">
+        <div class="modal-content search-modal-content">
+            <button class="modal-close" onclick="closeModal('searchModal')">×</button>
+            <input type="text" class="search-modal-input" placeholder="Was suchst du?" id="modalSearchInput" oninput="modalSearch()">
+            <div class="search-results" id="searchResults">
+                <p style="color: var(--color-slate); text-align: center;">Tippe, um zu suchen...</p>
             </div>
         </div>
     </div>
 
     <!-- Cart Sidebar -->
-    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-    <aside class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
+    <div class="overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <aside class="sidebar" id="cartSidebar">
+        <div class="sidebar-header">
             <h3>Warenkorb</h3>
-            <button class="close-cart" onclick="toggleCart()">×</button>
+            <button class="close-sidebar" onclick="toggleCart()">×</button>
         </div>
-        <div class="cart-items" id="cartItems">
-            <div class="empty-cart">
-                <div class="empty-cart-icon">🛍️</div>
-                <p>Dein Warenkorb ist leer</p>
+        <div class="sidebar-items" id="cartItems">
+            <div class="empty-state">
+                <div class="empty-state-icon">🛍️</div>
+                <p>Noch nichts drin</p>
             </div>
         </div>
-        <div class="cart-footer">
+        <div class="sidebar-footer">
             <div class="cart-total">
                 <span>Gesamt:</span>
                 <span id="cartTotal">0,00 €</span>
@@ -1527,139 +1987,174 @@
         </div>
     </aside>
 
+    <!-- Wishlist Sidebar -->
+    <div class="overlay" id="wishlistOverlay" onclick="toggleWishlist()"></div>
+    <aside class="sidebar" id="wishlistSidebar">
+        <div class="sidebar-header">
+            <h3>Favoriten</h3>
+            <button class="close-sidebar" onclick="toggleWishlist()">×</button>
+        </div>
+        <div class="sidebar-items" id="wishlistItems">
+            <div class="empty-state">
+                <div class="empty-state-icon">❤️</div>
+                <p>Keine Favoriten gespeichert</p>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Live Chat Button -->
+    <button class="chat-button" onclick="openChat()" title="Chat mit uns">
+        💬
+    </button>
+
+    <script src="script.js"></script>
     <script>
-        // Products Data (with sketch images)
+        // Products Data
         const products = [
-            {
+                        {
                 id: 1,
-                name: 'Hedda Gelb',
+                name: 'Hedda Rot',
                 category: 'Jacken',
-                description: 'Gepunktete Regenjacke, wasserdicht',
-                fullDescription: 'Die Hedda Jacke in leuchtendem Gelb mit charakteristischen Punkten ist perfekt für regnerische Tage in der Stadt. Wasserdicht, atmungsaktiv und mit verschweißten Nähten für maximalen Schutz.',
-                price: 99.90,
-                emoji: '🟡',
-                color: '#FFD147',
-                badge: 'Bestseller',
-                hasSketch: true,
-                sketchPlaceholder: 'Hedda Design',
-                sizes: ['XS', 'S', 'M', 'L', 'XL'],
-                features: [
-                    'Wasserdicht bis 10.000 mm Wassersäule',
-                    'Atmungsaktiv und winddicht',
-                    'Verschweißte Nähte',
-                    'Verstellbare Kapuze',
-                    'Zwei Fronttaschen mit Reißverschluss',
-                    'Reflektierende Details',
-                    'Ikonisches Punktemuster'
-                ]
-            },
-            {
-                id: 2,
-                name: 'Gurri Rot',
-                category: 'Jacken',
-                description: 'Softshell-Mantel, winddicht',
-                fullDescription: 'Der elegante Gurri Mantel in kräftigem Rot kombiniert skandinavisches Design mit hoher Funktionalität. Mit charakteristischem Karomuster-Futter. Perfekt für den Übergang zwischen den Jahreszeiten.',
+                description: 'Die klassische Regenjacke',
+                fullDescription: 'Unsere Hedda ist die erste Jacke von AmundsensFjell, inspiriert vom norddeutschen Friesennerz, aber mit unserer eigenen Handschrift. Was sie besonders macht: die wolkenförmigen Kordelzüge, die perfekte Anpassung ermöglichen. Wasserdicht, zeitlos, ehrlich.',
                 price: 99.90,
                 emoji: '🔴',
                 color: '#E85D5D',
                 badge: null,
                 hasSketch: true,
+                sketchImage: 'images/hedda-sketch.png',
+                sketchPlaceholder: 'Hedda Design',
+                rating: 4.9,
+                reviewCount: 89,
+                sizes: ['XS', 'S', 'M', 'L', 'XL'],
+                features: [
+                    'Wasserdicht bis 10.000mm',
+                    'Inspiriert vom Friesennerz',
+                    'Verstellbar an Saum, Taille, Ärmel und Kapuze',
+                    'Wolkenförmige Kordelstopper',
+                    'Taillierte Passform',
+                    'Zwei-Wege-Reißverschluss'
+                ]
+            },
+                        {
+                id: 2,
+                name: 'Gurri Gelb',
+                category: 'Jacken',
+                description: 'Unser Signature Model',
+                fullDescription: 'Unsere Gurri ist das Signature Model von AmundsensFjell. Was sie besonders macht: die wolkenförmigen Kordelstopper an Saum, Taille, Ärmeln und Kapuze für perfekte Anpassung bei jedem Wetter. Softshell mit Punktemuster, leicht, und in mehreren Farben erhältlich.',
+                price: 99.90,
+                emoji: '🟡',
+                color: '#FFD147',
+                badge: 'Bestseller',
+                hasSketch: true,
+                sketchImage: 'images/gurri-sketch.png',
                 sketchPlaceholder: 'Gurri Design',
+                rating: 4.8,
+                reviewCount: 127,
                 sizes: ['XS', 'S', 'M', 'L', 'XL'],
                 features: [
                     'Softshell-Material mit Stretch',
-                    'Winddicht und wasserabweisend',
-                    'Gefütterte Innentaschen',
-                    'Verlängerter Schnitt',
-                    'Zwei-Wege-Reißverschluss',
-                    'Karomuster-Futter',
-                    'Taillierte Passform'
+                    'Atmungsaktiv für Bewegung',
+                    'Verstellbar an Saum, Taille, Ärmel und Kapuze',
+                    'Wolkenförmige Kordelstopper (unser Markenzeichen)',
+                    'Charakteristisches Punktemuster',
+                    'Zwei praktische Taschen',
+                    'Reflektierende Details'
                 ]
             },
             {
                 id: 3,
                 name: 'Birka Blau',
                 category: 'Jacken',
-                description: 'Leichte Regenjacke, atmungsaktiv',
-                fullDescription: 'Die Birka Jacke ist dein idealer Begleiter für aktive Tage. Leicht, packbar und trotzdem vollständig wasserdicht – perfekt für Wanderungen und Radtouren.',
+                description: 'Leicht wie eine Feder',
+                fullDescription: 'Für alle, die viel unterwegs sind. Die Birka wiegt fast nichts und passt in jede Tasche. Trotzdem hält sie dich trocken wenn es darauf ankommt.',
                 price: 99.90,
                 emoji: '🔵',
                 color: '#5D9BE8',
                 badge: null,
                 hasSketch: false,
+                rating: 4.6,
+                reviewCount: 56,
                 sizes: ['XS', 'S', 'M', 'L', 'XL'],
                 features: [
-                    'Ultraleicht (nur 380g)',
+                    'Nur 380g leicht',
                     'Packbar in eigener Tasche',
-                    'Reflektierende Details',
-                    'Mesh-Futter für Belüftung',
-                    'Elastische Bündchen'
+                    'Perfekt für Radtouren',
+                    'Mesh-Futter für Luft',
+                    'Reflektierende Streifen'
                 ]
             },
-            {
+                        {
                 id: 4,
-                name: 'Hedda Schwarz',
+                name: 'Gurri Schwarz',
                 category: 'Jacken',
-                description: 'Klassische Regenjacke, zeitlos',
-                fullDescription: 'Die Hedda in klassischem Schwarz ist ein zeitloser Begleiter für jeden Anlass. Minimalistisches Design trifft auf maximale Funktionalität.',
+                description: 'Zeitlos und vielseitig',
+                fullDescription: 'Unsere Gurri in klassischem Schwarz, das Signature Model für alle, die es zeitlos mögen. Mit den charakteristischen wolkenförmigen Kordelstoppern und vollständiger Verstellbarkeit. Softshell-Qualität. Passt zu wirklich allem.',
                 price: 99.90,
                 emoji: '⚫',
                 color: '#2A2A2A',
                 badge: null,
                 hasSketch: false,
+                rating: 4.7,
+                reviewCount: 93,
                 sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
                 features: [
                     'Zeitloses Design',
-                    'Wasserdicht und atmungsaktiv',
-                    'Versteckte Reißverschlüsse',
-                    'Regulierbare Taille',
-                    'Premium-Membran'
+                    'Softshell-Material mit Stretch',
+                    'Verstellbar an Saum, Taille, Ärmel und Kapuze',
+                    'Wolkenförmige Kordelstopper (unser Markenzeichen)',
+                    'Premium-Qualität'
                 ]
             },
             {
                 id: 5,
                 name: 'Chelsea Stiefel Navy',
                 category: 'Stiefel',
-                description: 'Wasserdichte Gummistiefel',
-                fullDescription: 'Die Chelsea Stiefel vereinen urbanen Stil mit praktischem Regenschutz. Handgefertigtes Naturkautschuk sorgt für Langlebigkeit und Komfort.',
+                description: 'Für nasse Füße war gestern',
+                fullDescription: 'Gummistiefel müssen nicht klobig sein. Die Chelsea vereinen Stil mit Funktion, perfekt für die Stadt oder den Spaziergang im Park.',
                 price: 79.90,
                 emoji: '🥾',
                 color: '#3A4F5C',
                 badge: 'Neu',
                 hasSketch: false,
+                rating: 4.5,
+                reviewCount: 34,
                 sizes: ['36', '37', '38', '39', '40', '41', '42'],
                 features: [
                     'Handgefertigtes Naturkautschuk',
                     '100% wasserdicht',
-                    'Herausnehmbare Einlegesohle',
-                    'Griffige Profilsohle',
-                    'Elastischer Einstieg'
+                    'Herausnehmbare Sohle',
+                    'Rutschfeste Profilsohle',
+                    'Einfach an- und ausziehen'
                 ]
             },
             {
                 id: 6,
                 name: 'Fjord Rucksack',
                 category: 'Accessoires',
-                description: 'Wasserdichter Rucksack, 20L',
-                fullDescription: 'Der Fjord Rucksack schützt deine Wertsachen auch bei stärkstem Regen. Mit Roll-Top-Verschluss und gepolstertem Laptopfach.',
+                description: 'Für alles, was trocken bleiben soll',
+                fullDescription: 'Der Fjord schützt dein Laptop, deine Sachen, dein Leben. Roll-Top-Verschluss heißt: selbst bei Wolkenbruch bleibt alles drin trocken.',
                 price: 89.90,
                 emoji: '🎒',
                 color: '#4A5859',
                 badge: null,
                 hasSketch: false,
+                rating: 4.8,
+                reviewCount: 67,
                 sizes: ['One Size'],
                 features: [
-                    'Roll-Top-Verschluss',
-                    'Gepolstertes Laptopfach (15")',
-                    'Wasserdichtes TPU-Material',
-                    'Gepolsterte Träger',
-                    '20 Liter Volumen'
+                    'Roll-Top für maximalen Schutz',
+                    'Laptop-Fach (bis 15")',
+                    'Wasserdichtes Material',
+                    'Bequeme gepolsterte Träger',
+                    '20L Fassungsvermögen'
                 ]
             }
         ];
 
-        // State
+        // State Management
         let cart = [];
+        let wishlist = [];
         let currentFilter = 'alle';
         let selectedProduct = null;
         let selectedSize = null;
@@ -1668,11 +2163,12 @@
         document.addEventListener('DOMContentLoaded', () => {
             renderProducts();
             createRainDrops();
-            initScrollAnimations();
             initNavbarScroll();
+            loadWishlistFromStorage();
+            loadCartFromStorage();
         });
 
-        // Render Products with Filter
+        // Render Products
         function renderProducts() {
             const grid = document.getElementById('productsGrid');
             const filteredProducts = currentFilter === 'alle' 
@@ -1681,8 +2177,10 @@
 
             grid.innerHTML = filteredProducts.map((product, index) => {
                 const imageSrc = product.hasSketch 
-                    ? `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='18' font-family='Arial'%3E${product.sketchPlaceholder}%3C/text%3E%3C/svg%3E`
+                    ? `${product.sketchImage}`
                     : '';
+                
+                const isWishlisted = wishlist.some(item => item.id === product.id);
                 
                 return `
                     <div class="product-card" 
@@ -1690,6 +2188,13 @@
                          onclick="openProductModal(${product.id})">
                         <div class="product-image" style="background: ${product.hasSketch ? 'white' : `linear-gradient(135deg, ${product.color}22 0%, ${product.color}44 100%)`};">
                             ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                            <div class="product-actions">
+                                <button class="product-action-btn ${isWishlisted ? 'active' : ''}" 
+                                        onclick="event.stopPropagation(); toggleWishlistItem(${product.id})"
+                                        title="Zu Favoriten">
+                                    ❤️
+                                </button>
+                            </div>
                             ${product.hasSketch 
                                 ? `<img src="${imageSrc}" alt="${product.name}" style="width: 70%; height: 90%; object-fit: contain;">`
                                 : `<span style="font-size: 6rem;">${product.emoji}</span>`
@@ -1699,6 +2204,10 @@
                             <div class="product-category">${product.category}</div>
                             <h3 class="product-name">${product.name}</h3>
                             <p class="product-description">${product.description}</p>
+                            <div class="product-rating">
+                                <span class="stars">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5-Math.floor(product.rating))}</span>
+                                <span class="rating-count">(${product.reviewCount})</span>
+                            </div>
                             <div class="product-footer">
                                 <span class="product-price">${product.price.toFixed(2)} €</span>
                                 <button class="add-to-cart" onclick="event.stopPropagation(); quickAddToCart(${product.id})">
@@ -1714,25 +2223,109 @@
         // Filter Products
         function filterProducts(category) {
             currentFilter = category;
-            
-            // Update active button
             document.querySelectorAll('.filter-button').forEach(btn => {
                 btn.classList.remove('active');
             });
             event.target.classList.add('active');
-            
             renderProducts();
         }
 
-        // Scroll to Product
-        function scrollToProduct(productId) {
-            document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
-            setTimeout(() => {
-                openProductModal(productId);
-            }, 800);
+        // Quick Search
+        function quickSearchProducts() {
+            const query = document.getElementById('quickSearch').value.toLowerCase();
+            if (!query) {
+                renderProducts();
+                return;
+            }
+
+            const grid = document.getElementById('productsGrid');
+            const filteredProducts = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.description.toLowerCase().includes(query) ||
+                p.category.toLowerCase().includes(query)
+            );
+
+            if (filteredProducts.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--color-slate);">Keine Produkte gefunden</p>';
+                return;
+            }
+
+            grid.innerHTML = filteredProducts.map((product, index) => {
+                const imageSrc = product.hasSketch 
+                    ? `${product.sketchImage}`
+                    : '';
+                
+                const isWishlisted = wishlist.some(item => item.id === product.id);
+                
+                return `
+                    <div class="product-card" onclick="openProductModal(${product.id})">
+                        <div class="product-image" style="background: ${product.hasSketch ? 'white' : `linear-gradient(135deg, ${product.color}22 0%, ${product.color}44 100%)`};">
+                            ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                            <div class="product-actions">
+                                <button class="product-action-btn ${isWishlisted ? 'active' : ''}" 
+                                        onclick="event.stopPropagation(); toggleWishlistItem(${product.id})">
+                                    ❤️
+                                </button>
+                            </div>
+                            ${product.hasSketch 
+                                ? `<img src="${imageSrc}" alt="${product.name}" style="width: 70%; height: 90%; object-fit: contain;">`
+                                : `<span style="font-size: 6rem;">${product.emoji}</span>`
+                            }
+                        </div>
+                        <div class="product-info">
+                            <div class="product-category">${product.category}</div>
+                            <h3 class="product-name">${product.name}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <div class="product-rating">
+                                <span class="stars">${'★'.repeat(Math.floor(product.rating))}${'☆'.repeat(5-Math.floor(product.rating))}</span>
+                                <span class="rating-count">(${product.reviewCount})</span>
+                            </div>
+                            <div class="product-footer">
+                                <span class="product-price">${product.price.toFixed(2)} €</span>
+                                <button class="add-to-cart" onclick="event.stopPropagation(); quickAddToCart(${product.id})">
+                                    Schnellkauf
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
         }
 
-        // Open Product Modal
+        // Modal Search
+        function modalSearch() {
+            const query = document.getElementById('modalSearchInput').value.toLowerCase();
+            const resultsDiv = document.getElementById('searchResults');
+            
+            if (!query) {
+                resultsDiv.innerHTML = '<p style="color: var(--color-slate); text-align: center;">Tippe, um zu suchen...</p>';
+                return;
+            }
+
+            const results = products.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.description.toLowerCase().includes(query)
+            );
+
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p style="color: var(--color-slate); text-align: center;">Keine Ergebnisse</p>';
+                return;
+            }
+
+            resultsDiv.innerHTML = results.map(product => `
+                <div class="search-result-item" onclick="openProductModal(${product.id}); closeModal('searchModal');">
+                    <div class="search-result-image">
+                        ${product.emoji}
+                    </div>
+                    <div class="search-result-info">
+                        <h4>${product.name}</h4>
+                        <div class="search-result-price">${product.price.toFixed(2)} €</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Product Modal
         function openProductModal(productId) {
             selectedProduct = products.find(p => p.id === productId);
             selectedSize = null;
@@ -1741,6 +2334,8 @@
             const modalImageSection = document.getElementById('modalImageSection');
             const modalCategory = document.getElementById('modalCategory');
             const modalTitle = document.getElementById('modalTitle');
+            const modalStars = document.getElementById('modalStars');
+            const modalRatingCount = document.getElementById('modalRatingCount');
             const modalPrice = document.getElementById('modalPrice');
             const modalDescription = document.getElementById('modalDescription');
             const sizeOptions = document.getElementById('sizeOptions');
@@ -1760,15 +2355,15 @@
 
             modalCategory.textContent = selectedProduct.category;
             modalTitle.textContent = selectedProduct.name;
+            modalStars.textContent = '★'.repeat(Math.floor(selectedProduct.rating)) + '☆'.repeat(5-Math.floor(selectedProduct.rating));
+            modalRatingCount.textContent = `${selectedProduct.rating} (${selectedProduct.reviewCount} Bewertungen)`;
             modalPrice.textContent = `${selectedProduct.price.toFixed(2)} €`;
             modalDescription.textContent = selectedProduct.fullDescription;
 
-            // Render sizes
             sizeOptions.innerHTML = selectedProduct.sizes.map(size => 
                 `<div class="size-option" onclick="selectSize('${size}')">${size}</div>`
             ).join('');
 
-            // Render features
             featureList.innerHTML = selectedProduct.features.map(feature =>
                 `<li>${feature}</li>`
             ).join('');
@@ -1777,16 +2372,6 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Close Product Modal
-        function closeProductModal() {
-            const modal = document.getElementById('productModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            selectedProduct = null;
-            selectedSize = null;
-        }
-
-        // Select Size
         function selectSize(size) {
             selectedSize = size;
             document.querySelectorAll('.size-option').forEach(option => {
@@ -1797,7 +2382,6 @@
             });
         }
 
-        // Add to Cart from Modal
         function addToCartFromModal() {
             if (!selectedSize) {
                 alert('Bitte wähle eine Größe aus!');
@@ -1818,12 +2402,12 @@
                 });
             }
 
+            saveCartToStorage();
             updateCart();
-            closeProductModal();
+            closeModal('productModal');
             toggleCart(true);
         }
 
-        // Quick Add to Cart (default size)
         function quickAddToCart(productId) {
             const product = products.find(p => p.id === productId);
             const defaultSize = product.sizes[2] || product.sizes[0];
@@ -1842,17 +2426,12 @@
                 });
             }
 
+            saveCartToStorage();
             updateCart();
             toggleCart(true);
         }
 
-        // Remove from Cart
-        function removeFromCart(productId, size) {
-            cart = cart.filter(item => !(item.id === productId && item.size === size));
-            updateCart();
-        }
-
-        // Update Cart UI
+        // Cart Management
         function updateCart() {
             const cartCount = document.getElementById('cartCount');
             const cartItems = document.getElementById('cartItems');
@@ -1866,30 +2445,30 @@
 
             if (cart.length === 0) {
                 cartItems.innerHTML = `
-                    <div class="empty-cart">
-                        <div class="empty-cart-icon">🛍️</div>
-                        <p>Dein Warenkorb ist leer</p>
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🛍️</div>
+                        <p>Noch nichts drin</p>
                     </div>
                 `;
             } else {
                 cartItems.innerHTML = cart.map(item => {
                     const itemImage = item.hasSketch 
-                        ? `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 150'%3E%3Crect fill='%23f5f5f5' width='100' height='150'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='8' font-family='Arial'%3E${item.sketchPlaceholder}%3C/text%3E%3C/svg%3E`
+                        ? `${item.sketchImage}`
                         : '';
                     
                     return `
-                        <div class="cart-item">
-                            <div class="cart-item-image" style="background: ${item.hasSketch ? 'white' : `linear-gradient(135deg, ${item.color}22 0%, ${item.color}44 100%)`};">
+                        <div class="sidebar-item">
+                            <div class="sidebar-item-image" style="background: ${item.hasSketch ? 'white' : `linear-gradient(135deg, ${item.color}22 0%, ${item.color}44 100%)`};">
                                 ${item.hasSketch 
                                     ? `<img src="${itemImage}" alt="${item.name}">`
                                     : item.emoji
                                 }
                             </div>
-                            <div class="cart-item-info">
-                                <div class="cart-item-name">${item.name}</div>
-                                <div class="cart-item-details">Größe: ${item.size} • Anzahl: ${item.quantity}</div>
-                                <div class="cart-item-price">${item.price.toFixed(2)} € × ${item.quantity} = ${(item.price * item.quantity).toFixed(2)} €</div>
-                                <button class="cart-item-remove" onclick="removeFromCart(${item.id}, '${item.size}')">
+                            <div class="sidebar-item-info">
+                                <div class="sidebar-item-name">${item.name}</div>
+                                <div class="sidebar-item-details">Größe: ${item.size} • ${item.quantity}x</div>
+                                <div class="sidebar-item-price">${(item.price * item.quantity).toFixed(2)} €</div>
+                                <button class="sidebar-item-remove" onclick="removeFromCart(${item.id}, '${item.size}')">
                                     Entfernen
                                 </button>
                             </div>
@@ -1899,7 +2478,108 @@
             }
         }
 
-        // Toggle Cart
+        function removeFromCart(productId, size) {
+            cart = cart.filter(item => !(item.id === productId && item.size === size));
+            saveCartToStorage();
+            updateCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Dein Warenkorb ist leer!');
+                return;
+            }
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            alert(`Checkout mit ${cart.length} Produkt(en) für ${total.toFixed(2)} €\n\nIn echt würde hier jetzt der Shopify-Checkout starten 😊`);
+        }
+
+        // Wishlist Management
+        function toggleWishlistItem(productId) {
+            const product = products.find(p => p.id === productId);
+            const index = wishlist.findIndex(item => item.id === productId);
+
+            if (index > -1) {
+                wishlist.splice(index, 1);
+            } else {
+                wishlist.push(product);
+            }
+
+            saveWishlistToStorage();
+            updateWishlist();
+            renderProducts(); // Re-render to update heart icons
+        }
+
+        function updateWishlist() {
+            const wishlistCount = document.getElementById('wishlistCount');
+            const wishlistItems = document.getElementById('wishlistItems');
+
+            if (wishlist.length > 0) {
+                wishlistCount.style.display = 'flex';
+                wishlistCount.textContent = wishlist.length;
+            } else {
+                wishlistCount.style.display = 'none';
+            }
+
+            if (wishlist.length === 0) {
+                wishlistItems.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">❤️</div>
+                        <p>Keine Favoriten gespeichert</p>
+                    </div>
+                `;
+            } else {
+                wishlistItems.innerHTML = wishlist.map(item => {
+                    const itemImage = item.hasSketch 
+                        ? `${item.sketchImage}`
+                        : '';
+                    
+                    return `
+                        <div class="sidebar-item" onclick="openProductModal(${item.id})">
+                            <div class="sidebar-item-image" style="background: ${item.hasSketch ? 'white' : `linear-gradient(135deg, ${item.color}22 0%, ${item.color}44 100%)`}; cursor: pointer;">
+                                ${item.hasSketch 
+                                    ? `<img src="${itemImage}" alt="${item.name}">`
+                                    : item.emoji
+                                }
+                            </div>
+                            <div class="sidebar-item-info">
+                                <div class="sidebar-item-name">${item.name}</div>
+                                <div class="sidebar-item-price">${item.price.toFixed(2)} €</div>
+                                <button class="sidebar-item-remove" onclick="event.stopPropagation(); toggleWishlistItem(${item.id})">
+                                    Entfernen
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+        }
+
+        // Storage
+        function saveCartToStorage() {
+            localStorage.setItem('amundsensfjell_cart', JSON.stringify(cart));
+        }
+
+        function loadCartFromStorage() {
+            const stored = localStorage.getItem('amundsensfjell_cart');
+            if (stored) {
+                cart = JSON.parse(stored);
+                updateCart();
+            }
+        }
+
+        function saveWishlistToStorage() {
+            localStorage.setItem('amundsensfjell_wishlist', JSON.stringify(wishlist));
+        }
+
+        function loadWishlistFromStorage() {
+            const stored = localStorage.getItem('amundsensfjell_wishlist');
+            if (stored) {
+                wishlist = JSON.parse(stored);
+                updateWishlist();
+            }
+        }
+
+        // UI Toggles
         function toggleCart(forceOpen = false) {
             const sidebar = document.getElementById('cartSidebar');
             const overlay = document.getElementById('cartOverlay');
@@ -1913,25 +2593,64 @@
             }
         }
 
-        // Checkout
-        function checkout() {
-            if (cart.length === 0) {
-                alert('Dein Warenkorb ist leer!');
-                return;
-            }
-            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            alert(`Checkout mit ${cart.length} Produkt(en) für ${total.toFixed(2)} €\n\nIn einer echten Integration würde hier der Shopify Checkout starten.`);
+        function toggleWishlist() {
+            const sidebar = document.getElementById('wishlistSidebar');
+            const overlay = document.getElementById('wishlistOverlay');
+            sidebar.classList.toggle('open');
+            overlay.classList.toggle('visible');
         }
 
-        // Newsletter Subscribe
+        function toggleSearch() {
+            const modal = document.getElementById('searchModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            setTimeout(() => {
+                document.getElementById('modalSearchInput').focus();
+            }, 100);
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            if (modalId === 'productModal') {
+                selectedProduct = null;
+                selectedSize = null;
+            }
+        }
+
+        function showSizeGuide() {
+            const modal = document.getElementById('sizeGuideModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Scroll Functions
+        function scrollToProduct(productId) {
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                openProductModal(productId);
+            }, 800);
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Chat
+        function openChat() {
+            alert('Live-Chat startet... 💬\n\n(In echt würde hier z.B. Intercom, Crisp oder LiveChat starten)');
+        }
+
+        // Newsletter
         function subscribeNewsletter(event) {
             event.preventDefault();
             const email = event.target.querySelector('input').value;
-            alert(`Vielen Dank! ${email} wurde erfolgreich angemeldet.\n\nIn einer echten Integration würde hier die Newsletter-API aufgerufen.`);
+            alert(`Willkommen in der Familie! ❤️\n\n${email} wurde zur Newsletter-Liste hinzugefügt.`);
             event.target.reset();
         }
 
-        // Rain Drops Animation
+        // Rain Animation
         function createRainDrops() {
             const container = document.getElementById('rainDrops');
             for (let i = 0; i < 30; i++) {
@@ -1944,47 +2663,7 @@
             }
         }
 
-        // Scroll Animations for Dots
-        function initScrollAnimations() {
-            const dotsContainer = document.getElementById('dotsContainer');
-            const dotPositions = [
-                { x: '25%', y: '20%' },
-                { x: '45%', y: '18%' },
-                { x: '65%', y: '22%' },
-                { x: '30%', y: '35%' },
-                { x: '50%', y: '38%' },
-                { x: '70%', y: '33%' },
-                { x: '35%', y: '52%' },
-                { x: '55%', y: '50%' },
-                { x: '75%', y: '55%' },
-                { x: '40%', y: '68%' },
-                { x: '60%', y: '65%' }
-            ];
-
-            let dotsCreated = false;
-
-            window.addEventListener('scroll', () => {
-                const section = document.getElementById('dotSection');
-                const rect = section.getBoundingClientRect();
-                const windowHeight = window.innerHeight;
-
-                if (rect.top < windowHeight * 0.7 && rect.bottom > 0 && !dotsCreated) {
-                    dotPositions.forEach((pos, index) => {
-                        setTimeout(() => {
-                            const dot = document.createElement('div');
-                            dot.className = 'dot';
-                            dot.style.left = pos.x;
-                            dot.style.top = pos.y;
-                            dot.style.animationDelay = `${index * 0.05}s`;
-                            dotsContainer.appendChild(dot);
-                        }, index * 50);
-                    });
-                    dotsCreated = true;
-                }
-            });
-        }
-
-        // Navbar Scroll Effect
+        // Navbar Scroll
         function initNavbarScroll() {
             const navbar = document.getElementById('navbar');
             window.addEventListener('scroll', () => {
@@ -1994,11 +2673,6 @@
                     navbar.classList.remove('scrolled');
                 }
             });
-        }
-
-        // Scroll to Top
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // Smooth Scroll
@@ -2012,10 +2686,12 @@
             });
         });
 
-        // Close modal on escape key
+        // Close modals on escape
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeProductModal();
+                closeModal('productModal');
+                closeModal('sizeGuideModal');
+                closeModal('searchModal');
             }
         });
     </script>

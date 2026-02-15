@@ -363,6 +363,12 @@
             background-position: center;
             transition: opacity 0.3s ease;
         }
+        .jacket-layer img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
 
         .sketch-layer {
             z-index: 1;
@@ -1804,24 +1810,29 @@
             <div class="scroll-container">
                 <div class="jacket-canvas" id="jacketCanvas">
                     <!-- Frame 1: Skizze (Start) -->
-                    <div class="jacket-layer sketch-layer" 
-                         style="background-image: url('images/gurri-frame-01.png');"></div>
+                    <div class="jacket-layer sketch-layer">
+                        <img src="images/gurri-frame-01.png" alt="Gurri Sketch">
+                    </div>
                     
                     <!-- Frame 2: 25% Farbe -->
-                    <div class="jacket-layer color-layer-1" id="colorLayer1"
-                         style="background-image: url('images/gurri-frame-02.png');"></div>
+                    <div class="jacket-layer color-layer-1" id="colorLayer1">
+                        <img src="images/gurri-frame-02.png" alt="Gurri 25%">
+                    </div>
                     
                     <!-- Frame 3: 50% Farbe -->
-                    <div class="jacket-layer color-layer-2" id="colorLayer2"
-                         style="background-image: url('images/gurri-frame-03.png');"></div>
+                    <div class="jacket-layer color-layer-2" id="colorLayer2">
+                        <img src="images/gurri-frame-03.png" alt="Gurri 50%">
+                    </div>
                     
                     <!-- Frame 4: 75% Farbe -->
-                    <div class="jacket-layer color-layer-3" id="colorLayer3"
-                         style="background-image: url('images/gurri-frame-04.png');"></div>
+                    <div class="jacket-layer color-layer-3" id="colorLayer3">
+                        <img src="images/gurri-frame-04.png" alt="Gurri 75%">
+                    </div>
                     
                     <!-- Frame 5: 100% fertig -->
-                    <div class="jacket-layer color-layer-4" id="colorLayer4"
-                         style="background-image: url('images/gurri-frame-05.png');"></div>
+                    <div class="jacket-layer color-layer-4" id="colorLayer4">
+                        <img src="images/gurri-frame-05.png" alt="Gurri 100%">
+                    </div>
                 </div>
 
                 <div class="scroll-text">

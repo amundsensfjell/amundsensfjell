@@ -324,7 +324,7 @@
         .scroll-animation-section {
             min-height: 300vh;
             position: relative;
-            background: white;
+            background: linear-gradient(135deg, #E8E4DB 0%, #F5F1E8 100%);
         }
 
         .scroll-sticky {
@@ -337,139 +337,44 @@
             overflow: hidden;
         }
 
-        .scroll-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6rem;
-            max-width: 1400px;
-            padding: 0 4rem;
+        .scroll-container-center {
+            width: 100%;
+            display: flex;
             align-items: center;
-            width: 100%;
+            justify-content: center;
         }
 
-        .jacket-canvas {
+        .jacket-canvas-large {
             position: relative;
-            width: 100%;
-            max-width: 500px;
+            width: 90%;
+            max-width: 700px;
             aspect-ratio: 3/4;
-            margin: 0 auto;
         }
 
-        .jacket-layer {
+        .jacket-frame {
             position: absolute;
-            inset: 0;
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            transition: opacity 0.3s ease;
-        }
-        .jacket-layer img {
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
+            transition: opacity 0.3s ease;
         }
 
-
-        .sketch-layer {
+        .sketch-frame {
             z-index: 1;
             opacity: 1;
         }
 
-        .color-layer-1 { z-index: 2; opacity: 0; }
-        .color-layer-2 { z-index: 3; opacity: 0; }
-        .color-layer-3 { z-index: 4; opacity: 0; }
-        .color-layer-4 { z-index: 5; opacity: 0; }
-
-        .scroll-text {
-            padding: 2rem 0;
-        }
-
-        .scroll-text h2 {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-
-        .scroll-text h2 .highlight {
-            color: var(--color-sunshine);
-            font-style: italic;
-        }
-
-        .scroll-text p {
-            font-size: 1.15rem;
-            color: var(--color-slate);
-            margin-bottom: 1rem;
-            max-width: 500px;
-            line-height: 1.8;
-        }
-
-        .progress-steps {
-            margin-top: 3rem;
-        }
-
-        .progress-step {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.3;
-            transition: all 0.5s ease;
-        }
-
-        .progress-step.active {
-            opacity: 1;
-            transform: translateX(10px);
-        }
-
-        .step-number {
-            width: 40px;
-            height: 40px;
-            background: var(--color-fog);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.5s ease;
-        }
-
-        .progress-step.active .step-number {
-            background: var(--color-sunshine);
-            color: var(--color-charcoal);
-        }
-
-        .step-text {
-            font-size: 1rem;
-            color: var(--color-slate);
-        }
-
-        .progress-step.active .step-text {
-            color: var(--color-charcoal);
-            font-weight: 600;
-        }
-
-        @media (max-width: 1024px) {
-            .scroll-container {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .scroll-text {
-                text-align: center;
-            }
-
-            .scroll-text p {
-                margin: 0 auto 1rem;
-            }
-        }
+        .color-frame-1 { z-index: 2; opacity: 0; }
+        .color-frame-2 { z-index: 3; opacity: 0; }
+        .color-frame-3 { z-index: 4; opacity: 0; }
+        .color-frame-4 { z-index: 5; opacity: 0; }
 
         @media (max-width: 768px) {
-            .scroll-container {
-                padding: 0 1.5rem;
+            .jacket-canvas-large {
+                width: 95%;
+                max-width: 500px;
             }
         }
 
@@ -1807,61 +1712,22 @@
     <!-- Scroll Animation Section -->
     <section class="scroll-animation-section" id="entstehung">
         <div class="scroll-sticky">
-            <div class="scroll-container">
-                <div class="jacket-canvas" id="jacketCanvas">
+            <div class="scroll-container-center">
+                <div class="jacket-canvas-large" id="jacketCanvas">
                     <!-- Frame 1: Skizze (Start) -->
-                    <div class="jacket-layer sketch-layer">
-                        <img src="images/gurri-frame-01.png" alt="Gurri Sketch">
-                    </div>
+                    <img src="images/gurri-frame-01.png" alt="" class="jacket-frame sketch-frame">
                     
                     <!-- Frame 2: 25% Farbe -->
-                    <div class="jacket-layer color-layer-1" id="colorLayer1">
-                        <img src="images/gurri-frame-02.png" alt="Gurri 25%">
-                    </div>
+                    <img src="images/gurri-frame-02.png" alt="" class="jacket-frame color-frame-1" id="colorFrame1">
                     
                     <!-- Frame 3: 50% Farbe -->
-                    <div class="jacket-layer color-layer-2" id="colorLayer2">
-                        <img src="images/gurri-frame-03.png" alt="Gurri 50%">
-                    </div>
+                    <img src="images/gurri-frame-03.png" alt="" class="jacket-frame color-frame-2" id="colorFrame2">
                     
                     <!-- Frame 4: 75% Farbe -->
-                    <div class="jacket-layer color-layer-3" id="colorLayer3">
-                        <img src="images/gurri-frame-04.png" alt="Gurri 75%">
-                    </div>
+                    <img src="images/gurri-frame-04.png" alt="" class="jacket-frame color-frame-3" id="colorFrame3">
                     
                     <!-- Frame 5: 100% fertig -->
-                    <div class="jacket-layer color-layer-4" id="colorLayer4">
-                        <img src="images/gurri-frame-05.png" alt="Gurri 100%">
-                    </div>
-                </div>
-
-                <div class="scroll-text">
-                    <h2>Vom <span class="highlight">Strich</span> zur <span class="highlight">Farbe</span></h2>
-                    <p>Jede Jacke beginnt als Bleistift-Skizze. Dann kommt die Farbe, Schicht für Schicht, bis jedes Detail sitzt.</p>
-                    <p>So wie mein Vater es sich vorgestellt hat: ehrlich, durchdacht, von Hand gemacht.</p>
-
-                    <div class="progress-steps" id="progressSteps">
-                        <div class="progress-step active" data-step="0">
-                            <div class="step-number">1</div>
-                            <div class="step-text">Die Skizze</div>
-                        </div>
-                        <div class="progress-step" data-step="1">
-                            <div class="step-number">2</div>
-                            <div class="step-text">Grundfarbe auftragen</div>
-                        </div>
-                        <div class="progress-step" data-step="2">
-                            <div class="step-number">3</div>
-                            <div class="step-text">Mitteltöne verstärken</div>
-                        </div>
-                        <div class="progress-step" data-step="3">
-                            <div class="step-number">4</div>
-                            <div class="step-text">Schatten für Tiefe</div>
-                        </div>
-                        <div class="progress-step" data-step="4">
-                            <div class="step-number">5</div>
-                            <div class="step-text">Fertig!</div>
-                        </div>
-                    </div>
+                    <img src="images/gurri-frame-05.png" alt="" class="jacket-frame color-frame-4" id="colorFrame4">
                 </div>
             </div>
         </div>
@@ -2872,13 +2738,12 @@
         // Scroll Animation
         const scrollSection = document.querySelector('.scroll-animation-section');
         if (scrollSection) {
-            const colorLayers = [
-                document.getElementById('colorLayer1'),
-                document.getElementById('colorLayer2'),
-                document.getElementById('colorLayer3'),
-                document.getElementById('colorLayer4')
+            const colorFrames = [
+                document.getElementById('colorFrame1'),
+                document.getElementById('colorFrame2'),
+                document.getElementById('colorFrame3'),
+                document.getElementById('colorFrame4')
             ];
-            const progressSteps = document.querySelectorAll('.progress-step');
 
             window.addEventListener('scroll', () => {
                 const sectionTop = scrollSection.offsetTop;
@@ -2886,36 +2751,22 @@
                 const scrollPos = window.scrollY;
                 const viewportHeight = window.innerHeight;
 
-                // Calculate scroll progress through the section (0 to 1)
                 const scrollStart = sectionTop - viewportHeight / 2;
                 const scrollEnd = sectionTop + sectionHeight - viewportHeight;
                 const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
 
-                // Activate color layers based on progress
-                const totalSteps = 5; // 0 = sketch, 1-4 = color layers
-                const currentStep = Math.floor(progress * totalSteps);
-
-                // Update progress steps
-                progressSteps.forEach((step, index) => {
-                    if (index <= currentStep) {
-                        step.classList.add('active');
-                    } else {
-                        step.classList.remove('active');
-                    }
-                });
-
-                // Update color layers with smooth fade
-                colorLayers.forEach((layer, index) => {
+                const totalSteps = 5;
+                colorFrames.forEach((frame, index) => {
                     const layerStart = (index + 1) / totalSteps;
                     const layerEnd = (index + 2) / totalSteps;
                     
                     if (progress >= layerStart && progress < layerEnd) {
                         const layerProgress = (progress - layerStart) / (layerEnd - layerStart);
-                        layer.style.opacity = layerProgress;
+                        frame.style.opacity = layerProgress;
                     } else if (progress >= layerEnd) {
-                        layer.style.opacity = 1;
+                        frame.style.opacity = 1;
                     } else {
-                        layer.style.opacity = 0;
+                        frame.style.opacity = 0;
                     }
                 });
             });

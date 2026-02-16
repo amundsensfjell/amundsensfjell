@@ -1718,26 +1718,45 @@
         /* MOBILE ONLY - ALLES SINGLE COLUMN */
 
     
+        
+
+    
         @media (max-width: 768px) {
+            /* Story Section */
+            .story-section-with-animation {
+                min-height: auto !important;
+            }
+            
             .story-animation-container {
                 grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                padding: 2rem 1.5rem !important;
             }
             
             .jacket-animation-sticky {
                 position: relative !important;
                 top: 0 !important;
                 height: 40vh !important;
+                margin: 0 auto 2rem auto !important;
+            }
+            
+            .jacket-canvas-side {
+                max-width: 250px !important;
+                margin: 0 auto !important;
             }
             
             .story-content-scroll {
                 padding-top: 0 !important;
             }
             
+            /* Sketches gestackt */
             .sketch-grid {
                 grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                max-width: 500px !important;
+                margin: 0 auto !important;
             }
         }
-
     </style>
 </head>
 <body>

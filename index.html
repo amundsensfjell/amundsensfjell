@@ -322,7 +322,7 @@
         
         /* Family Story Section with Animation */
         .story-section-with-animation {
-            min-height: 350vh;
+            min-height: 250vh;
             position: relative;
             background: white;
             padding: 0;
@@ -412,6 +412,22 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .jacket-animation-sticky {
+                position: sticky;
+                top: 80px;
+                height: 40vh;
+                margin-bottom: 2rem;
+            }
+
+            .jacket-canvas-side {
+                max-width: 250px;
+            }
+
+            .story-content-scroll {
+                padding-top: 0;
+            }
+        }
 
             \.jacket-animation-sticky {
             position: sticky;
@@ -1612,9 +1628,26 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            nav {
-                padding: 1.5rem 2rem;
+            .story-animation-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
+
+            .jacket-animation-sticky {
+                position: sticky;
+                top: 80px;
+                height: 40vh;
+                margin-bottom: 2rem;
+            }
+
+            .jacket-canvas-side {
+                max-width: 250px;
+            }
+
+            .story-content-scroll {
+                padding-top: 0;
+            }
+        }
 
             .sketch-grid {
                 grid-template-columns: 1fr;
@@ -2655,6 +2688,7 @@
         if (storySection) {
             const jacketFrames = document.querySelectorAll('.jacket-frame[data-frame]');
             const totalFrames = jacketFrames.length;
+            const isMobile = window.innerWidth <= 1024;
 
             window.addEventListener('scroll', () => {
                 const sectionTop = storySection.offsetTop;
@@ -2662,22 +2696,35 @@
                 const scrollPos = window.scrollY;
                 const viewportHeight = window.innerHeight;
 
-                // Calculate progress (0 to 1)
-                const scrollStart = sectionTop - viewportHeight / 2;
-                const scrollEnd = sectionTop + sectionHeight - viewportHeight;
-                const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
+                if (isMobile) {
+                    // Mobile: Animation startet früher, damit Jacke über Headline stoppt
+                    const scrollStart = sectionTop - viewportHeight * 0.3;
+                    const scrollEnd = sectionTop + sectionHeight - viewportHeight;
+                    const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
+                    const currentFrame = Math.floor(progress * totalFrames);
 
-                // Calculate current frame (1 to totalFrames)
-                const currentFrame = Math.floor(progress * totalFrames);
+                    jacketFrames.forEach((frame, index) => {
+                        if (index < currentFrame) {
+                            frame.classList.add('active');
+                        } else {
+                            frame.classList.remove('active');
+                        }
+                    });
+                } else {
+                    // Desktop: Animation startet wenn Headline auf richtiger Höhe ist
+                    const scrollStart = sectionTop - viewportHeight * 0.4;
+                    const scrollEnd = sectionTop + sectionHeight - viewportHeight * 1.2;
+                    const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
+                    const currentFrame = Math.floor(progress * totalFrames);
 
-                // Show the appropriate frame
-                jacketFrames.forEach((frame, index) => {
-                    if (index < currentFrame) {
-                        frame.classList.add('active');
-                    } else {
-                        frame.classList.remove('active');
-                    }
-                });
+                    jacketFrames.forEach((frame, index) => {
+                        if (index < currentFrame) {
+                            frame.classList.add('active');
+                        } else {
+                            frame.classList.remove('active');
+                        }
+                    });
+                }
             });
         }
 

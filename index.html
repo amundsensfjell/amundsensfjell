@@ -1703,11 +1703,19 @@
             
             
             
+            /* Animation Frames sichtbar machen */
             .jacket-frame {
-                display: block !important;
-                opacity: 1 !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: contain !important;
+                opacity: 0 !important;
+                transition: opacity 0.3s ease !important;
             }
             
+            .jacket-frame.frame-base,
             .jacket-frame.active {
                 opacity: 1 !important;
             }

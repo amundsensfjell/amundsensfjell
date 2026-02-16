@@ -272,40 +272,40 @@
 
         .floating-cloud-1 {
             top: 8%;
-            width: 560px;
-            height: 280px;
+            width: 280px;
+            height: 140px;
             animation: floatCloud 70s linear infinite;
             animation-delay: 0s;
         }
 
         .floating-cloud-2 {
             top: 25%;
-            width: 440px;
-            height: 220px;
+            width: 220px;
+            height: 110px;
             animation: floatCloud 90s linear infinite;
             animation-delay: -25s;
         }
 
         .floating-cloud-3 {
             top: 45%;
-            width: 600px;
-            height: 300px;
+            width: 300px;
+            height: 150px;
             animation: floatCloud 80s linear infinite;
             animation-delay: -50s;
         }
 
         .floating-cloud-4 {
             top: 65%;
-            width: 480px;
-            height: 240px;
+            width: 240px;
+            height: 120px;
             animation: floatCloud 100s linear infinite;
             animation-delay: -75s;
         }
 
         .floating-cloud-5 {
             top: 82%;
-            width: 400px;
-            height: 200px;
+            width: 200px;
+            height: 100px;
             animation: floatCloud 85s linear infinite;
             animation-delay: -40s;
         }
@@ -322,7 +322,7 @@
         
         /* Family Story Section with Animation */
         .story-section-with-animation {
-            min-height: 120vh;
+            min-height: 350vh;
             position: relative;
             background: white;
             padding: 0;
@@ -334,14 +334,14 @@
             gap: 4rem;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 4rem 2rem;
             align-items: start;
         }
 
         .jacket-animation-sticky {
             position: sticky;
-            top: 100px;
-            height: 70vh;
+            top: 20vh;
+            height: 65vh;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -375,8 +375,8 @@
         }
 
         .story-content-scroll {
-            padding-top: 100px;
-            padding-bottom: 2rem;
+            padding-top: 20vh;
+            padding-bottom: 4rem;
         }
 
         .story-content-scroll h2 {
@@ -409,43 +409,18 @@
 
         @media (max-width: 1024px) {
             .story-animation-container {
-            display: grid;
-            grid-template-columns: 40% 60%;
-            gap: 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            align-items: start;
-        }
-
-            .jacket-animation-sticky {
-            position: relative;
-            top: 0;
-            height: 40vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 0;
-        }
-
-            .jacket-canvas-side {
-                max-width: 250px;
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
-
-            .story-content-scroll {
-            padding-top: 0;
-            padding-bottom: 2rem;
-        }
-        }
 
             \.jacket-animation-sticky {
             position: sticky;
-            top: 100px;
+            top: 15vh;
             height: 70vh;
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding-top: 0;
+            padding-top: 2rem;
         }
 
             .jacket-canvas-side {
@@ -514,22 +489,19 @@
 
         .sketch-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            max-width: 1400px;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
         .sketch-item {
             background: white;
             border-radius: 20px;
-            padding: 2rem;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            display: flex;
-            flex-direction: column;
-            min-height: 600px;
         }
 
         .sketch-item:hover {
@@ -580,17 +552,16 @@
 
         .sketch-cta {
             background: var(--color-charcoal);
-            color: white;
+            color: var(--color-cream);
+            padding: 0.9rem 2rem;
             border: none;
-            padding: 1rem 2.5rem;
             border-radius: 50px;
-            font-size: 1rem;
+            font-family: var(--font-body);
             font-weight: 600;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
-            max-width: 280px;
-            margin-top: auto;
         }
 
         .sketch-cta:hover {
@@ -1641,43 +1612,14 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .story-animation-container {
-            display: grid;
-            grid-template-columns: 40% 60%;
-            gap: 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            align-items: start;
-        }
-
-            .jacket-animation-sticky {
-            position: relative;
-            top: 0;
-            height: 40vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 0;
-        }
-
-            .jacket-canvas-side {
-                max-width: 250px;
+            nav {
+                padding: 1.5rem 2rem;
             }
 
-            .story-content-scroll {
-            padding-top: 0;
-            padding-bottom: 2rem;
-        }
-        }
-
             .sketch-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
 
             .products-grid {
                 grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -1714,47 +1656,109 @@
     
         
     
-        
-        /* MOBILE ONLY - ALLES SINGLE COLUMN */
-
-    
-        
-
-    
         @media (max-width: 768px) {
-            /* Story Section */
+            /* Navigation */
+            nav {
+                padding: 1rem 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+            
+            /* Hero */
+            .hero {
+                min-height: 90vh;
+                padding-top: 80px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            /* Story Section - GESTACKT */
             .story-section-with-animation {
                 min-height: auto !important;
+                padding: 3rem 0;
             }
             
             .story-animation-container {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-                padding: 2rem 1.5rem !important;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                padding: 0 1.5rem;
             }
             
             .jacket-animation-sticky {
-                position: relative !important;
-                top: 0 !important;
-                height: 40vh !important;
-                margin: 0 auto 2rem auto !important;
+                position: relative;
+                top: 0;
+                height: 50vh;
+                order: 1;
+                margin: 0 auto;
             }
             
             .jacket-canvas-side {
-                max-width: 250px !important;
-                margin: 0 auto !important;
+                max-width: 280px;
+                margin: 0 auto;
             }
             
             .story-content-scroll {
-                padding-top: 0 !important;
+                order: 2;
+                padding: 0;
             }
             
-            /* Sketches gestackt */
+            .story-content-scroll h2 {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .story-content-scroll p {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+            
+            .quote-box {
+                margin-top: 2rem;
+                padding: 2rem 1.5rem;
+            }
+            
+            /* Sketch Gallery - GESTACKT */
+            .sketch-section {
+                padding: 4rem 0;
+            }
+            
             .sketch-grid {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-                max-width: 500px !important;
-                margin: 0 auto !important;
+                display: flex;
+                flex-direction: column;
+                gap: 3rem;
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 0 1.5rem;
+            }
+            
+            .sketch-item {
+                width: 100%;
+            }
+            
+            .sketch-image {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+            
+            /* Products Grid */
+            .products-grid {
+                grid-template-columns: 1fr;
+                padding: 0 1.5rem;
+            }
+            
+            /* Section Headers */
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -2402,8 +2406,9 @@
             const featureList = document.getElementById('featureList');
 
             // Set image
-            if (selectedProduct.hasSketch && selectedProduct.sketchImage) {
-                modalImageSection.innerHTML = `<img src="${selectedProduct.sketchImage}" alt="${selectedProduct.name}">`;
+            if (selectedProduct.hasSketch) {
+                const imageSrc = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='20' font-family='Arial'%3E${selectedProduct.sketchPlaceholder}%3C/text%3E%3C/svg%3E`;
+                modalImageSection.innerHTML = `<img src="${imageSrc}" alt="${selectedProduct.name}">`;
             } else {
                 modalImageSection.innerHTML = `
                     <div class="product-image" style="background: linear-gradient(135deg, ${selectedProduct.color}22 0%, ${selectedProduct.color}44 100%); font-size: 8rem; border-radius: 20px;">
@@ -2722,26 +2727,15 @@
                 const scrollPos = window.scrollY;
                 const viewportHeight = window.innerHeight;
 
-                // Berechne wann die Jacke die richtige Position erreicht hat
-                const jacketStopPosition = sectionTop + viewportHeight * 0.1;
-                
-                // Phase 1: Scrolle bis Jacke an richtiger Position ist (Frame 1 bleibt)
-                if (scrollPos < jacketStopPosition) {
-                    // Alle Frames ausblenden außer Frame 1
-                    jacketFrames.forEach(frame => frame.classList.remove('active'));
-                    return;
-                }
-                
-                // Phase 2: Jacke ist an Position, jetzt füllt sie sich beim Scrollen
-                const animationStart = jacketStopPosition;
-                const animationEnd = sectionTop + sectionHeight - viewportHeight;
-                const animationProgress = (scrollPos - animationStart) / (animationEnd - animationStart);
-                const progress = Math.max(0, Math.min(1, animationProgress));
-                
-                // Berechne welcher Frame gezeigt werden soll
+                // Calculate progress (0 to 1)
+                const scrollStart = sectionTop - viewportHeight / 2;
+                const scrollEnd = sectionTop + sectionHeight - viewportHeight;
+                const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
+
+                // Calculate current frame (1 to totalFrames)
                 const currentFrame = Math.floor(progress * totalFrames);
-                
-                // Zeige Frames bis zum aktuellen Frame
+
+                // Show the appropriate frame
                 jacketFrames.forEach((frame, index) => {
                     if (index < currentFrame) {
                         frame.classList.add('active');

@@ -410,7 +410,7 @@
         @media (max-width: 1024px) {
             .story-animation-container {
             display: grid;
-            grid-template-columns: 40% 60%;
+            grid-template-columns: 1fr;
             gap: 4rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -419,9 +419,9 @@
         }
 
             .jacket-animation-sticky {
-            position: sticky;
-            top: 100px;
-            height: 70vh;
+            position: relative;
+            top: 0;
+            height: 40vh;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -433,7 +433,7 @@
             }
 
             .story-content-scroll {
-            padding-top: 100px;
+            padding-top: 0;
             padding-bottom: 2rem;
         }
         }
@@ -1643,7 +1643,7 @@
         @media (max-width: 1024px) {
             .story-animation-container {
             display: grid;
-            grid-template-columns: 40% 60%;
+            grid-template-columns: 1fr;
             gap: 4rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -1652,9 +1652,9 @@
         }
 
             .jacket-animation-sticky {
-            position: sticky;
-            top: 100px;
-            height: 70vh;
+            position: relative;
+            top: 0;
+            height: 40vh;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -1666,14 +1666,14 @@
             }
 
             .story-content-scroll {
-            padding-top: 100px;
+            padding-top: 0;
             padding-bottom: 2rem;
         }
         }
 
             .sketch-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr;
             gap: 3rem;
             max-width: 1400px;
             margin: 0 auto;

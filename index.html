@@ -2703,7 +2703,6 @@
         if (storySection) {
             const jacketFrames = document.querySelectorAll('.jacket-frame[data-frame]');
             const totalFrames = jacketFrames.length;
-            const isMobile = window.innerWidth <= 1024;
 
             window.addEventListener('scroll', () => {
                 const sectionTop = storySection.offsetTop;
@@ -2711,35 +2710,33 @@
                 const scrollPos = window.scrollY;
                 const viewportHeight = window.innerHeight;
 
-                if (isMobile) {
-                    // Mobile: Animation startet früher, damit Jacke über Headline stoppt
-                    const scrollStart = sectionTop - viewportHeight * 0.3;
-                    const scrollEnd = sectionTop + sectionHeight - viewportHeight;
-                    const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
-                    const currentFrame = Math.floor(progress * totalFrames);
-
-                    jacketFrames.forEach((frame, index) => {
-                        if (index < currentFrame) {
-                            frame.classList.add('active');
-                        } else {
-                            frame.classList.remove('active');
-                        }
-                    });
-                } else {
-                    // Desktop: Animation startet wenn Headline auf richtiger Höhe ist
-                    const scrollStart = sectionTop - viewportHeight * 0.4;
-                    const scrollEnd = sectionTop + sectionHeight - viewportHeight * 1.2;
-                    const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
-                    const currentFrame = Math.floor(progress * totalFrames);
-
-                    jacketFrames.forEach((frame, index) => {
-                        if (index < currentFrame) {
-                            frame.classList.add('active');
-                        } else {
-                            frame.classList.remove('active');
-                        }
-                    });
+                // Berechne wann die Jacke die richtige Position erreicht hat
+                const jacketStopPosition = sectionTop + viewportHeight * 0.2;
+                
+                // Phase 1: Scrolle bis Jacke an richtiger Position ist (Frame 1 bleibt)
+                if (scrollPos < jacketStopPosition) {
+                    // Alle Frames ausblenden außer Frame 1
+                    jacketFrames.forEach(frame => frame.classList.remove('active'));
+                    return;
                 }
+                
+                // Phase 2: Jacke ist an Position, jetzt füllt sie sich beim Scrollen
+                const animationStart = jacketStopPosition;
+                const animationEnd = sectionTop + sectionHeight - viewportHeight;
+                const animationProgress = (scrollPos - animationStart) / (animationEnd - animationStart);
+                const progress = Math.max(0, Math.min(1, animationProgress));
+                
+                // Berechne welcher Frame gezeigt werden soll
+                const currentFrame = Math.floor(progress * totalFrames);
+                
+                // Zeige Frames bis zum aktuellen Frame
+                jacketFrames.forEach((frame, index) => {
+                    if (index < currentFrame) {
+                        frame.classList.add('active');
+                    } else {
+                        frame.classList.remove('active');
+                    }
+                });
             });
         }
 

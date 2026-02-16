@@ -1715,16 +1715,61 @@
         
     
         @media (max-width: 768px) {
-            /* NUR Sketches nebeneinander auf Mobile */
-            .sketch-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 1rem !important;
-                max-width: 600px !important;
+            /* Story Section - Animation ÜBER Text */
+            .story-section-with-animation {
+                min-height: auto !important;
+            }
+            
+            .story-animation-container {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                padding: 2rem 1.5rem !important;
+            }
+            
+            /* Animation OBEN */
+            .jacket-animation-sticky {
+                position: relative !important;
+                top: 0 !important;
+                height: 50vh !important;
+                margin: 0 auto 2rem auto !important;
+            }
+            
+            .jacket-canvas-side {
+                max-width: 250px !important;
                 margin: 0 auto !important;
             }
             
+            /* Text UNTEN */
+            .story-content-scroll {
+                padding-top: 0 !important;
+                order: 2 !important;
+            }
+            
+            .story-content-scroll h2 {
+                font-size: 2rem !important;
+                text-align: left !important;
+            }
+            
+            .story-content-scroll p {
+                font-size: 1rem !important;
+            }
+            
+            /* Sketches GESTACKT (untereinander) */
+            .sketch-grid {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+                max-width: 500px !important;
+                margin: 0 auto !important;
+                padding: 0 1.5rem !important;
+            }
+            
+            .sketch-item {
+                max-width: 100% !important;
+            }
+            
             .sketch-image {
-                max-width: 150px !important;
+                max-width: 200px !important;
+                margin: 0 auto !important;
             }
         }
         

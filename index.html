@@ -1714,66 +1714,57 @@
     
         
     
+        
+        /* MOBILE ONLY - ALLES SINGLE COLUMN */
         @media (max-width: 768px) {
-            /* Story Section - Animation ÜBER Text */
-            .story-section-with-animation {
-                min-height: auto !important;
-            }
-            
-            .story-animation-container {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
+            body .story-animation-container {
+                display: flex !important;
+                flex-direction: column !important;
                 padding: 2rem 1.5rem !important;
             }
             
-            /* Animation OBEN */
-            .jacket-animation-sticky {
+            body .jacket-animation-sticky {
                 position: relative !important;
                 top: 0 !important;
-                height: 50vh !important;
-                margin: 0 auto 2rem auto !important;
+                height: 40vh !important;
+                width: 100% !important;
+                margin-bottom: 2rem !important;
             }
             
-            .jacket-canvas-side {
+            body .jacket-canvas-side {
                 max-width: 250px !important;
                 margin: 0 auto !important;
             }
             
-            /* Text UNTEN */
-            .story-content-scroll {
-                padding-top: 0 !important;
-                order: 2 !important;
+            body .story-content-scroll {
+                padding: 0 !important;
+                width: 100% !important;
             }
             
-            .story-content-scroll h2 {
-                font-size: 2rem !important;
-                text-align: left !important;
+            body .story-content-scroll h2 {
+                font-size: 1.8rem !important;
             }
             
-            .story-content-scroll p {
-                font-size: 1rem !important;
-            }
-            
-            /* Sketches GESTACKT (untereinander) */
-            .sketch-grid {
-                grid-template-columns: 1fr !important;
+            body .sketch-grid {
+                display: flex !important;
+                flex-direction: column !important;
                 gap: 2rem !important;
-                max-width: 500px !important;
+                max-width: 450px !important;
                 margin: 0 auto !important;
                 padding: 0 1.5rem !important;
             }
             
-            .sketch-item {
+            body .sketch-item {
+                width: 100% !important;
                 max-width: 100% !important;
             }
             
-            .sketch-image {
-                max-width: 200px !important;
-                margin: 0 auto !important;
+            body .section-header h2 {
+                font-size: 2rem !important;
             }
         }
-        
-        </style>
+
+    </style>
 </head>
 <body>
     <!-- Navigation -->

@@ -2399,9 +2399,8 @@
             const featureList = document.getElementById('featureList');
 
             // Set image
-            if (selectedProduct.hasSketch) {
-                const imageSrc = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 600'%3E%3Crect fill='%23f5f5f5' width='400' height='600'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%234A5859' font-size='20' font-family='Arial'%3E${selectedProduct.sketchPlaceholder}%3C/text%3E%3C/svg%3E`;
-                modalImageSection.innerHTML = `<img src="${imageSrc}" alt="${selectedProduct.name}">`;
+            if (selectedProduct.hasSketch && selectedProduct.sketchImage) {
+                modalImageSection.innerHTML = `<img src="${selectedProduct.sketchImage}" alt="${selectedProduct.name}">`;
             } else {
                 modalImageSection.innerHTML = `
                     <div class="product-image" style="background: linear-gradient(135deg, ${selectedProduct.color}22 0%, ${selectedProduct.color}44 100%); font-size: 8rem; border-radius: 20px;">

@@ -410,7 +410,7 @@
         @media (max-width: 1024px) {
             .story-animation-container {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 40% 60%;
             gap: 4rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -1643,7 +1643,7 @@
         @media (max-width: 1024px) {
             .story-animation-container {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 40% 60%;
             gap: 4rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -1673,7 +1673,7 @@
 
             .sketch-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(2, 1fr);
             gap: 3rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -1716,51 +1716,25 @@
     
         
         /* MOBILE ONLY - ALLES SINGLE COLUMN */
+
+    
         @media (max-width: 768px) {
-            body .story-animation-container {
-                display: flex !important;
-                flex-direction: column !important;
-                padding: 2rem 1.5rem !important;
+            .story-animation-container {
+                grid-template-columns: 1fr !important;
             }
             
-            body .jacket-animation-sticky {
+            .jacket-animation-sticky {
                 position: relative !important;
                 top: 0 !important;
                 height: 40vh !important;
-                width: 100% !important;
-                margin-bottom: 2rem !important;
             }
             
-            body .jacket-canvas-side {
-                max-width: 250px !important;
-                margin: 0 auto !important;
+            .story-content-scroll {
+                padding-top: 0 !important;
             }
             
-            body .story-content-scroll {
-                padding: 0 !important;
-                width: 100% !important;
-            }
-            
-            body .story-content-scroll h2 {
-                font-size: 1.8rem !important;
-            }
-            
-            body .sketch-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                gap: 2rem !important;
-                max-width: 450px !important;
-                margin: 0 auto !important;
-                padding: 0 1.5rem !important;
-            }
-            
-            body .sketch-item {
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            
-            body .section-header h2 {
-                font-size: 2rem !important;
+            .sketch-grid {
+                grid-template-columns: 1fr !important;
             }
         }
 

@@ -2447,7 +2447,25 @@
             const grid = document.getElementById('productsGrid');
             const filteredProducts = currentFilter === 'alle' 
                 ? products 
-                : products.filter(p => p.category.toLowerCase() === currentFilter);
+                : products.filter(p => {
+                    const n = p.name.toLowerCase();
+                    switch(currentFilter) {
+                        case 'neu':
+                            return n === 'frida greenery' || n === 'frida türkis' || n === 'lykke camouflage';
+                        case 'regen':
+                            return n.includes('hedda');
+                        case 'softshell':
+                            return n.includes('gurri') || n.includes('frida') || n.includes('birka') || n.includes('halva') || n.includes('lykke');
+                        case 'gefuettert':
+                            return n === 'hedda ice gelb' || n === 'frida türkis' || n === 'lykke camouflage';
+                        case 'lang':
+                            return n.includes('hedda') || n.includes('gurri') || n.includes('birka') || n.includes('halva');
+                        case 'kurz':
+                            return n.includes('frida') || n === 'lykke camouflage';
+                        default:
+                            return true;
+                    }
+                });
 
             grid.innerHTML = filteredProducts.map((product, index) => {
                 const imageSrc = product.hasSketch 

@@ -2743,25 +2743,53 @@
 
         function quickAddToCart(productId) {
             const product = products.find(p => p.id === productId);
-            const defaultSize = product.sizes[2] || product.sizes[0];
-
-            const existingItem = cart.find(item => 
-                item.id === productId && item.size === defaultSize
-            );
-
+            
+            // Zeige Größen Popup
+            const popup = document.getElementById('sizePickerPopup');
+            const overlay = document.getElementById('sizePickerOverlay');
+            const title = document.getElementById('sizePickerTitle');
+            const options = document.getElementById('sizePickerOptions');
+            
+            title.textContent = product.name;
+            options.innerHTML = product.sizes.map(size => `
+                <button onclick="selectSizeAndAdd(${productId}, '${size}')" style="
+                    padding: 0.6rem 1.1rem;
+                    border: 2px solid #e0e0e0;
+                    border-radius: 10px;
+                    background: white;
+                    font-size: 1rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s;
+                " onmouseover="this.style.borderColor='#2a2a2a'; this.style.background='#2a2a2a'; this.style.color='white';"
+                   onmouseout="this.style.borderColor='#e0e0e0'; this.style.background='white'; this.style.color='black';">
+                    ${size}
+                </button>
+            `).join('');
+            
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+        
+        function selectSizeAndAdd(productId, size) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId && item.size === size);
+            
             if (existingItem) {
                 existingItem.quantity++;
             } else {
-                cart.push({ 
-                    ...product, 
-                    size: defaultSize,
-                    quantity: 1 
-                });
+                cart.push({ ...product, size: size, quantity: 1 });
             }
-
+            
             saveCartToStorage();
             updateCart();
+            closeSizePicker();
             toggleCart(true);
+        }
+        
+        function closeSizePicker() {
+            document.getElementById('sizePickerPopup').style.display = 'none';
+            document.getElementById('sizePickerOverlay').style.display = 'none';
         }
 
         // Cart Management
@@ -3097,5 +3125,17 @@
             }
         });
     </script>
+
+    <!-- Schnellkauf Größen Popup -->
+    <div id="sizePickerOverlay" onclick="closeSizePicker()" style="display:none; position:fixed; inset:0; z-index:9998; background:rgba(0,0,0,0.3);"></div>
+    <div id="sizePickerPopup" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:white; border-radius:20px 20px 0 0; padding:1.5rem; box-shadow:0 -4px 30px rgba(0,0,0,0.15);">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <h3 id="sizePickerTitle" style="font-size:1.1rem; font-weight:700;"></h3>
+            <button onclick="closeSizePicker()" style="background:none; border:none; font-size:1.5rem; cursor:pointer; color:#666;">×</button>
+        </div>
+        <p style="font-size:0.85rem; color:#666; margin-bottom:1rem;">Größe wählen:</p>
+        <div id="sizePickerOptions" style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem;"></div>
+    </div>
+
 </body>
 </html>

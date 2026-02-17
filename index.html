@@ -2724,16 +2724,23 @@
                 const sectionHeight = storySection.offsetHeight;
                 const scrollPos = window.scrollY;
                 const viewportHeight = window.innerHeight;
+                const isMobile = window.innerWidth <= 768;
 
-                // Calculate progress (0 to 1)
-                const scrollStart = sectionTop - viewportHeight / 2;
-                const scrollEnd = sectionTop + sectionHeight - viewportHeight;
-                const progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
+                let progress;
+                if (isMobile) {
+                    // Mobile: Animation läuft während der Text gescrollt wird
+                    const scrollStart = sectionTop - viewportHeight * 0.5;
+                    const scrollEnd = sectionTop + sectionHeight;
+                    progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
+                } else {
+                    // Desktop: wie vorher
+                    const scrollStart = sectionTop - viewportHeight / 2;
+                    const scrollEnd = sectionTop + sectionHeight - viewportHeight;
+                    progress = Math.max(0, Math.min(1, (scrollPos - scrollStart) / (scrollEnd - scrollStart)));
+                }
 
-                // Calculate current frame (1 to totalFrames)
                 const currentFrame = Math.floor(progress * totalFrames);
 
-                // Show the appropriate frame
                 jacketFrames.forEach((frame, index) => {
                     if (index < currentFrame) {
                         frame.classList.add('active');

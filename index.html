@@ -326,7 +326,7 @@
         
         /* Family Story Section with Animation */
         .story-section-with-animation {
-            min-height: 200vh;
+            min-height: 120vh;
             position: relative;
             background: white;
             padding: 0;
@@ -1674,10 +1674,6 @@
                 overflow-x: hidden;
             }
             
-            .product-price {
-                font-size: 1.1rem !important;
-            }
-            
             /* Navigation */
             nav {
                 padding: 1rem 1.5rem;
@@ -1807,41 +1803,7 @@
             }
         }
     
-        /* Shop Section Clouds */
-        .products-section {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .shop-clouds {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .shop-cloud-1 { top: 3%;  width: 500px; height: 250px; animation: floatCloud 80s linear infinite; animation-delay: -5s; }
-        .shop-cloud-2 { top: 15%; width: 600px; height: 300px; animation: floatCloud 100s linear infinite; animation-delay: -20s; }
-        .shop-cloud-3 { top: 27%; width: 450px; height: 225px; animation: floatCloud 90s linear infinite; animation-delay: -35s; }
-        .shop-cloud-4 { top: 39%; width: 550px; height: 275px; animation: floatCloud 85s linear infinite; animation-delay: -50s; }
-        .shop-cloud-5 { top: 51%; width: 500px; height: 250px; animation: floatCloud 95s linear infinite; animation-delay: -10s; }
-        .shop-cloud-6 { top: 63%; width: 600px; height: 300px; animation: floatCloud 75s linear infinite; animation-delay: -30s; }
-        .shop-cloud-7 { top: 72%; width: 480px; height: 240px; animation: floatCloud 110s linear infinite; animation-delay: -55s; }
-        .shop-cloud-8 { top: 82%; width: 520px; height: 260px; animation: floatCloud 88s linear infinite; animation-delay: -15s; }
-        .shop-cloud-9 { top: 92%; width: 570px; height: 285px; animation: floatCloud 105s linear infinite; animation-delay: -45s; }
-        
-        .products-section .section-header,
-        .products-section .search-container,
-        .products-section .filter-tabs,
-        .products-section .products-grid {
-            position: relative;
-            z-index: 1;
-        }
-
-
+        /* MOBILE HAMBURGER MENU */
         .mobile-nav {
             display: none;
             align-items: center;
@@ -1948,7 +1910,23 @@
                 gap: 2rem !important;
             }
         }
-    </style>
+    
+        /* Shop Clouds */
+        .products-section { position: relative; overflow: hidden; }
+        .shop-clouds { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .products-section .section-header, .products-section .search-container,
+        .products-section .filter-tabs, .products-section .products-grid { position: relative; z-index: 1; }
+        .shop-cloud-1 { top: 3%;  width: 500px; height: 250px; animation: floatCloud 80s  linear infinite; animation-delay: -5s;  }
+        .shop-cloud-2 { top: 15%; width: 600px; height: 300px; animation: floatCloud 100s linear infinite; animation-delay: -20s; }
+        .shop-cloud-3 { top: 27%; width: 450px; height: 225px; animation: floatCloud 90s  linear infinite; animation-delay: -35s; }
+        .shop-cloud-4 { top: 39%; width: 550px; height: 275px; animation: floatCloud 85s  linear infinite; animation-delay: -50s; }
+        .shop-cloud-5 { top: 51%; width: 500px; height: 250px; animation: floatCloud 95s  linear infinite; animation-delay: -10s; }
+        .shop-cloud-6 { top: 63%; width: 600px; height: 300px; animation: floatCloud 75s  linear infinite; animation-delay: -30s; }
+        .shop-cloud-7 { top: 72%; width: 480px; height: 240px; animation: floatCloud 110s linear infinite; animation-delay: -55s; }
+        .shop-cloud-8 { top: 82%; width: 520px; height: 260px; animation: floatCloud 88s  linear infinite; animation-delay: -15s; }
+        .shop-cloud-9 { top: 92%; width: 570px; height: 285px; animation: floatCloud 105s linear infinite; animation-delay: -45s; }
+
+</style>
 </head>
 <body>
     <!-- Navigation -->
@@ -2135,7 +2113,6 @@
 
     <!-- Products Section -->
     <section class="products-section" id="shop">
-        <!-- Floating Clouds -->
         <div class="floating-clouds shop-clouds">
             <div class="floating-cloud shop-cloud-1"><img src="images/cloud2.png" alt=""></div>
             <div class="floating-cloud shop-cloud-2"><img src="images/cloud3.png" alt=""></div>
@@ -2245,10 +2222,9 @@
                 <h4>Shop</h4>
                 <ul class="footer-links">
                     <li><a href="#shop">Alle Produkte</a></li>
-                    <li><a href="#shop">Alle Jacken</a></li>
-                    <li><a href="#shop">Regenjacken</a></li>
-                    <li><a href="#shop">Softshell</a></li>
-                    <li><a href="#shop">Gefüttert</a></li>
+                    <li><a href="#shop">Jacken</a></li>
+                    <li><a href="#shop">Stiefel</a></li>
+                    <li><a href="#shop">Accessoires</a></li>
                     <li><a href="#" onclick="showSizeGuide(); return false;">Größentabelle</a></li>
                 </ul>
             </div>
@@ -2445,10 +2421,10 @@
     <script>
         // Products Data
         const products = [
-            {id:1,name:'Hedda Rot',category:'regenjacke',description:'Die klassische Regenjacke',fullDescription:'Kräftiges Rot mit butterweicher Haptik und Karomuster-Futter.',price:99.90,emoji:'🔴',color:'#E85D5D',badge:'Klassiker',hasSketch:true,sketchImage:'images/trans-hedda-rot.png',rating:4.9,reviewCount:89,sizes:['36','38','40','42','44','46','48'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
-            {id:2,name:'Hedda Gelb',category:'regenjacke',description:'Sonnenblumengelb',fullDescription:'In strahlendem Gelb mit Karomuster-Innenfutter.',price:99.90,emoji:'🟡',color:'#FFD147',badge:'Klassiker',hasSketch:true,sketchImage:'images/trans-hedda-gelb.png',rating:4.8,reviewCount:67,sizes:['38','42','44','46'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
-            {id:3,name:'Hedda Schwarz',category:'regenjacke',description:'Zeitlos elegant',fullDescription:'Schwarz wie eine Sonnenfinsternis mit Karomuster-Futter.',price:99.90,emoji:'⚫',color:'#2A2A2A',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-schwarz.png',rating:4.7,reviewCount:93,sizes:['36','38','40','42','44','46','48'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
-            {id:4,name:'Hedda Orange',category:'regenjacke',description:'Wie ein Sonnenuntergang',fullDescription:'Kräftiges Orange mit Karomuster-Futter.',price:99.90,emoji:'🟠',color:'#FF8C42',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-orange.png',rating:4.6,reviewCount:45,sizes:['36','38','40','42','44','46'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:5,name:'Hedda Ice Gelb',category:'gefuettert',description:'Gefüttert für kalte Tage',fullDescription:'Mit weichem Teddyfell bis in die Fingerspitzen.',price:99.90,emoji:'🟡',color:'#FFD147',badge:'Gefüttert',hasSketch:true,sketchImage:'images/trans-hedda-ice.png',rating:4.8,reviewCount:34,sizes:['36','38','40','42','44'],features:['Teddyfell-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:6,name:'Gurri Navyblau',category:'softshell',description:'Unser Signature Model',fullDescription:'Mit weißen Punkten und rotem Fleece. Fällt größer aus!',price:99.90,emoji:'🔵',color:'#2C3E50',badge:'Signature',hasSketch:true,sketchImage:'images/trans-gurri-navyblau.png',rating:4.9,reviewCount:127,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:7,name:'Gurri Rot',category:'softshell',description:'Wie ein Fliegenpilz',fullDescription:'Rot mit weißen Punkten. Fällt größer aus!',price:99.90,emoji:'🔴',color:'#E85D5D',badge:null,hasSketch:true,sketchImage:'images/trans-gurri-rot.png',rating:4.7,reviewCount:89,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:8,name:'Gurri Schwarz',category:'softshell',description:'Zeitlose Coolness',fullDescription:'Schwarz mit weißen Punkten. Fällt größer aus!',price:99.90,emoji:'⚫',color:'#2A2A2A',badge:null,hasSketch:true,sketchImage:'images/trans-gurri-schwarz.png',rating:4.8,reviewCount:93,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:9,name:'Frida Greenery',category:'softshell',description:'Die poppige Aufmüpfige',fullDescription:'Pantone des Jahres mit schneeweißem Fleece.',price:99.00,emoji:'🟢',color:'#88B04B',badge:null,hasSketch:true,sketchImage:'images/trans-frida-gruen.png',rating:4.6,reviewCount:45,sizes:['36','38','40','42'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:10,name:'Frida Türkis',category:'softshell',description:'Die Jüngste',fullDescription:'Spektakuläres Türkis mit hasselnussfarbenem Fleece.',price:99.00,emoji:'🔵',color:'#40E0D0',badge:null,hasSketch:true,sketchImage:'images/trans-frida-tuerkis.png',rating:4.7,reviewCount:38,sizes:['36','38','40','42','44'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:11,name:'Birka Blau',category:'softshell',description:'Wie ein Waldspaziergang',fullDescription:'Mit Birkenblättern und mausgrauem Fleece. Fällt größer aus!',price:99.90,emoji:'🔵',color:'#5D9BE8',badge:null,hasSketch:true,sketchImage:'images/trans-birka-blau.png',rating:4.6,reviewCount:56,sizes:['36','38','40','42','44','46'],features:['Softshell','Birkenblätter','Wolkenförmige Kordelstopper']},{id:12,name:'Halva Navyblau',category:'lang',description:'Für echte Nordgirls',fullDescription:'Mit Anker-Muster und hellblauem Fleece. Fällt größer aus!',price:99.90,emoji:'⚓',color:'#2C3E50',badge:null,hasSketch:true,sketchImage:'images/trans-halva-navyblau.png',rating:4.7,reviewCount:67,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Anker','Wolkenförmige Kordelstopper']},{id:13,name:'Lykke Camouflage',category:'gefuettert',description:'Snow Camouflage',fullDescription:'Mit Teddy-Futter und orangen Details.',price:99.00,emoji:'❄️',color:'#A9A9A9',badge:null,hasSketch:true,sketchImage:'images/trans-lykke-camouflage.png',rating:4.5,reviewCount:29,sizes:['36','38','40','42','44'],features:['Softshell','Camouflage','Wolkenförmige Kordelstopper']}];
+            {id:1,name:'Hedda Rot',category:'Jacken',description:'Die klassische Regenjacke',fullDescription:'Kräftiges Rot mit butterweicher Haptik und Karomuster-Futter.',price:99.90,emoji:'🔴',color:'#E85D5D',badge:'Klassiker',hasSketch:true,sketchImage:'images/trans-hedda-rot.png',rating:4.9,reviewCount:89,sizes:['36','38','40','42','44','46','48'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
+            {id:2,name:'Hedda Gelb',category:'Jacken',description:'Sonnenblumengelb',fullDescription:'In strahlendem Gelb mit Karomuster-Innenfutter.',price:99.90,emoji:'🟡',color:'#FFD147',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-gelb.png',rating:4.8,reviewCount:67,sizes:['38','42','44','46'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
+            {id:3,name:'Hedda Schwarz',category:'Jacken',description:'Zeitlos elegant',fullDescription:'Schwarz wie eine Sonnenfinsternis mit Karomuster-Futter.',price:99.90,emoji:'⚫',color:'#2A2A2A',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-schwarz.png',rating:4.7,reviewCount:93,sizes:['36','38','40','42','44','46','48'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
+            {id:4,name:'Hedda Orange',category:'Jacken',description:'Wie ein Sonnenuntergang',fullDescription:'Kräftiges Orange mit Karomuster-Futter.',price:99.90,emoji:'🟠',color:'#FF8C42',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-orange.png',rating:4.6,reviewCount:45,sizes:['36','38','40','42','44','46'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:5,name:'Hedda Ice Gelb',category:'Jacken',description:'Gefüttert für kalte Tage',fullDescription:'Mit weichem Teddyfell bis in die Fingerspitzen.',price:99.90,emoji:'🟡',color:'#FFD147',badge:'Gefüttert',hasSketch:true,sketchImage:'images/trans-hedda-ice.png',rating:4.8,reviewCount:34,sizes:['36','38','40','42','44'],features:['Teddyfell-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:6,name:'Gurri Navyblau',category:'Jacken',description:'Unser Signature Model',fullDescription:'Mit weißen Punkten und rotem Fleece. Fällt größer aus!',price:99.90,emoji:'🔵',color:'#2C3E50',badge:'Signature',hasSketch:true,sketchImage:'images/trans-gurri-navyblau.png',rating:4.9,reviewCount:127,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:7,name:'Gurri Rot',category:'Jacken',description:'Wie ein Fliegenpilz',fullDescription:'Rot mit weißen Punkten. Fällt größer aus!',price:99.90,emoji:'🔴',color:'#E85D5D',badge:null,hasSketch:true,sketchImage:'images/trans-gurri-rot.png',rating:4.7,reviewCount:89,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:8,name:'Gurri Schwarz',category:'Jacken',description:'Zeitlose Coolness',fullDescription:'Schwarz mit weißen Punkten. Fällt größer aus!',price:99.90,emoji:'⚫',color:'#2A2A2A',badge:null,hasSketch:true,sketchImage:'images/trans-gurri-schwarz.png',rating:4.8,reviewCount:93,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:9,name:'Frida Greenery',category:'Jacken',description:'Die poppige Aufmüpfige',fullDescription:'Pantone des Jahres mit schneeweißem Fleece.',price:99.00,emoji:'🟢',color:'#88B04B',badge:null,hasSketch:true,sketchImage:'images/trans-frida-gruen.png',rating:4.6,reviewCount:45,sizes:['36','38','40','42'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:10,name:'Frida Türkis',category:'Jacken',description:'Die Jüngste',fullDescription:'Spektakuläres Türkis mit hasselnussfarbenem Fleece.',price:99.00,emoji:'🔵',color:'#40E0D0',badge:null,hasSketch:true,sketchImage:'images/trans-frida-tuerkis.png',rating:4.7,reviewCount:38,sizes:['36','38','40','42','44'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:11,name:'Birka Blau',category:'Jacken',description:'Wie ein Waldspaziergang',fullDescription:'Mit Birkenblättern und mausgrauem Fleece. Fällt größer aus!',price:99.90,emoji:'🔵',color:'#5D9BE8',badge:null,hasSketch:true,sketchImage:'images/trans-birka-blau.png',rating:4.6,reviewCount:56,sizes:['36','38','40','42','44','46'],features:['Softshell','Birkenblätter','Wolkenförmige Kordelstopper']},{id:12,name:'Halva Navyblau',category:'Jacken',description:'Für echte Nordgirls',fullDescription:'Mit Anker-Muster und hellblauem Fleece. Fällt größer aus!',price:99.90,emoji:'⚓',color:'#2C3E50',badge:null,hasSketch:true,sketchImage:'images/trans-halva-navyblau.png',rating:4.7,reviewCount:67,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Anker','Wolkenförmige Kordelstopper']},{id:13,name:'Lykke Camouflage',category:'Jacken',description:'Snow Camouflage',fullDescription:'Mit Teddy-Futter und orangen Details.',price:99.00,emoji:'❄️',color:'#A9A9A9',badge:null,hasSketch:true,sketchImage:'images/trans-lykke-camouflage.png',rating:4.5,reviewCount:29,sizes:['36','38','40','42','44'],features:['Softshell','Camouflage','Wolkenförmige Kordelstopper']}];
 
         // State Management
         let cart = [];

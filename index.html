@@ -2058,7 +2058,7 @@
         </div>
         <div class="sketch-grid">
             <!-- Gurri Jacket -->
-            <div class="sketch-item" onclick="scrollToProduct(2)">
+            <div class="sketch-item" onclick="scrollToShopFilter('softshell')">
                 <img src="images/gurri-sketch.png" alt="Gurri Jacket Sketch" class="sketch-image">
                 <div class="sketch-info">
                     <h3>Gurri</h3>
@@ -2074,7 +2074,7 @@
             </div>
 
             <!-- Hedda Jacket -->
-            <div class="sketch-item" onclick="scrollToProduct(1)">
+            <div class="sketch-item" onclick="scrollToShopFilter('regen')">
                 <img src="images/hedda-sketch.png" alt="Hedda Jacket Sketch" class="sketch-image">
                 <div class="sketch-info">
                     <h3>Hedda</h3>
@@ -2421,7 +2421,7 @@
     <script>
         // Products Data
         const products = [
-            {id:1,name:'Hedda Rot',category:'Jacken',description:'Die klassische Regenjacke',fullDescription:'Kräftiges Rot mit butterweicher Haptik und Karomuster-Futter.',price:99.90,emoji:'🔴',color:'#E85D5D',badge:'Klassiker',hasSketch:true,sketchImage:'images/trans-hedda-rot.png',rating:4.9,reviewCount:89,sizes:['36','38','40','42','44','46','48'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
+            {id:1,name:'Hedda Rot',category:'Jacken',description:'Die klassische Regenjacke',fullDescription:'Kräftiges Rot mit butterweicher Haptik und Karomuster-Futter.',price:99.90,emoji:'🔴',color:'#E85D5D',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-rot.png',rating:4.9,reviewCount:89,sizes:['36','38','40','42','44','46','48'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
             {id:2,name:'Hedda Gelb',category:'Jacken',description:'Sonnenblumengelb',fullDescription:'In strahlendem Gelb mit Karomuster-Innenfutter.',price:99.90,emoji:'🟡',color:'#FFD147',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-gelb.png',rating:4.8,reviewCount:67,sizes:['38','42','44','46'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
             {id:3,name:'Hedda Schwarz',category:'Jacken',description:'Zeitlos elegant',fullDescription:'Schwarz wie eine Sonnenfinsternis mit Karomuster-Futter.',price:99.90,emoji:'⚫',color:'#2A2A2A',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-schwarz.png',rating:4.7,reviewCount:93,sizes:['36','38','40','42','44','46','48'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},
             {id:4,name:'Hedda Orange',category:'Jacken',description:'Wie ein Sonnenuntergang',fullDescription:'Kräftiges Orange mit Karomuster-Futter.',price:99.90,emoji:'🟠',color:'#FF8C42',badge:null,hasSketch:true,sketchImage:'images/trans-hedda-orange.png',rating:4.6,reviewCount:45,sizes:['36','38','40','42','44','46'],features:['Wasserdicht','Karomuster-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:5,name:'Hedda Ice Gelb',category:'Jacken',description:'Gefüttert für kalte Tage',fullDescription:'Mit weichem Teddyfell bis in die Fingerspitzen.',price:99.90,emoji:'🟡',color:'#FFD147',badge:'Gefüttert',hasSketch:true,sketchImage:'images/trans-hedda-ice.png',rating:4.8,reviewCount:34,sizes:['36','38','40','42','44'],features:['Teddyfell-Futter','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:6,name:'Gurri Navyblau',category:'Jacken',description:'Unser Signature Model',fullDescription:'Mit weißen Punkten und rotem Fleece. Fällt größer aus!',price:99.90,emoji:'🔵',color:'#2C3E50',badge:'Signature',hasSketch:true,sketchImage:'images/trans-gurri-navyblau.png',rating:4.9,reviewCount:127,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper','2-Wege-Reißverschluss']},{id:7,name:'Gurri Rot',category:'Jacken',description:'Wie ein Fliegenpilz',fullDescription:'Rot mit weißen Punkten. Fällt größer aus!',price:99.90,emoji:'🔴',color:'#E85D5D',badge:null,hasSketch:true,sketchImage:'images/trans-gurri-rot.png',rating:4.7,reviewCount:89,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:8,name:'Gurri Schwarz',category:'Jacken',description:'Zeitlose Coolness',fullDescription:'Schwarz mit weißen Punkten. Fällt größer aus!',price:99.90,emoji:'⚫',color:'#2A2A2A',badge:null,hasSketch:true,sketchImage:'images/trans-gurri-schwarz.png',rating:4.8,reviewCount:93,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:9,name:'Frida Greenery',category:'Jacken',description:'Die poppige Aufmüpfige',fullDescription:'Pantone des Jahres mit schneeweißem Fleece.',price:99.00,emoji:'🟢',color:'#88B04B',badge:null,hasSketch:true,sketchImage:'images/trans-frida-gruen.png',rating:4.6,reviewCount:45,sizes:['36','38','40','42'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:10,name:'Frida Türkis',category:'Jacken',description:'Die Jüngste',fullDescription:'Spektakuläres Türkis mit hasselnussfarbenem Fleece.',price:99.00,emoji:'🔵',color:'#40E0D0',badge:null,hasSketch:true,sketchImage:'images/trans-frida-tuerkis.png',rating:4.7,reviewCount:38,sizes:['36','38','40','42','44'],features:['Softshell','Punkte','Wolkenförmige Kordelstopper']},{id:11,name:'Birka Blau',category:'Jacken',description:'Wie ein Waldspaziergang',fullDescription:'Mit Birkenblättern und mausgrauem Fleece. Fällt größer aus!',price:99.90,emoji:'🔵',color:'#5D9BE8',badge:null,hasSketch:true,sketchImage:'images/trans-birka-blau.png',rating:4.6,reviewCount:56,sizes:['36','38','40','42','44','46'],features:['Softshell','Birkenblätter','Wolkenförmige Kordelstopper']},{id:12,name:'Halva Navyblau',category:'Jacken',description:'Für echte Nordgirls',fullDescription:'Mit Anker-Muster und hellblauem Fleece. Fällt größer aus!',price:99.90,emoji:'⚓',color:'#2C3E50',badge:null,hasSketch:true,sketchImage:'images/trans-halva-navyblau.png',rating:4.7,reviewCount:67,sizes:['36','38','40','42','44','46','48'],features:['Softshell','Anker','Wolkenförmige Kordelstopper']},{id:13,name:'Lykke Camouflage',category:'Jacken',description:'Snow Camouflage',fullDescription:'Mit Teddy-Futter und orangen Details.',price:99.00,emoji:'❄️',color:'#A9A9A9',badge:null,hasSketch:true,sketchImage:'images/trans-lykke-camouflage.png',rating:4.5,reviewCount:29,sizes:['36','38','40','42','44'],features:['Softshell','Camouflage','Wolkenförmige Kordelstopper']}];
@@ -2904,6 +2904,22 @@
             setTimeout(() => {
                 openProductModal(productId);
             }, 800);
+        }
+
+        function scrollToShopFilter(filter) {
+            document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                // Aktiviere den richtigen Filter Button
+                document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.filter-button').forEach(btn => {
+                    if (btn.getAttribute('onclick').includes(filter)) {
+                        btn.classList.add('active');
+                    }
+                });
+                // Führe den Filter aus
+                currentFilter = filter;
+                renderProducts();
+            }, 600);
         }
 
         function scrollToTop() {

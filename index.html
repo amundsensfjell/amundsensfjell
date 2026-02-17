@@ -1807,7 +1807,55 @@
             }
         }
     
-        /* MOBILE HAMBURGER MENU */
+        /* Shop Section Clouds */
+        .products-section {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shop-clouds {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .shop-cloud-1 {
+            top: 5%;
+            width: 500px;
+            height: 250px;
+            animation: floatCloud 80s linear infinite;
+            animation-delay: -10s;
+        }
+        
+        .shop-cloud-2 {
+            top: 35%;
+            width: 600px;
+            height: 300px;
+            animation: floatCloud 100s linear infinite;
+            animation-delay: -40s;
+        }
+        
+        .shop-cloud-3 {
+            top: 70%;
+            width: 450px;
+            height: 225px;
+            animation: floatCloud 90s linear infinite;
+            animation-delay: -65s;
+        }
+        
+        .products-section .section-header,
+        .products-section .search-container,
+        .products-section .filter-tabs,
+        .products-section .products-grid {
+            position: relative;
+            z-index: 1;
+        }
+
+
         .mobile-nav {
             display: none;
             align-items: center;
@@ -2101,6 +2149,18 @@
 
     <!-- Products Section -->
     <section class="products-section" id="shop">
+        <!-- Floating Clouds -->
+        <div class="floating-clouds shop-clouds">
+            <div class="floating-cloud shop-cloud-1">
+                <img src="images/cloud2.png" alt="">
+            </div>
+            <div class="floating-cloud shop-cloud-2">
+                <img src="images/cloud3.png" alt="">
+            </div>
+            <div class="floating-cloud shop-cloud-3">
+                <img src="images/cloud1.png" alt="">
+            </div>
+        </div>
         <div class="section-header">
             <h2>Unsere Kollektion</h2>
             <p>Finde das Richtige für dich</p>

@@ -1802,6 +1802,114 @@
                 font-size: 1rem;
             }
         }
+    
+        /* MOBILE HAMBURGER MENU */
+        .mobile-nav {
+            display: none;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .mobile-icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+        
+        .hamburger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            justify-content: center;
+        }
+        
+        .hamburger-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--color-charcoal);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-dropdown {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: rgba(245, 241, 232, 0.98);
+            backdrop-filter: blur(10px);
+            flex-direction: column;
+            padding: 1rem 0;
+            z-index: 999;
+            border-bottom: 1px solid rgba(42,42,42,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .mobile-dropdown.open {
+            display: flex;
+        }
+        
+        .mobile-dropdown a {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color-charcoal);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(42,42,42,0.05);
+            transition: background 0.2s;
+        }
+        
+        .mobile-dropdown a:hover {
+            background: rgba(42,42,42,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none !important;
+            }
+            
+            .nav-icons {
+                display: none !important;
+            }
+            
+            .mobile-nav {
+                display: flex !important;
+            }
+            
+            .logo {
+                font-size: 1.1rem !important;
+                margin-right: auto !important;
+            }
+            
+            nav {
+                padding: 0.75rem 1rem !important;
+            }
+            
+            /* Footer fix */
+            .footer-brand {
+                min-width: 0 !important;
+                overflow: hidden !important;
+            }
+            
+            .footer-logo {
+                font-size: 1.2rem !important;
+                white-space: nowrap !important;
+                overflow: hidden !important;
+                text-overflow: ellipsis !important;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr !important;
+                gap: 2rem !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1814,6 +1922,23 @@
             <li><a href="#shop">Shop</a></li>
             <li><a href="#reviews">Bewertungen</a></li>
         </ul>
+        <!-- Mobile Hamburger Menu -->
+        <div class="mobile-nav">
+            <button class="mobile-icon-btn" onclick="toggleSearch()" title="Suche">🔍</button>
+            <button class="mobile-icon-btn" onclick="toggleWishlist()" title="Wunschliste">❤️</button>
+            <button class="hamburger-btn" onclick="toggleMobileMenu()" title="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div class="mobile-dropdown" id="mobileDropdown">
+            <a href="#story" onclick="toggleMobileMenu()">Unsere Story</a>
+            <a href="#designs" onclick="toggleMobileMenu()">Designs</a>
+            <a href="#shop" onclick="toggleMobileMenu()">Shop</a>
+            <a href="#reviews" onclick="toggleMobileMenu()">Bewertungen</a>
+        </div>
         <div class="nav-icons">
             <button class="icon-button" onclick="toggleSearch()" title="Suche">
                 🔍
@@ -2248,7 +2373,21 @@
         💬
     </button>
 
-    <script src="script.js"></script>
+    <script src="script.js">
+        function toggleMobileMenu() {
+            const dropdown = document.getElementById('mobileDropdown');
+            dropdown.classList.toggle('open');
+        }
+        
+        // Schließe Menu wenn außerhalb geklickt
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('mobileDropdown');
+            const hamburger = document.querySelector('.hamburger-btn');
+            if (dropdown && hamburger && !dropdown.contains(e.target) && !hamburger.contains(e.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+    </script>
     <script>
         // Products Data
         const products = [
@@ -2836,6 +2975,20 @@
                 closeModal('productModal');
                 closeModal('sizeGuideModal');
                 closeModal('searchModal');
+            }
+        });
+    
+        function toggleMobileMenu() {
+            const dropdown = document.getElementById('mobileDropdown');
+            dropdown.classList.toggle('open');
+        }
+        
+        // Schließe Menu wenn außerhalb geklickt
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('mobileDropdown');
+            const hamburger = document.querySelector('.hamburger-btn');
+            if (dropdown && hamburger && !dropdown.contains(e.target) && !hamburger.contains(e.target)) {
+                dropdown.classList.remove('open');
             }
         });
     </script>

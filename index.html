@@ -52,6 +52,7 @@
             align-items: center;
             background: rgba(245, 241, 232, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(42, 42, 42, 0.1);
             transition: all 0.4s ease;
         }
@@ -417,15 +418,15 @@
                 gap: 2rem;
             }
 
-            \.jacket-animation-sticky {
-            position: sticky;
-            top: 15vh;
-            height: 70vh;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding-top: 2rem;
-        }
+            .jacket-animation-sticky {
+                position: sticky;
+                top: 15vh;
+                height: 70vh;
+                display: flex;
+                align-items: flex-start;
+                justify-content: center;
+                padding-top: 2rem;
+            }
 
             .jacket-canvas-side {
                 position: relative !important;
@@ -1079,9 +1080,13 @@
         /* Modals */
         .modal {
             position: fixed;
-            inset: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             background: rgba(42, 42, 42, 0.8);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 3000;
             display: flex;
             align-items: center;
@@ -1553,9 +1558,13 @@
         /* Overlay */
         .overlay {
             position: fixed;
-            inset: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
             background: rgba(42, 42, 42, 0.6);
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             z-index: 1999;
             opacity: 0;
             pointer-events: none;
@@ -1890,6 +1899,7 @@
             right: 0;
             background: rgba(245, 241, 232, 0.98);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             flex-direction: column;
             padding: 1rem 0;
             z-index: 999;
@@ -2182,13 +2192,13 @@
 
         <!-- Filters -->
         <div class="filters-container">
-            <button class="filter-button active" onclick="filterProducts('alle')">Alle</button>
-            <button class="filter-button" onclick="filterProducts('neu')">Neue Kollektion</button>
-            <button class="filter-button" onclick="filterProducts('regen')">Regenjacken</button>
-            <button class="filter-button" onclick="filterProducts('softshell')">Softshell</button>
-            <button class="filter-button" onclick="filterProducts('gefuettert')">Gefüttert</button>
-            <button class="filter-button" onclick="filterProducts('lang')">Lange Jacken</button>
-            <button class="filter-button" onclick="filterProducts('kurz')">Kurze Jacken</button>
+            <button class="filter-button active" onclick="filterProducts('alle', this)">Alle</button>
+            <button class="filter-button" onclick="filterProducts('neu', this)">Neue Kollektion</button>
+            <button class="filter-button" onclick="filterProducts('regen', this)">Regenjacken</button>
+            <button class="filter-button" onclick="filterProducts('softshell', this)">Softshell</button>
+            <button class="filter-button" onclick="filterProducts('gefuettert', this)">Gefüttert</button>
+            <button class="filter-button" onclick="filterProducts('lang', this)">Lange Jacken</button>
+            <button class="filter-button" onclick="filterProducts('kurz', this)">Kurze Jacken</button>
         </div>
 
         <div class="products-grid" id="productsGrid"></div>
@@ -2559,12 +2569,12 @@
         }
 
         // Filter Products
-        function filterProducts(category) {
+        function filterProducts(category, btn) {
             currentFilter = category;
-            document.querySelectorAll('.filter-button').forEach(btn => {
-                btn.classList.remove('active');
+            document.querySelectorAll('.filter-button').forEach(b => {
+                b.classList.remove('active');
             });
-            event.target.classList.add('active');
+            if (btn) btn.classList.add('active');
             renderProducts();
         }
 
@@ -3002,9 +3012,10 @@
             document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
             setTimeout(() => {
                 // Aktiviere den richtigen Filter Button
-                document.querySelectorAll('.filter-button').forEach(btn => btn.classList.remove('active'));
                 document.querySelectorAll('.filter-button').forEach(btn => {
-                    if (btn.getAttribute('onclick').includes(filter)) {
+                    btn.classList.remove('active');
+                    const onclick = btn.getAttribute('onclick') || '';
+                    if (onclick.includes("'" + filter + "'")) {
                         btn.classList.add('active');
                     }
                 });
@@ -3033,6 +3044,7 @@
 
         
         // Scroll Animation with Story
+        document.addEventListener('DOMContentLoaded', function() {
         const storySection = document.querySelector('.story-section-with-animation');
         if (storySection) {
             const jacketFrames = document.querySelectorAll('.jacket-frame[data-frame]');
@@ -3069,6 +3081,7 @@
                 });
             });
         }
+        }); // end DOMContentLoaded for scroll animation
 
         // Rain Animation
         function createRainDrops() {

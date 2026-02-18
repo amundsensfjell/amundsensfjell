@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ – AmundsensFjell</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-cream: #F5F1E8;
+            --color-charcoal: #2A2A2A;
+            --color-slate: #4A5859;
+            --color-rain: #7B9AA2;
+            --color-sunshine: #FFD147;
+            --color-fog: #E8E4DB;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Instrument Sans', sans-serif;
+        }
+        body { font-family: var(--font-body); color: var(--color-charcoal); background: var(--color-cream); line-height: 1.6; }
+
+        nav { background: rgba(245,241,232,0.97); border-bottom: 1px solid rgba(42,42,42,0.1); padding: 1.25rem 4rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-charcoal); text-decoration: none; }
+        .nav-back { color: var(--color-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+        .nav-back:hover { color: var(--color-charcoal); }
+
+        .page-hero { background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%); padding: 6rem 4rem 4rem; text-align: center; }
+        .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.15rem; color: var(--color-slate); max-width: 600px; margin: 0 auto; }
+
+        .page-content { max-width: 760px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+        .faq-category { margin-bottom: 3rem; }
+        .faq-category h2 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.6rem; }
+
+        .faq-item { border-bottom: 1px solid var(--color-fog); }
+        .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 1.25rem 0; font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--color-charcoal); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; transition: color 0.2s; }
+        .faq-question:hover { color: var(--color-rain); }
+        .faq-chevron { font-size: 1.1rem; transition: transform 0.3s ease; flex-shrink: 0; color: var(--color-slate); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; }
+        .faq-answer-inner { padding-bottom: 1.25rem; color: var(--color-slate); font-size: 0.97rem; line-height: 1.8; }
+        .faq-answer-inner a { color: var(--color-rain); text-decoration: underline; }
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+        .faq-item.open .faq-answer { max-height: 600px; }
+
+        .still-questions { background: var(--color-charcoal); color: var(--color-cream); border-radius: 20px; padding: 2.5rem; text-align: center; margin-top: 3rem; }
+        .still-questions h3 { font-family: var(--font-display); font-size: 1.75rem; margin-bottom: 0.75rem; }
+        .still-questions p { color: rgba(245,241,232,0.7); margin-bottom: 1.5rem; }
+        .still-questions a { display: inline-block; background: var(--color-sunshine); color: var(--color-charcoal); padding: 0.85rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.3s; }
+        .still-questions a:hover { background: #FFE066; transform: translateY(-2px); }
+
+        .page-footer { background: var(--color-charcoal); color: var(--color-cream); text-align: center; padding: 2.5rem; font-size: 0.9rem; }
+        .page-footer a { color: var(--color-sunshine); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .page-hero { padding: 5rem 1.5rem 3rem; }
+            .page-content { padding: 2.5rem 1.5rem 4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">AmundsensFjell</a>
+    <a href="index.html" class="nav-back">← Zurück zur Startseite</a>
+</nav>
+
+<div class="page-hero">
+    <h1>Häufige Fragen</h1>
+    <p>Die Antworten auf das, was uns am häufigsten gefragt wird.</p>
+</div>
+
+<div class="page-content">
+
+    <div class="faq-category">
+        <h2>📦 Bestellung & Versand</h2>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Wie lange dauert der Versand?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Wir versenden in der Regel innerhalb von 1–3 Werktagen nach Zahlungseingang. Der Standard-Versand innerhalb Deutschlands dauert dann weitere 3–5 Werktage. Du erhältst nach dem Versand eine E-Mail mit deiner Tracking-Nummer.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Ab wann ist der Versand kostenlos?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Ab einem Bestellwert von 50 € ist der Versand innerhalb Deutschlands kostenlos. Darunter berechnen wir eine Versandpauschale.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Liefert ihr auch ins Ausland?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Ja! Wir versenden nach Österreich, in die Schweiz und in weitere EU-Länder. Schreib uns einfach eine Mail an <a href="/cdn-cgi/l/email-protection#d1b9b0bdbdbe91b0bca4bfb5a2b4bfa2b7bbb4bdbdffb5b4"><span class="__cf_email__" data-cfemail="7911181515163918140c171d0a1c170a1f131c1515571d1c">[email&#160;protected]</span></a>, wenn du aus dem Ausland bestellen möchtest.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Kann ich meine Bestellung ändern oder stornieren?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Schreib uns so schnell wie möglich! Wenn die Bestellung noch nicht versendet wurde, können wir in der Regel noch etwas ändern. Einfach eine Mail an <a href="/cdn-cgi/l/email-protection#a3cbc2cfcfcce3c2ced6cdc7d0c6cdd0c5c9c6cfcf8dc7c6"><span class="__cf_email__" data-cfemail="ef878e838380af8e829a818b9c8a819c89858a8383c18b8a">[email&#160;protected]</span></a>.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-category">
+        <h2>📏 Größe & Passform</h2>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Fallen die Jacken normal aus?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Das hängt vom Modell ab. Die <strong>Hedda</strong> fällt normal aus. Die <strong>Gurri, Birka, Halva, Frida und Lykke</strong> fallen größer aus – wir empfehlen hier, eine Nummer kleiner zu bestellen. Unsere <a href="groessentabelle.html">Größentabelle</a> hilft dir weiter.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Ich bin mir bei der Größe unsicher – was soll ich tun?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Schreib uns einfach! Wir helfen dir gerne persönlich die richtige Größe zu finden. Schick uns deine Maße (Brust, Taille, Hüfte) und wir geben dir eine konkrete Empfehlung.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Kann ich zwei Größen bestellen und eine zurückschicken?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Natürlich! Du hast 30 Tage Rückgaberecht, und Rücksendungen aus Deutschland sind kostenlos. Einfach die passende Größe behalten und die andere zurückschicken.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-category">
+        <h2>↩️ Rückgabe & Umtausch</h2>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Wie funktioniert die Rückgabe?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Du hast 30 Tage Zeit. Schreib uns eine Mail mit deiner Bestellnummer, wir schicken dir ein kostenloses Rücksende-Label. Die Erstattung erfolgt innerhalb von 5–7 Werktagen nach Eingang der Ware. Mehr dazu auf unserer <a href="hilfe.html#rueckgabe">Hilfe-Seite</a>.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Was, wenn meine Jacke einen Fehler hat?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Das tut uns sehr leid! Schick uns bitte ein Foto des Fehlers und deine Bestellnummer an <a href="/cdn-cgi/l/email-protection#aec6cfc2c2c1eecfc3dbc0caddcbc0ddc8c4cbc2c280cacb"><span class="__cf_email__" data-cfemail="4b232a2727240b2a263e252f382e25382d212e2727652f2e">[email&#160;protected]</span></a>. Wir kümmern uns schnell und unbürokratisch darum.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-category">
+        <h2>🧺 Pflege</h2>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Wie wasche ich meine Jacke richtig?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Alle unsere Jacken sind bei 30° im Schonwaschgang waschbar. Bitte keinen Trockner verwenden und keinen Weichspüler – beides schadet der Wasserdichtigkeit. Nach dem Waschen an der Luft hängend trocknen lassen.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Muss ich die Jacke imprägnieren?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Nach mehrmaligem Waschen kann die Wasser-Abweisung nachlassen. Ein kurzes Auffrischen mit einem handelsüblichen Imprägnierspray (z.B. Nikwax oder Grangers) bringt sie wieder auf Vordermann.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-category">
+        <h2>🌧️ Rund um Regenjacken</h2>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Was ist der Unterschied zwischen Regenjacke und Wetterjacke?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Eine Regenjacke ist primär wasserdicht, während eine Wetterjacke vielseitiger ist und auch Wind sowie wechselndes Wetter abdeckt. Unsere Gurri, Frida, Birka, Halva und Lykke sind zum Beispiel echte Wetterjacken – Softshell schützt gegen Wind und leichten Regen, ist aber auch im Alltag angenehm zu tragen. Die Hedda hingegen ist eine klassische, vollständig wasserdichte Regenjacke.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Ab wann ist eine Jacke wirklich wasserdicht?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Ab etwa 10.000 mm Wassersäule gilt eine Jacke als zuverlässig wasserdicht. Unsere Hedda erreicht diesen Standard – alle Nähte sind verschweißt bzw. abgetapt, damit kein Tropfen durchkommt.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Was bedeutet atmungsaktiv bei Regenjacken?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Atmungsaktiv bedeutet, dass Feuchtigkeit von innen nach außen entweichen kann – man wird also nicht von innen nass. Unsere Softshell-Jacken (Gurri, Frida & Co.) sind atmungsaktiv. Deshalb sind unter den Armen auch Belüftungsösen eingebaut.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Softshell oder Hardshell – was ist besser?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Das kommt auf den Einsatz an. Softshell ist komfortabler für den Alltag, fühlt sich weicher an und ist vielseitiger. Hardshell bietet maximalen Schutz bei starkem Dauerregen. Wir setzen bei unserer Hedda auf ein weiches PU-Material, das wie Hardshell schützt – aber sich anfühlt wie Softshell. Das Beste aus beiden Welten.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Was ist ein Friesennerz?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Ein Friesennerz ist ein klassischer, wasserdichter Regenmantel aus Norddeutschland – besonders wind- und wetterfest, ursprünglich für Fischer und Küstenbewohner gemacht. Unsere Hedda ist direkt vom Friesennerz inspiriert. Dieses norddeutsche Erbe war der Ausgangspunkt für alles, was AmundsensFjell heute ist.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Ist jede Regenjacke auch winddicht?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Fast. Vollständig wasserdichte Jacken sind aufgrund ihrer dichten Materialstruktur in der Regel auch winddicht. Unsere Softshell-Jacken sind windabweisend – also sehr gut gegen Wind, aber nicht hermetisch dicht wie eine klassische Regenjacke.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Warum schwitzt man in manchen Regenjacken?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Weil sie nicht ausreichend atmungsaktiv sind und Feuchtigkeit von innen nicht entweichen kann. Günstige Regenjacken sperren dich quasi ein. Deshalb haben unsere Jacken Belüftungsösen unter den Armen – und unsere Softshell-Modelle sind von Natur aus atmungsaktiv.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Welche Regenjacke eignet sich für den Alltag?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Für den Alltag empfehlen wir unsere Softshell-Jacken wie die Gurri oder Frida – leicht, bequem, wasserabweisend und mit einem Design, das auch in der Stadt eine gute Figur macht. Wenn es öfter richtig schüttet, ist die Hedda die bessere Wahl.</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Kann man Regenjacken auch im Sommer tragen?
+                <span class="faq-chevron">▾</span>
+            </button>
+            <div class="faq-answer">
+                <div class="faq-answer-inner">Auf jeden Fall! Unsere ungefütterten Softshell-Jacken wie die Gurri oder Frida Greenery sind auch im Sommer wunderbar – leicht genug für warme Tage, aber immer bereit wenn ein Schauer kommt. Die gefütterten Modelle (Hedda Ice, Frida Türkis, Lykke) sind eher für Herbst und Winter gemacht.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="still-questions">
+        <h3>Noch Fragen?</h3>
+        <p>Wir freuen uns über jede Nachricht – wirklich.</p>
+        <a href="/cdn-cgi/l/email-protection#5b333a3737341b3a362e353f283e35283d313e3737753f3e"><span class="__cf_email__" data-cfe

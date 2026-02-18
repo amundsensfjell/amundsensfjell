@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datenschutz – AmundsensFjell</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;1,9..144,300&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --color-cream: #F5F1E8;
+            --color-charcoal: #2A2A2A;
+            --color-slate: #4A5859;
+            --color-rain: #7B9AA2;
+            --color-sunshine: #FFD147;
+            --color-fog: #E8E4DB;
+            --font-display: 'Fraunces', serif;
+            --font-body: 'Instrument Sans', sans-serif;
+        }
+        body { font-family: var(--font-body); color: var(--color-charcoal); background: var(--color-cream); line-height: 1.6; }
+
+        nav { background: rgba(245,241,232,0.97); border-bottom: 1px solid rgba(42,42,42,0.1); padding: 1.25rem 4rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+        .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-charcoal); text-decoration: none; }
+        .nav-back { color: var(--color-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
+        .nav-back:hover { color: var(--color-charcoal); }
+
+        .page-hero { background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%); padding: 6rem 4rem 4rem; text-align: center; }
+        .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .page-hero p { font-size: 1.1rem; color: var(--color-slate); max-width: 600px; margin: 0 auto; }
+
+        .page-content { max-width: 800px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+        .legal-section { background: white; border-radius: 16px; padding: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+        .legal-section h2 { font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-charcoal); }
+        .legal-section h3 { font-size: 1rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: var(--color-charcoal); }
+        .legal-section p { color: var(--color-slate); font-size: 0.92rem; line-height: 1.85; margin-bottom: 0.75rem; }
+        .legal-section p:last-child { margin-bottom: 0; }
+        .legal-section a { color: var(--color-rain); }
+        .legal-section ul { padding-left: 1.25rem; color: var(--color-slate); font-size: 0.92rem; line-height: 1.85; margin-bottom: 0.75rem; }
+        .legal-section ul li { margin-bottom: 0.3rem; }
+
+        .last-updated { text-align: center; color: var(--color-slate); font-size: 0.85rem; margin-bottom: 2rem; }
+
+        .page-footer { background: var(--color-charcoal); color: var(--color-cream); text-align: center; padding: 2.5rem; font-size: 0.9rem; }
+        .page-footer a { color: var(--color-sunshine); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .page-hero { padding: 5rem 1.5rem 3rem; }
+            .page-content { padding: 2.5rem 1.5rem 4rem; }
+            .legal-section { padding: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo">AmundsensFjell</a>
+    <a href="index.html" class="nav-back">← Zurück zur Startseite</a>
+</nav>
+
+<div class="page-hero">
+    <h1>Datenschutzerklärung</h1>
+    <p>Deine Daten gehören dir. Hier erklären wir transparent, was wir damit machen.</p>
+</div>
+
+<div class="page-content">
+
+    <p class="last-updated">Zuletzt aktualisiert: Februar 2026</p>
+
+    <div class="legal-section">
+        <h2>1. Verantwortlicher</h2>
+        <p>Verantwortlich für die Datenverarbeitung auf dieser Website ist:</p>
+        <p><strong>AmundsensFjell</strong><br>
+        [Dein vollständiger Name]<br>
+        [Straße und Hausnummer]<br>
+        [PLZ Ort]<br>
+        E-Mail: <a href="mailto:hallo@amundsensfjell.de">hallo@amundsensfjell.de</a></p>
+    </div>
+
+    <div class="legal-section">
+        <h2>2. Was wir sammeln und warum</h2>
+        <h3>Beim Besuch der Website</h3>
+        <p>Beim Aufruf unserer Website werden automatisch Informationen vom Browser übermittelt, die wir in Server-Logfiles speichern: IP-Adresse, Datum und Uhrzeit, aufgerufene Seite, verwendeter Browser und Betriebssystem. Diese Daten dienen ausschließlich technischen Zwecken und werden nach spätestens 7 Tagen gelöscht.</p>
+        <h3>Bei einer Bestellung</h3>
+        <p>Für die Abwicklung einer Bestellung benötigen wir Name, Lieferadresse, E-Mail-Adresse und Zahlungsinformationen. Diese Daten werden nur zur Bestellabwicklung und gesetzlich vorgeschriebenen Aufbewahrung genutzt.</p>
+        <h3>Newsletter</h3>
+        <p>Wenn du dich für unseren Newsletter anmeldest, speichern wir deine E-Mail-Adresse. Du kannst dich jederzeit mit einem Klick abmelden. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>3. Cookies</h2>
+        <p>Unsere Website verwendet technisch notwendige Cookies, z.B. um deinen Warenkorb zu speichern. Diese Cookies sind für die Funktion der Website erforderlich und können nicht deaktiviert werden. Wir setzen keine Tracking- oder Werbe-Cookies ein.</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>4. Weitergabe von Daten</h2>
+        <p>Wir geben deine Daten nur weiter, wenn dies zur Auftragserfüllung notwendig ist (z.B. an unseren Versanddienstleister) oder wir gesetzlich dazu verpflichtet sind. Wir verkaufen deine Daten nicht.</p>
+        <p>Eingesetzte Dienstleister:</p>
+        <ul>
+            <li>Versanddienstleister: DHL / Hermes (zur Lieferung deiner Bestellung)</li>
+            <li>Zahlungsabwicklung: [dein Zahlungsanbieter, z.B. PayPal, Stripe]</li>
+            <li>Hosting: [dein Hosting-Anbieter, z.B. Vercel]</li>
+        </ul>
+    </div>
+
+    <div class="legal-section">
+        <h2>5. Deine Rechte</h2>
+        <p>Du hast jederzeit das Recht auf:</p>
+        <ul>
+            <li><strong>Auskunft</strong> – welche Daten wir über dich gespeichert haben</li>
+            <li><strong>Berichtigung</strong> – fehlerhafte Daten korrigieren zu lassen</li>
+            <li><strong>Löschung</strong> – deine Daten löschen zu lassen (soweit keine gesetzliche Aufbewahrungspflicht besteht)</li>
+            <li><strong>Einschränkung der Verarbeitung</strong></li>
+            <li><strong>Datenübertragbarkeit</strong></li>
+            <li><strong>Widerspruch</strong> gegen die Verarbeitung</li>
+        </ul>
+        <p>Für alle Anfragen wende dich bitte an: <a href="mailto:hallo@amundsensfjell.de">hallo@amundsensfjell.de</a></p>
+    </div>
+
+    <div class="legal-section">
+        <h2>6. Speicherdauer</h2>
+        <p>Wir speichern personenbezogene Daten nur so lange, wie es für den jeweiligen Zweck erforderlich ist oder gesetzliche Aufbewahrungsfristen dies verlangen (z.B. 10 Jahre für steuerrelevante Unterlagen nach § 147 AO).</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>7. Beschwerderecht</h2>
+        <p>Du hast das Recht, dich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Die für uns zuständige Aufsichtsbehörde ist:</p>
+        <p>[Name und Kontaktdaten der zuständigen Datenschutzbehörde in deinem Bundesland]</p>
+    </div>
+
+    <div class="legal-section">
+        <h2>8. Änderungen dieser Datenschutzerklärung</h2>
+        <p>Wir behalten uns vor, diese Datenschutzerklärung bei Bedarf anzupassen. Die jeweils aktuelle Version findest du immer auf dieser Seite.</p>
+    </div>
+
+</div>
+
+<footer class="page-footer">
+    <p>&copy; 2026 AmundsensFjell. Mit ❤️ gemacht. | <a href="index.html">Zurück zur Startseite</a> | <a href="ueber-uns.html#impressum">Impressum</a></p>
+</footer>
+
+</body>
+</html>

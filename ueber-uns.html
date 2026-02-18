@@ -10,185 +10,111 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --color-cream: #F5F1E8;
-            --color-charcoal: #2A2A2A;
-            --color-slate: #4A5859;
-            --color-rain: #7B9AA2;
-            --color-sunshine: #FFD147;
-            --color-fog: #E8E4DB;
-            --font-display: 'Fraunces', serif;
-            --font-body: 'Instrument Sans', sans-serif;
+            --color-cream: #F5F1E8; --color-charcoal: #2A2A2A; --color-slate: #4A5859;
+            --color-rain: #7B9AA2; --color-sunshine: #FFD147; --color-fog: #E8E4DB;
+            --font-display: 'Fraunces', serif; --font-body: 'Instrument Sans', sans-serif;
         }
         body { font-family: var(--font-body); color: var(--color-charcoal); background: var(--color-cream); line-height: 1.6; }
-
         nav { background: rgba(245,241,232,0.97); border-bottom: 1px solid rgba(42,42,42,0.1); padding: 1.25rem 4rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
         .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-charcoal); text-decoration: none; }
         .nav-back { color: var(--color-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
         .nav-back:hover { color: var(--color-charcoal); }
-
-        .page-hero { background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%); padding: 6rem 4rem 4rem; text-align: center; }
-        .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
-        .page-hero p { font-size: 1.15rem; color: var(--color-slate); max-width: 600px; margin: 0 auto; }
-
+        .page-hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%); padding: 6rem 4rem 4rem; text-align: center; }
+        .page-hero-inner { position: relative; z-index: 1; }
+        .page-hero-inner h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .page-hero-inner p { font-size: 1.15rem; color: var(--color-slate); max-width: 600px; margin: 0 auto; }
+        .floating-clouds { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .floating-cloud { position: absolute; opacity: 0.12; will-change: transform; }
+        .floating-cloud img { width: 100%; height: 100%; object-fit: contain; }
+        .floating-cloud-1 { top: 5%;  width: 560px; height: 280px; animation: floatCloud 70s linear infinite; animation-delay: -8s; }
+        .floating-cloud-2 { top: 35%; width: 440px; height: 220px; animation: floatCloud 90s linear infinite; animation-delay: -35s; }
+        .floating-cloud-3 { top: 65%; width: 600px; height: 300px; animation: floatCloud 80s linear infinite; animation-delay: -60s; }
+        @keyframes floatCloud { from { transform: translateX(calc(100vw + 50px)); } to { transform: translateX(-650px); } }
         .anchor-nav { background: white; border-bottom: 1px solid var(--color-fog); display: flex; gap: 0; justify-content: center; overflow-x: auto; }
         .anchor-nav a { padding: 1rem 2rem; color: var(--color-slate); text-decoration: none; font-weight: 600; font-size: 0.9rem; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
         .anchor-nav a:hover { color: var(--color-charcoal); border-bottom-color: var(--color-sunshine); }
-
         .page-content { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; }
-
         .content-section { margin-bottom: 4rem; scroll-margin-top: 120px; }
         .section-label { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-sunshine); color: var(--color-charcoal); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 1rem; }
         .content-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; margin-bottom: 1.25rem; }
         .content-section p { color: var(--color-slate); margin-bottom: 1rem; font-size: 1rem; line-height: 1.85; }
-
         .quote-block { background: var(--color-charcoal); color: var(--color-cream); border-radius: 20px; padding: 3rem; text-align: center; margin: 2rem 0; }
-        .quote-block blockquote { font-family: var(--font-display); font-size: 1.5rem; font-style: italic; font-weight: 300; line-height: 1.5; color: var(--color-cream); }
+        .quote-block blockquote { font-family: var(--font-display); font-size: 1.5rem; font-style: italic; font-weight: 300; line-height: 1.5; }
         .quote-block cite { display: block; margin-top: 1rem; color: rgba(245,241,232,0.6); font-size: 0.9rem; font-style: normal; }
-
         .material-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin: 2rem 0; }
         .material-card { background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .material-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
         .material-card h4 { font-weight: 700; margin-bottom: 0.4rem; }
         .material-card p { font-size: 0.875rem; color: var(--color-slate); line-height: 1.6; }
-
         .values-list { display: grid; gap: 1rem; margin-top: 1.5rem; }
         .value-item { background: var(--color-fog); border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start; }
         .value-item .vi-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
         .value-item h4 { font-weight: 700; margin-bottom: 0.25rem; font-size: 0.95rem; }
         .value-item p { font-size: 0.875rem; color: var(--color-slate); }
-
-        /* Impressum */
         .impressum-box { background: white; border-radius: 16px; padding: 2.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .impressum-box h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; margin-top: 1.5rem; }
         .impressum-box h3:first-child { margin-top: 0; }
         .impressum-box p { font-size: 0.9rem; color: var(--color-slate); margin-bottom: 0.4rem; }
         .impressum-box a { color: var(--color-rain); }
-
         .divider { border: none; border-top: 1px solid var(--color-fog); margin: 4rem 0; }
-
         .page-footer { background: var(--color-charcoal); color: var(--color-cream); text-align: center; padding: 2.5rem; font-size: 0.9rem; }
         .page-footer a { color: var(--color-sunshine); text-decoration: none; }
-
-        @media (max-width: 768px) {
-            nav { padding: 1rem 1.5rem; }
-            .page-hero { padding: 5rem 1.5rem 3rem; }
-            .page-content { padding: 2.5rem 1.5rem 4rem; }
-            .anchor-nav a { padding: 0.75rem 1rem; font-size: 0.85rem; }
-        }
+        @media (max-width: 768px) { nav { padding: 1rem 1.5rem; } .page-hero { padding: 5rem 1.5rem 3rem; } .page-content { padding: 2.5rem 1.5rem 4rem; } .anchor-nav a { padding: 0.75rem 1rem; font-size: 0.85rem; } }
     </style>
 </head>
 <body>
-
 <nav>
     <a href="index.html" class="logo">AmundsensFjell</a>
     <a href="index.html" class="nav-back">← Zurück zur Startseite</a>
 </nav>
-
 <div class="page-hero">
-    <h1>Über uns</h1>
-    <p>Ein Familienunternehmen mit Haltung, Herz und Hang zu guten Jacken.</p>
+    <div class="floating-clouds">
+        <div class="floating-cloud floating-cloud-1"><img src="images/cloud2.png" alt=""></div>
+        <div class="floating-cloud floating-cloud-2"><img src="images/cloud3.png" alt=""></div>
+        <div class="floating-cloud floating-cloud-3"><img src="images/cloud1.png" alt=""></div>
+    </div>
+    <div class="page-hero-inner">
+        <h1>Über uns</h1>
+        <p>Ein Familienunternehmen mit Haltung, Herz und Hang zu guten Jacken.</p>
+    </div>
 </div>
-
 <nav class="anchor-nav">
     <a href="#materialien">Materialien</a>
     <a href="#nachhaltigkeit">Nachhaltigkeit</a>
     <a href="#impressum">Impressum</a>
 </nav>
-
 <div class="page-content">
-
     <div class="content-section" id="materialien">
         <div class="section-label">🧵 Materialien</div>
         <h2>Was steckt drin?</h2>
         <p>Wir setzen auf Materialien, die halten was sie versprechen. Keine Experimente, keine Kompromisse bei Qualität – aber immer mit Blick auf Preis und Ehrlichkeit.</p>
-
         <div class="material-grid">
-            <div class="material-card">
-                <div class="icon">🌧️</div>
-                <h4>Polyurethan-Außenmaterial</h4>
-                <p>100% PU bei der Hedda. Vollständig wasserdicht, alle Nähte verschweißt oder abgetapt. Butterweiche Haptik.</p>
-            </div>
-            <div class="material-card">
-                <div class="icon">💨</div>
-                <h4>Softshell-Mix</h4>
-                <p>93% Polyester, 7% Polyurethan bei Gurri, Frida & Co. Winddicht, wasserabweisend und atmungsaktiv.</p>
-            </div>
-            <div class="material-card">
-                <div class="icon">🐻</div>
-                <h4>Teddyfell-Futter</h4>
-                <p>100% Polyester – weich wie eine Umarmung. Keine Tierfasern, vegan.</p>
-            </div>
-            <div class="material-card">
-                <div class="icon">🧶</div>
-                <h4>Fleece-Futter</h4>
-                <p>100% Polyester Fleece. Warm, leicht und schnell trocknend. In verschiedenen Farben je nach Modell.</p>
-            </div>
-            <div class="material-card">
-                <div class="icon">🌿</div>
-                <h4>Karofutter (Hedda Orange)</h4>
-                <p>65% Baumwolle, 35% Polyester – für eine weichere, natürlichere Haptik am Körper.</p>
-            </div>
-            <div class="material-card">
-                <div class="icon">☁️</div>
-                <h4>Wolkenstopper</h4>
-                <p>Unser Markenzeichen. Handgefertigte Kordelstopper in Wolkenform – jedes Detail zählt.</p>
-            </div>
+            <div class="material-card"><div class="icon">🌧️</div><h4>Polyurethan-Außenmaterial</h4><p>100% PU bei der Hedda. Vollständig wasserdicht, alle Nähte verschweißt oder abgetapt. Butterweiche Haptik.</p></div>
+            <div class="material-card"><div class="icon">💨</div><h4>Softshell-Mix</h4><p>93% Polyester, 7% Polyurethan bei Gurri, Frida & Co. Winddicht, wasserabweisend und atmungsaktiv.</p></div>
+            <div class="material-card"><div class="icon">🐻</div><h4>Teddyfell-Futter</h4><p>100% Polyester – weich wie eine Umarmung. Keine Tierfasern, vegan.</p></div>
+            <div class="material-card"><div class="icon">🧶</div><h4>Fleece-Futter</h4><p>100% Polyester Fleece. Warm, leicht und schnell trocknend. In verschiedenen Farben je nach Modell.</p></div>
+            <div class="material-card"><div class="icon">🌿</div><h4>Karofutter (Hedda Orange)</h4><p>65% Baumwolle, 35% Polyester – für eine weichere, natürlichere Haptik am Körper.</p></div>
+            <div class="material-card"><div class="icon">☁️</div><h4>Wolkenstopper</h4><p>Unser Markenzeichen. Kordelstopper in Wolkenform – jedes Detail zählt.</p></div>
         </div>
-
         <div class="quote-block">
             <blockquote>"Die besten Jacken entstehen aus Erfahrung, Liebe zum Detail und dem Wunsch, die Menschen zu schützen, die einem wichtig sind."</blockquote>
             <cite>— Gründer von AmundsensFjell</cite>
         </div>
     </div>
-
     <hr class="divider">
-
     <div class="content-section" id="nachhaltigkeit">
         <div class="section-label">🌱 Nachhaltigkeit</div>
         <h2>Unsere Haltung</h2>
         <p>Wir machen keine großen Versprechen, die wir nicht halten können. Was wir sagen können: Wir denken darüber nach. Und wir verbessern uns.</p>
-
         <div class="values-list">
-            <div class="value-item">
-                <div class="vi-icon">🐇</div>
-                <div>
-                    <h4>100% vegan</h4>
-                    <p>Alle unsere Jacken kommen ohne tierische Materialien aus. Keine Wolle, kein Leder, keine Daunen.</p>
-                </div>
-            </div>
-            <div class="value-item">
-                <div class="vi-icon">🏭</div>
-                <div>
-                    <h4>Kleine Stückzahlen</h4>
-                    <p>Wir produzieren bewusst in kleineren Mengen, um Überproduktion zu vermeiden. Wenn etwas ausverkauft ist, ist es ausverkauft.</p>
-                </div>
-            </div>
-            <div class="value-item">
-                <div class="vi-icon">🔁</div>
-                <div>
-                    <h4>Langlebigkeit statt Fast Fashion</h4>
-                    <p>Unsere Jacken sind so gemacht, dass sie viele Jahre halten. Das ist Nachhaltigkeit, die man anfassen kann.</p>
-                </div>
-            </div>
-            <div class="value-item">
-                <div class="vi-icon">📦</div>
-                <div>
-                    <h4>Verpackung</h4>
-                    <p>Wir arbeiten daran, unsere Verpackungen immer umweltfreundlicher zu gestalten. Jede Jacke kommt mit einer Stofftasche statt Plastik.</p>
-                </div>
-            </div>
-            <div class="value-item">
-                <div class="vi-icon">🤝</div>
-                <div>
-                    <h4>Ehrlichkeit</h4>
-                    <p>Wir sagen dir, was in der Jacke steckt und wie sie hergestellt wird. Keine grünen Schlagworte ohne Substanz.</p>
-                </div>
-            </div>
+            <div class="value-item"><div class="vi-icon">🐇</div><div><h4>100% vegan</h4><p>Alle unsere Jacken kommen ohne tierische Materialien aus. Keine Wolle, kein Leder, keine Daunen.</p></div></div>
+            <div class="value-item"><div class="vi-icon">🏭</div><div><h4>Kleine Stückzahlen</h4><p>Wir produzieren bewusst in kleineren Mengen, um Überproduktion zu vermeiden. Wenn etwas ausverkauft ist, ist es ausverkauft.</p></div></div>
+            <div class="value-item"><div class="vi-icon">🔁</div><div><h4>Langlebigkeit statt Fast Fashion</h4><p>Unsere Jacken sind so gemacht, dass sie viele Jahre halten. Das ist Nachhaltigkeit, die man anfassen kann.</p></div></div>
+            <div class="value-item"><div class="vi-icon">📦</div><div><h4>Verpackung</h4><p>Jede Jacke kommt mit einer Stofftasche statt Plastik. Wir arbeiten daran, unsere Verpackungen immer umweltfreundlicher zu gestalten.</p></div></div>
+            <div class="value-item"><div class="vi-icon">🤝</div><div><h4>Ehrlichkeit</h4><p>Wir sagen dir, was in der Jacke steckt und wie sie hergestellt wird. Keine grünen Schlagworte ohne Substanz.</p></div></div>
         </div>
     </div>
-
     <hr class="divider">
-
     <div class="content-section" id="impressum">
         <div class="section-label">📋 Impressum</div>
         <h2>Impressum</h2>
@@ -198,27 +124,19 @@
             <p>[Dein vollständiger Name]</p>
             <p>[Straße und Hausnummer]</p>
             <p>[PLZ Ort]</p>
-
             <h3>Kontakt</h3>
             <p>E-Mail: <a href="mailto:hallo@amundsensfjell.de">hallo@amundsensfjell.de</a></p>
-
             <h3>Umsatzsteuer-ID</h3>
             <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: [Deine USt-ID]</p>
-
             <h3>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h3>
-            <p>[Dein Name]</p>
-            <p>[Deine Adresse]</p>
-
+            <p>[Dein Name], [Deine Adresse]</p>
             <h3>Haftungsausschluss</h3>
             <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
         </div>
     </div>
-
 </div>
-
 <footer class="page-footer">
     <p>&copy; 2026 AmundsensFjell. Mit ❤️ gemacht. | <a href="index.html">Zurück zur Startseite</a> | <a href="datenschutz.html">Datenschutz</a></p>
 </footer>
-
 </body>
 </html>

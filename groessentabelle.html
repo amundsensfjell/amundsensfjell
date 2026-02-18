@@ -27,10 +27,22 @@
         .nav-back { color: var(--color-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
         .nav-back:hover { color: var(--color-charcoal); }
 
+        /* Floating Clouds */
+        .floating-clouds { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .floating-cloud { position: absolute; opacity: 0.12; will-change: transform; }
+        .floating-cloud img { width: 100%; height: 100%; object-fit: contain; }
+        .floating-cloud-1 { top: 8%;  width: 560px; height: 280px; animation: floatCloud 70s linear infinite; animation-delay: 0s; }
+        .floating-cloud-2 { top: 30%; width: 440px; height: 220px; animation: floatCloud 90s linear infinite; animation-delay: -25s; }
+        .floating-cloud-3 { top: 60%; width: 600px; height: 300px; animation: floatCloud 80s linear infinite; animation-delay: -50s; }
+        @keyframes floatCloud {
+            from { transform: translateX(calc(100vw + 50px)); }
+            to   { transform: translateX(-650px); }
+        }
+
         /* Hero */
-        .page-hero { background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%); padding: 6rem 4rem 4rem; text-align: center; }
-        .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
-        .page-hero p { font-size: 1.15rem; color: var(--color-slate); max-width: 600px; margin: 0 auto; }
+        .page-hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%); padding: 6rem 4rem 4rem; text-align: center; }
+        .page-hero h1 { position: relative; z-index: 1; font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .page-hero p { position: relative; z-index: 1; font-size: 1.15rem; color: var(--color-slate); max-width: 600px; margin: 0 auto; }
 
         /* Content */
         .page-content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem 6rem; }
@@ -63,6 +75,17 @@
         .page-footer { background: var(--color-charcoal); color: var(--color-cream); text-align: center; padding: 2.5rem; font-size: 0.9rem; }
         .page-footer a { color: var(--color-sunshine); text-decoration: none; }
 
+        /* Floating Clouds */
+        .page-hero { position: relative; overflow: hidden; }
+        .floating-clouds { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .floating-cloud { position: absolute; opacity: 0.13; will-change: transform; }
+        .floating-cloud img { width: 100%; height: 100%; object-fit: contain; }
+        .floating-cloud-1 { top: 8%;  width: 560px; height: 280px; animation: floatCloud 70s linear infinite; animation-delay: 0s; }
+        .floating-cloud-2 { top: 35%; width: 440px; height: 220px; animation: floatCloud 90s linear infinite; animation-delay: -25s; }
+        .floating-cloud-3 { top: 65%; width: 600px; height: 300px; animation: floatCloud 80s linear infinite; animation-delay: -50s; }
+        @keyframes floatCloud { from { transform: translateX(calc(100vw + 50px)); } to { transform: translateX(-650px); } }
+        .page-hero-inner { position: relative; z-index: 1; }
+
         @media (max-width: 768px) {
             nav { padding: 1rem 1.5rem; }
             .page-hero { padding: 5rem 1.5rem 3rem; }
@@ -80,8 +103,15 @@
 </nav>
 
 <div class="page-hero">
-    <h1>Größentabelle</h1>
-    <p>Finde deine perfekte Größe – damit du beim ersten Mal richtig liegst.</p>
+    <div class="floating-clouds">
+        <div class="floating-cloud floating-cloud-1"><img src="images/cloud1.png" alt=""></div>
+        <div class="floating-cloud floating-cloud-2"><img src="images/cloud2.png" alt=""></div>
+        <div class="floating-cloud floating-cloud-3"><img src="images/cloud3.png" alt=""></div>
+    </div>
+    <div class="page-hero-inner">
+        <h1>Größentabelle</h1>
+        <p>Finde deine perfekte Größe – damit du beim ersten Mal richtig liegst.</p>
+    </div>
 </div>
 
 <div class="page-content">

@@ -10,59 +10,53 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --color-cream: #F5F1E8;
-            --color-charcoal: #2A2A2A;
-            --color-slate: #4A5859;
-            --color-rain: #7B9AA2;
-            --color-sunshine: #FFD147;
-            --color-fog: #E8E4DB;
-            --font-display: 'Fraunces', serif;
-            --font-body: 'Instrument Sans', sans-serif;
+            --color-cream: #F5F1E8; --color-charcoal: #2A2A2A; --color-slate: #4A5859;
+            --color-rain: #7B9AA2; --color-sunshine: #FFD147; --color-fog: #E8E4DB;
+            --font-display: 'Fraunces', serif; --font-body: 'Instrument Sans', sans-serif;
         }
         body { font-family: var(--font-body); color: var(--color-charcoal); background: var(--color-cream); line-height: 1.6; }
-
         nav { background: rgba(245,241,232,0.97); border-bottom: 1px solid rgba(42,42,42,0.1); padding: 1.25rem 4rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
         .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--color-charcoal); text-decoration: none; }
-        .nav-back { color: var(--color-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+        .nav-back { color: var(--color-slate); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.2s; }
         .nav-back:hover { color: var(--color-charcoal); }
 
-        .page-hero { background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%); padding: 6rem 4rem 4rem; text-align: center; }
-        .page-hero h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
-        .page-hero p { font-size: 1.15rem; color: var(--color-slate); max-width: 600px; margin: 0 auto; }
+        .page-hero { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--color-fog) 0%, var(--color-cream) 100%); padding: 6rem 4rem 4rem; text-align: center; }
+        .page-hero-inner { position: relative; z-index: 1; }
+        .page-hero-inner h1 { font-family: var(--font-display); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        .page-hero-inner p { font-size: 1.15rem; color: var(--color-slate); max-width: 600px; margin: 0 auto; }
+        .floating-clouds { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+        .floating-cloud { position: absolute; opacity: 0.12; will-change: transform; }
+        .floating-cloud img { width: 100%; height: 100%; object-fit: contain; }
+        .floating-cloud-1 { top: 5%;  width: 560px; height: 280px; animation: floatCloud 70s linear infinite; animation-delay: 0s; }
+        .floating-cloud-2 { top: 35%; width: 440px; height: 220px; animation: floatCloud 90s linear infinite; animation-delay: -25s; }
+        .floating-cloud-3 { top: 65%; width: 600px; height: 300px; animation: floatCloud 80s linear infinite; animation-delay: -50s; }
+        @keyframes floatCloud { from { transform: translateX(calc(100vw + 50px)); } to { transform: translateX(-650px); } }
 
-        /* Anchor nav */
-        .anchor-nav { background: white; border-bottom: 1px solid var(--color-fog); display: flex; gap: 0; justify-content: center; overflow-x: auto; }
+        .anchor-nav { background: white; border-bottom: 1px solid var(--color-fog); display: flex; justify-content: center; overflow-x: auto; }
         .anchor-nav a { padding: 1rem 2rem; color: var(--color-slate); text-decoration: none; font-weight: 600; font-size: 0.9rem; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
         .anchor-nav a:hover { color: var(--color-charcoal); border-bottom-color: var(--color-sunshine); }
 
         .page-content { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 6rem; }
-
         .help-section { margin-bottom: 4rem; scroll-margin-top: 120px; }
         .section-label { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--color-sunshine); color: var(--color-charcoal); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.3rem 0.9rem; border-radius: 50px; margin-bottom: 1rem; }
         .help-section h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 700; margin-bottom: 1.25rem; }
         .help-section p { color: var(--color-slate); margin-bottom: 1rem; font-size: 1rem; line-height: 1.8; }
-        .help-section p:last-child { margin-bottom: 0; }
-
         .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin: 1.5rem 0; }
         .info-card { background: white; border-radius: 14px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .info-card .icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
         .info-card h4 { font-weight: 700; margin-bottom: 0.4rem; }
         .info-card p { font-size: 0.9rem; color: var(--color-slate); }
-
         .contact-box { background: var(--color-charcoal); color: var(--color-cream); border-radius: 20px; padding: 2.5rem; text-align: center; margin-top: 2rem; }
         .contact-box h3 { font-family: var(--font-display); font-size: 1.75rem; margin-bottom: 0.75rem; }
         .contact-box p { color: rgba(245,241,232,0.7); margin-bottom: 1.5rem; }
         .contact-box a { display: inline-block; background: var(--color-sunshine); color: var(--color-charcoal); padding: 0.85rem 2rem; border-radius: 50px; font-weight: 700; text-decoration: none; transition: all 0.3s; }
         .contact-box a:hover { background: #FFE066; transform: translateY(-2px); }
-
         .pflege-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
         .pflege-step { background: var(--color-fog); border-radius: 14px; padding: 1.5rem; text-align: center; }
         .pflege-step .symbol { font-size: 2rem; margin-bottom: 0.75rem; }
         .pflege-step h4 { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.4rem; }
         .pflege-step p { font-size: 0.85rem; color: var(--color-slate); }
-
         .divider { border: none; border-top: 1px solid var(--color-fog); margin: 4rem 0; }
-
         .page-footer { background: var(--color-charcoal); color: var(--color-cream); text-align: center; padding: 2.5rem; font-size: 0.9rem; }
         .page-footer a { color: var(--color-sunshine); text-decoration: none; }
 
@@ -75,15 +69,21 @@
     </style>
 </head>
 <body>
-
 <nav>
     <a href="index.html" class="logo">AmundsensFjell</a>
     <a href="index.html" class="nav-back">← Zurück zur Startseite</a>
 </nav>
 
 <div class="page-hero">
-    <h1>Hilfe & Kontakt</h1>
-    <p>Alles rund um Versand, Rückgabe und Pflege deiner Jacke.</p>
+    <div class="floating-clouds">
+        <div class="floating-cloud floating-cloud-1"><img src="images/cloud1.png" alt=""></div>
+        <div class="floating-cloud floating-cloud-2"><img src="images/cloud2.png" alt=""></div>
+        <div class="floating-cloud floating-cloud-3"><img src="images/cloud3.png" alt=""></div>
+    </div>
+    <div class="page-hero-inner">
+        <h1>Hilfe & Kontakt</h1>
+        <p>Alles rund um Versand, Rückgabe und Pflege deiner Jacke.</p>
+    </div>
 </div>
 
 <nav class="anchor-nav">
@@ -94,7 +94,6 @@
 </nav>
 
 <div class="page-content">
-
     <div class="help-section" id="kontakt">
         <div class="section-label">📬 Kontakt</div>
         <h2>Wir sind für dich da</h2>
@@ -105,108 +104,48 @@
             <a href="mailto:hallo@amundsensfjell.de">hallo@amundsensfjell.de</a>
         </div>
     </div>
-
     <hr class="divider">
-
     <div class="help-section" id="versand">
         <div class="section-label">📦 Versand</div>
         <h2>Schnell zu dir nach Hause</h2>
         <p>Wir verschicken alle Bestellungen so schnell wie möglich, in der Regel innerhalb von 1–3 Werktagen nach Zahlungseingang.</p>
         <div class="info-grid">
-            <div class="info-card">
-                <div class="icon">🚚</div>
-                <h4>Standard-Versand</h4>
-                <p>3–5 Werktage innerhalb Deutschlands. Kostenlos ab 50 €.</p>
-            </div>
-            <div class="info-card">
-                <div class="icon">⚡</div>
-                <h4>Express-Versand</h4>
-                <p>1–2 Werktage. Auf Anfrage möglich – schreib uns einfach.</p>
-            </div>
-            <div class="info-card">
-                <div class="icon">🌍</div>
-                <h4>Internationaler Versand</h4>
-                <p>Wir verschicken auch in die Schweiz, nach Österreich und weitere EU-Länder.</p>
-            </div>
-            <div class="info-card">
-                <div class="icon">📬</div>
-                <h4>Sendungsverfolgung</h4>
-                <p>Du erhältst nach dem Versand eine E-Mail mit deiner Tracking-Nummer.</p>
-            </div>
+            <div class="info-card"><div class="icon">🚚</div><h4>Standard-Versand</h4><p>3–5 Werktage innerhalb Deutschlands. Kostenlos ab 50 €.</p></div>
+            <div class="info-card"><div class="icon">⚡</div><h4>Express-Versand</h4><p>1–2 Werktage. Auf Anfrage möglich – schreib uns einfach.</p></div>
+            <div class="info-card"><div class="icon">🌍</div><h4>Internationaler Versand</h4><p>Wir verschicken auch in die Schweiz, nach Österreich und weitere EU-Länder.</p></div>
+            <div class="info-card"><div class="icon">📬</div><h4>Sendungsverfolgung</h4><p>Du erhältst nach dem Versand eine E-Mail mit deiner Tracking-Nummer.</p></div>
         </div>
     </div>
-
     <hr class="divider">
-
     <div class="help-section" id="rueckgabe">
         <div class="section-label">↩️ Rückgabe</div>
         <h2>30 Tage Rückgabe</h2>
         <p>Du hast 30 Tage Zeit, einen Artikel zurückzuschicken – kein Theater, kein Stress. Die Jacke muss ungetragen und im Originalzustand sein.</p>
         <p>Schick uns einfach eine E-Mail an <strong>hallo@amundsensfjell.de</strong> mit deiner Bestellnummer, und wir kümmern uns um alles Weitere. Rücksendungen innerhalb Deutschlands sind kostenlos.</p>
         <div class="info-grid">
-            <div class="info-card">
-                <div class="icon">1️⃣</div>
-                <h4>E-Mail schreiben</h4>
-                <p>Rücksendung ankündigen mit Bestellnummer und Grund.</p>
-            </div>
-            <div class="info-card">
-                <div class="icon">2️⃣</div>
-                <h4>Label erhalten</h4>
-                <p>Wir schicken dir ein kostenloses Rücksende-Label per E-Mail.</p>
-            </div>
-            <div class="info-card">
-                <div class="icon">3️⃣</div>
-                <h4>Paket abschicken</h4>
-                <p>Original-Verpackung nutzen, Paket beim nächsten Paketshop abgeben.</p>
-            </div>
-            <div class="info-card">
-                <div class="icon">4️⃣</div>
-                <h4>Rückerstattung</h4>
-                <p>Erstattung innerhalb von 5–7 Werktagen auf dein Konto.</p>
-            </div>
+            <div class="info-card"><div class="icon">1️⃣</div><h4>E-Mail schreiben</h4><p>Rücksendung ankündigen mit Bestellnummer und Grund.</p></div>
+            <div class="info-card"><div class="icon">2️⃣</div><h4>Label erhalten</h4><p>Wir schicken dir ein kostenloses Rücksende-Label per E-Mail.</p></div>
+            <div class="info-card"><div class="icon">3️⃣</div><h4>Paket abschicken</h4><p>Original-Verpackung nutzen, Paket beim nächsten Paketshop abgeben.</p></div>
+            <div class="info-card"><div class="icon">4️⃣</div><h4>Rückerstattung</h4><p>Erstattung innerhalb von 5–7 Werktagen auf dein Konto.</p></div>
         </div>
     </div>
-
     <hr class="divider">
-
     <div class="help-section" id="pflege">
         <div class="section-label">🧺 Pflege-Tipps</div>
         <h2>So bleibt deine Jacke schön</h2>
         <p>Unsere Jacken sind robust, aber ein bisschen Liebe schadet nicht. Halte dich an diese einfachen Regeln und deine Jacke hält viele Regengüsse durch.</p>
         <div class="pflege-steps">
-            <div class="pflege-step">
-                <div class="symbol">🌡️</div>
-                <h4>Waschen bei 30°</h4>
-                <p>Immer im Schonwaschgang, nicht heißer als 30 Grad.</p>
-            </div>
-            <div class="pflege-step">
-                <div class="symbol">🚫</div>
-                <h4>Kein Trockner</h4>
-                <p>Bitte nicht in den Trockner – die Beschichtung leidet darunter.</p>
-            </div>
-            <div class="pflege-step">
-                <div class="symbol">🌬️</div>
-                <h4>Lufttrocknen</h4>
-                <p>Hängend oder liegend an der Luft trocknen lassen.</p>
-            </div>
-            <div class="pflege-step">
-                <div class="symbol">🧴</div>
-                <h4>Kein Weichspüler</h4>
-                <p>Weichspüler schädigt die wasserdichte Membran – bitte weglassen.</p>
-            </div>
-            <div class="pflege-step">
-                <div class="symbol">🔁</div>
-                <h4>Imprägnieren</h4>
-                <p>Nach mehrmaligem Waschen kurz mit Imprägnierspray auffrischen.</p>
-            </div>
+            <div class="pflege-step"><div class="symbol">🌡️</div><h4>Waschen bei 30°</h4><p>Immer im Schonwaschgang, nicht heißer als 30 Grad.</p></div>
+            <div class="pflege-step"><div class="symbol">🚫</div><h4>Kein Trockner</h4><p>Bitte nicht in den Trockner – die Beschichtung leidet darunter.</p></div>
+            <div class="pflege-step"><div class="symbol">🌬️</div><h4>Lufttrocknen</h4><p>Hängend oder liegend an der Luft trocknen lassen.</p></div>
+            <div class="pflege-step"><div class="symbol">🧴</div><h4>Kein Weichspüler</h4><p>Weichspüler schädigt die wasserdichte Membran – bitte weglassen.</p></div>
+            <div class="pflege-step"><div class="symbol">🔁</div><h4>Imprägnieren</h4><p>Nach mehrmaligem Waschen kurz mit Imprägnierspray auffrischen.</p></div>
         </div>
     </div>
-
 </div>
 
 <footer class="page-footer">
     <p>&copy; 2026 AmundsensFjell. Mit ❤️ gemacht. | <a href="index.html">Zurück zur Startseite</a></p>
 </footer>
-
 </body>
 </html>
